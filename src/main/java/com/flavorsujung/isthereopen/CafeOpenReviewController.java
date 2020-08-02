@@ -33,7 +33,7 @@ public class CafeOpenReviewController {
     }
 
     @PutMapping("/cafeOpenReview/{seq}")
-    public void putCafeOpenReview(@PathVariable("seq") Integer seq, @RequestParam("cafeSeq") Integer cafeSeq,@RequestParam("userSeq") Integer userSeq, @RequestParam("openState") Integer openState) {
+    public void putCafeOpenReview(@PathVariable("seq") Integer seq, @RequestParam("cafeSeq") Integer cafeSeq, @RequestParam("userSeq") Integer userSeq, @RequestParam("openState") Integer openState) {
         CafeOpenReview openReview = new CafeOpenReview(seq, cafeSeq, userSeq, openState);
         cafeOpenReviewMap.put(seq, openReview);
         cafeMap.get(seq).setCurrentState(openState);
