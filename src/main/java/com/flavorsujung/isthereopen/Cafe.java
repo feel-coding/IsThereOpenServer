@@ -1,5 +1,8 @@
 package com.flavorsujung.isthereopen;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cafe {
     private Integer seq;
     private String name;
@@ -7,6 +10,8 @@ public class Cafe {
     private String runtime;
     private Double rate;
     private Integer currentState;
+    List<CafeInfoReview> cafeInfoReviewList;
+    List<CafeOpenReview> cafeOpenReviewList;
 
     public Cafe(Integer seq, String name, String address, String runtime, Double rate, Integer currentState) {
         this.seq = seq;
@@ -15,6 +20,7 @@ public class Cafe {
         this.runtime = runtime;
         this.rate = rate;
         this.currentState = currentState;
+        cafeInfoReviewList = new ArrayList<>();
     }
 
     public Integer getSeq() {
@@ -63,5 +69,21 @@ public class Cafe {
 
     public Integer getCurrentState() {
         return currentState;
+    }
+
+    public List<CafeInfoReview> getCafeInfoReviewList() {
+        return cafeInfoReviewList;
+    }
+
+    public void setCafeInfoReviewList(List<CafeInfoReview> cafeInfoReviewList) {
+        this.cafeInfoReviewList = cafeInfoReviewList;
+    }
+
+    public List<CafeOpenReview> getCafeOpenReviewList() {
+        return cafeOpenReviewList;
+    }
+
+    public void setCafeOpenReviewList(List<CafeOpenReview> cafeOpenReviewList) {
+        this.cafeOpenReviewList = cafeOpenReviewList;
     }
 }

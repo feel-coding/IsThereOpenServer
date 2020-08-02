@@ -22,14 +22,14 @@ public class CafeOpenReviewController {
         cafeOpenReviewMap.put(2, new CafeOpenReview(2, 2, 1, UNKNOWN));
     }
 
-    @GetMapping("/cafeOpenReview/{id}")
-    public CafeOpenReview getCafeOpenReview(@PathVariable("id") Integer id) {
-        return cafeOpenReviewMap.get(id);
+    @GetMapping("/cafeOpenReview/{seq}")
+    public CafeOpenReview getCafeOpenReview(@PathVariable("seq") Integer seq) {
+        return cafeOpenReviewMap.get(seq);
     }
 
-    @GetMapping("/cafeOpenReview/all")
-    public List<CafeOpenReview> getUserList() {
-        return new ArrayList<CafeOpenReview>(cafeOpenReviewMap.values());
+    @GetMapping("/cafeOpenReview/{seq}")
+    public List<CafeOpenReview> getCafeOpenReviewList(@PathVariable("seq") Integer seq) {
+        return new ArrayList<CafeOpenReview>(cafeMap.get(seq).getCafeOpenReviewList());
     }
 
     @PutMapping("/cafeOpenReview/{seq}")
@@ -39,12 +39,4 @@ public class CafeOpenReviewController {
         cafeMap.get(seq).setCurrentState(openState);
         seq++;
     }
-
-    /*@PostMapping("/cafeOpenReview/{id}")
-    public void postUser(@PathVariable("id") Integer id, @RequestParam("name") String name, @RequestParam("phone") String phone, @RequestParam("address") String address) {
-        User user = openReviewMap.get(id);
-        user.setName(name);
-        user.setPhone(phone);
-        user.setAddress(address);
-    }*/
 }

@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.flavorsujung.isthereopen.BarController.barMap;
+
 @RestController
 public class UserController {
     private Map<Integer, User> userMap;
@@ -40,5 +42,15 @@ public class UserController {
     public void postUser(@PathVariable("seq") Integer seq, @RequestParam("id") String id, @RequestParam("name") String name) {
         User user = userMap.get(seq);
         user.setName(name);
+    }
+
+    @GetMapping("/user/{seq}/patronBar")
+    public List<Bar> getPatronBarList(@PathVariable("userSeq") Integer userSeq) {
+        List<Integer> patronBarSeqList = userMap.get(userSeq).getPatronBarList();
+        List<Bar> patronBarList = new ArrayList<>();
+        for(Integer i : patronBarSeqList) {
+            patronBarList.add(barMap.get(i));
+        }
+        return patronBarList;
     }
 }

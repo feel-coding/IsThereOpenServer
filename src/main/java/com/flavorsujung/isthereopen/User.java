@@ -1,14 +1,23 @@
 package com.flavorsujung.isthereopen;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private Integer seq;
     private String id;
     private String name;
+    List<Integer> patronBarList; // Bar seq list
+    List<Integer> patronCafeList; // Cafe seq list
+    List<Integer> patronRestaurantList; // Restaurant seq list
 
     public User(Integer seq, String id, String name) {
         this.seq = seq;
         this.id = id;
         this.name = name;
+        patronBarList = new ArrayList<>();
+        patronCafeList = new ArrayList<>();
+        patronRestaurantList = new ArrayList<>();
     }
 
     public Integer getSeq() {
@@ -35,4 +44,27 @@ public class User {
         this.name = name;
     }
 
+    public List<Integer> getPatronBarList() {
+        return patronBarList;
+    }
+
+    public void setPatronBarList(List<Integer> patronBarList) {
+        this.patronBarList = patronBarList;
+    }
+
+    public List<Integer> getPatronCafeList() {
+        return patronCafeList;
+    }
+
+    public void setPatronCafeList(List<Integer> patronCafeList) {
+        this.patronCafeList = patronCafeList;
+    }
+
+    public List<Integer> getPatronRestaurantList() {
+        return patronRestaurantList;
+    }
+
+    public void setPatronRestaurantList(List<Integer> patronRestaurantList) {
+        this.patronRestaurantList = patronRestaurantList;
+    }
 }
