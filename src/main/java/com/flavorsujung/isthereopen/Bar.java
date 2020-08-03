@@ -71,4 +71,20 @@ public class Bar {
     public void setCurrentState(Integer currentState) {
         this.currentState = currentState;
     }
+
+    public List<BarOpenReview> getBarOpenReviewList() {
+        return barOpenReviewList;
+    }
+
+    public void setBarOpenReviewList(List<BarOpenReview> barOpenReviewList) {
+        this.barOpenReviewList = barOpenReviewList;
+    }
+
+    public List<BarInfoReview> getBarInfoReviewList() {
+        return barInfoReviewList;
+    }
+
+    public void setBarInfoReviewList(List<BarInfoReview> barInfoReviewList) {
+        this.barInfoReviewList = barInfoReviewList;
+    }
 }

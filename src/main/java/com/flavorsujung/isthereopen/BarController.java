@@ -8,8 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.flavorsujung.isthereopen.CafeOpenReviewController.cafeOpenReviewMap;
-
 @RestController
 public class BarController {
     public static Map<Integer, Bar> barMap;
@@ -21,27 +19,32 @@ public class BarController {
     @PostConstruct
     public void init() {
         barMap = new HashMap<>();
-        barMap.put(1, new Bar(1, "카페비", "성북구 어쩌구", "오전 9시~오후 11시", 4.5, OPEN));
-        barMap.put(2, new Bar(2, "홀슈", "정문 앞", "오후 12시~오후 8시", 4.1, UNKNOWN));
+        barMap.put(0, new Bar(0, "육회본가", "성북구 어쩌구", "오전 9시~오후 11시", 4.5, OPEN));
+        barMap.put(1, new Bar(1, "대한맥주집", "정문 앞", "오후 12시~오후 8시", 4.1, UNKNOWN));
+    }
+    @GetMapping("/bar/{barSeq}/openState") // (API 테스트 완료)
+    public Integer getCurrentState(@PathVariable("barSeq") Integer barSeq) {
+        return barMap.get(barSeq).getCurrentState();
     }
 
-    @GetMapping("/bar/{barSeq}")
-    public Integer getCurrentState(@PathVariable("cafeSeq") Integer cafeSeq) {
-        return cafeOpenReviewMap.get(cafeSeq).getOpenState();
-    }
-
-    @GetMapping("/bar/all")
-    public List<Bar> getCafeList() {
+    @GetMapping("/bar/all") // (API 테스트 완료)
+    public List<Bar> getBarList() {
         return new ArrayList<Bar>(barMap.values());
     }
 
-    @PutMapping("/bar/{barSeq}")
-    public void putBar(@PathVariable("cafeSeq") Integer cafeSeq, @RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("runtime") String runtime, @RequestParam("rate") Double rate) {
-        barMap.put(cafeSeq, new Bar(cafeSeq, name, address, runtime, rate, UNKNOWN));
+    @GetMapping("/bar/{barSeq}") // (API 테스트 완료)
+    public Bar getBar(@PathVariable("barSeq") Integer barSeq) {
+        return barMap.get(barSeq);
     }
 
-    @PostMapping("/bar/{barSeq}")
-    public void postCurrentState(@PathVariable("cafeSeq") Integer cafeSeq, @RequestParam("openState") Integer openState) {
-        cafeOpenReviewMap.get(cafeSeq).setOpenState(openState);
+    @PutMapping("/bar") //(API 테스트 완료)
+    public void putBar(@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("runtime") String runningTime) {
+        int seq = barMap.size();
+        barMap.put(seq, new Bar(seq, name, address, runningTime, 0.0, UNKNOWN));
+    }
+
+    @PostMapping("/bar/{barSeq}") //(API 테스트 완료)
+    public void postCurrentState(@PathVariable("barSeq") Integer barSeq, @RequestParam("openState") Integer openState) {
+        barMap.get(barSeq).setCurrentState(openState);
     }
 }
