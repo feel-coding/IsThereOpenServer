@@ -1,5 +1,8 @@
 package com.flavorsujung.isthereopen;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bar {
     Integer seq;
     String name;
@@ -7,6 +10,8 @@ public class Bar {
     String runningTime;
     Double rate;
     Integer currentState;
+    List<BarOpenReview> barOpenReviewList;
+    List<BarInfoReview> barInfoReviewList;
 
     public Bar(Integer seq, String name, String address, String runningTime, Double rate, Integer currentState) {
         this.seq = seq;
@@ -15,6 +20,8 @@ public class Bar {
         this.runningTime = runningTime;
         this.rate = rate;
         this.currentState = currentState;
+        barInfoReviewList = new ArrayList<>();
+        barOpenReviewList = new ArrayList<>();
     }
 
     public Integer getSeq() {

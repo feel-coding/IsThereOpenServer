@@ -11,7 +11,7 @@ import static com.flavorsujung.isthereopen.CafeController.cafeMap;
 
 @RestController
 public class CafeInfoReviewController {
-    Map<Integer, List<CafeInfoReview>> cafeInfoReviewMap;
+    Map<Integer, CafeInfoReview> cafeInfoReviewMap;
 
     @PostConstruct
     public void init() {
@@ -28,12 +28,19 @@ public class CafeInfoReviewController {
             @RequestParam("plugNum") Integer plugNum,
             @RequestParam("tableHeight") Integer tableHeight,
             @RequestParam("longStay") Integer longStay) {
-        int seq = cafeInfoReviewMap.get(cafeSeq).size();
-        cafeInfoReviewMap.get(cafeSeq).add(new CafeInfoReview(seq, cafeSeq, openStyle, waitingTime, price, customerNum, plugNum, tableHeight, longStay));
+        int seq = cafeInfoReviewMap.size();
+        CafeInfoReview cafeInfoReview = new CafeInfoReview(seq, cafeSeq, openStyle, waitingTime, price, customerNum, plugNum, tableHeight, longStay);
+        cafeInfoReviewMap.put(seq, cafeInfoReview);
+        cafeMap.get(cafeSeq).getCafeInfoReviewList().add(cafeInfoReview);
     }
 
     @GetMapping("/cafe/{cafeSeq}/infoReview")
     public List<CafeInfoReview> getCafeInfoReviewList(@PathVariable("cafeSeq") Integer cafeSeq) {
         return cafeMap.get(cafeSeq).getCafeInfoReviewList();
+    }
+
+    @GetMapping("/cafe/{cafeSeq}/infoReview/{infoReviewSeq}")
+    public CafeInfoReview getCafeInfoReview(@PathVariable("cafeSeq") Integer cafeSeq, @PathVariable("infoReviewSeq") Integer infoReviewSeq) {
+        return cafeMap.get(cafeSeq).getCafeInfoReviewList().get(infoReviewSeq);
     }
 }

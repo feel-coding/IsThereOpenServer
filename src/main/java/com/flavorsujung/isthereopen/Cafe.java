@@ -21,6 +21,7 @@ public class Cafe {
         this.rate = rate;
         this.currentState = currentState;
         cafeInfoReviewList = new ArrayList<>();
+        cafeOpenReviewList = new ArrayList<>();
     }
 
     public Integer getSeq() {

@@ -17,8 +17,8 @@ public class CafeOpenReviewController {
     @PostConstruct
     public void init(){
         cafeOpenReviewMap = new HashMap<>();
-        cafeOpenReviewMap.put(1, new CafeOpenReview(1, 1, 2, CLOSE));
-        cafeOpenReviewMap.put(2, new CafeOpenReview(2, 2, 1, UNKNOWN));
+//        cafeOpenReviewMap.put(1, new CafeOpenReview(1, 1, 2, CLOSE));
+//        cafeOpenReviewMap.put(2, new CafeOpenReview(2, 2, 1, UNKNOWN));
     }
 
     @GetMapping("/cafe/{cafeSeq}/openReview")
