@@ -4,15 +4,15 @@ public class Bar {
     Integer seq;
     String name;
     String address;
-    String runtime;
+    String runningTime;
     Double rate;
     Integer currentState;
 
-    public Bar(Integer seq, String name, String address, String runtime, Double rate, Integer currentState) {
+    public Bar(Integer seq, String name, String address, String runningTime, Double rate, Integer currentState) {
         this.seq = seq;
         this.name = name;
         this.address = address;
-        this.runtime = runtime;
+        this.runningTime = runningTime;
         this.rate = rate;
         this.currentState = currentState;
     }
@@ -41,12 +41,12 @@ public class Bar {
         this.address = address;
     }
 
-    public String getRuntime() {
-        return runtime;
+    public String getRunningTime() {
+        return runningTime;
     }
 
-    public void setRuntime(String runtime) {
-        this.runtime = runtime;
+    public void setRunningTime(String runningTime) {
+        this.runningTime = runningTime;
     }
 
     public Double getRate() {

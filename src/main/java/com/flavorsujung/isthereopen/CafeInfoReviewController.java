@@ -11,14 +11,14 @@ import static com.flavorsujung.isthereopen.CafeController.cafeMap;
 
 @RestController
 public class CafeInfoReviewController {
-    Map<Integer, CafeInfoReview> cafeInfoReviewMap;
+    Map<Integer, List<CafeInfoReview>> cafeInfoReviewMap;
 
     @PostConstruct
     public void init() {
         cafeInfoReviewMap = new HashMap<>();
     }
 
-    @PutMapping("/cafeInfoReview/{cafeSeq}")
+    @PutMapping("/cafe/{cafeSeq}/infoReview")
     public void putCafeInfoReview(
             @PathVariable("cafeSeq") Integer cafeSeq,
             @RequestParam("openStyle") Integer openStyle,
@@ -28,11 +28,11 @@ public class CafeInfoReviewController {
             @RequestParam("plugNum") Integer plugNum,
             @RequestParam("tableHeight") Integer tableHeight,
             @RequestParam("longStay") Integer longStay) {
-        int seq = cafeInfoReviewMap.size();
-        cafeInfoReviewMap.put(seq, new CafeInfoReview(seq, cafeSeq, openStyle, waitingTime, price, customerNum, plugNum, tableHeight, longStay));
+        int seq = cafeInfoReviewMap.get(cafeSeq).size();
+        cafeInfoReviewMap.get(cafeSeq).add(new CafeInfoReview(seq, cafeSeq, openStyle, waitingTime, price, customerNum, plugNum, tableHeight, longStay));
     }
 
-    @GetMapping("/cafeInfoReview/{cafeSeq}")
+    @GetMapping("/cafe/{cafeSeq}/infoReview")
     public List<CafeInfoReview> getCafeInfoReviewList(@PathVariable("cafeSeq") Integer cafeSeq) {
         return cafeMap.get(cafeSeq).getCafeInfoReviewList();
     }

@@ -1,20 +1,27 @@
 package com.flavorsujung.isthereopen;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Restaurant {
     Integer seq;
     String name;
     String address;
-    String runtime;
+    String runningTime;
     Double rate;
     Integer currentState;
+    List<RestaurantInfoReview> restaurantInfoReviewList;
+    List<RestaurantOpenReview> restaurantOpenReviewList;
 
-    public Restaurant(Integer seq, String name, String address, String runtime, Double rate, Integer currentState) {
+    public Restaurant(Integer seq, String name, String address, String runningTime, Double rate, Integer currentState) {
         this.seq = seq;
         this.name = name;
         this.address = address;
-        this.runtime = runtime;
+        this.runningTime = runningTime;
         this.rate = rate;
         this.currentState = currentState;
+        restaurantInfoReviewList = new ArrayList<>();
+        restaurantOpenReviewList = new ArrayList<>();
     }
 
     public Integer getSeq() {
@@ -41,12 +48,12 @@ public class Restaurant {
         this.address = address;
     }
 
-    public String getRuntime() {
-        return runtime;
+    public String getRunningTime() {
+        return runningTime;
     }
 
-    public void setRuntime(String runtime) {
-        this.runtime = runtime;
+    public void setRunningTime(String runningTime) {
+        this.runningTime = runningTime;
     }
 
     public Double getRate() {
@@ -63,5 +70,21 @@ public class Restaurant {
 
     public void setCurrentState(Integer currentState) {
         this.currentState = currentState;
+    }
+
+    public List<RestaurantInfoReview> getRestaurantInfoReviewList() {
+        return restaurantInfoReviewList;
+    }
+
+    public void setRestaurantInfoReviewList(List<RestaurantInfoReview> restaurantInfoReviewList) {
+        this.restaurantInfoReviewList = restaurantInfoReviewList;
+    }
+
+    public List<RestaurantOpenReview> getRestaurantOpenReviewList() {
+        return restaurantOpenReviewList;
+    }
+
+    public void setRestaurantOpenReviewList(List<RestaurantOpenReview> restaurantOpenReviewList) {
+        this.restaurantOpenReviewList = restaurantOpenReviewList;
     }
 }

@@ -12,7 +12,6 @@ import static com.flavorsujung.isthereopen.CafeController.*;
 
 @RestController
 public class CafeOpenReviewController {
-    private Integer seq = 0;
     public static Map<Integer, CafeOpenReview> cafeOpenReviewMap;
 
     @PostConstruct
@@ -22,21 +21,16 @@ public class CafeOpenReviewController {
         cafeOpenReviewMap.put(2, new CafeOpenReview(2, 2, 1, UNKNOWN));
     }
 
-    @GetMapping("/cafeOpenReview/{seq}")
-    public CafeOpenReview getCafeOpenReview(@PathVariable("seq") Integer seq) {
-        return cafeOpenReviewMap.get(seq);
+    @GetMapping("/cafe/{cafeSeq}/openReview")
+    public List<CafeOpenReview> getCafeOpenReviewList(@PathVariable("cafeSeq") Integer cafeSeq) {
+        return new ArrayList<CafeOpenReview>(cafeMap.get(cafeSeq).getCafeOpenReviewList());
     }
 
-    @GetMapping("/cafeOpenReview/{seq}")
-    public List<CafeOpenReview> getCafeOpenReviewList(@PathVariable("seq") Integer seq) {
-        return new ArrayList<CafeOpenReview>(cafeMap.get(seq).getCafeOpenReviewList());
-    }
-
-    @PutMapping("/cafeOpenReview/{seq}")
-    public void putCafeOpenReview(@PathVariable("seq") Integer seq, @RequestParam("cafeSeq") Integer cafeSeq, @RequestParam("userSeq") Integer userSeq, @RequestParam("openState") Integer openState) {
+    @PutMapping("/cafe/{cafeSeq}/openReview")
+    public void putCafeOpenReview(@PathVariable("cafeSeq") Integer cafeSeq, @RequestParam("userSeq") Integer userSeq, @RequestParam("openState") Integer openState) {
+        int seq = cafeOpenReviewMap.size();
         CafeOpenReview openReview = new CafeOpenReview(seq, cafeSeq, userSeq, openState);
         cafeOpenReviewMap.put(seq, openReview);
         cafeMap.get(seq).setCurrentState(openState);
-        seq++;
     }
 }
