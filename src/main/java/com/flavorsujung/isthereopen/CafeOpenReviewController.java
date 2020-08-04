@@ -3,10 +3,7 @@ package com.flavorsujung.isthereopen;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.flavorsujung.isthereopen.CafeController.*;
 
@@ -32,5 +29,6 @@ public class CafeOpenReviewController {
         CafeOpenReview openReview = new CafeOpenReview(seq, cafeSeq, userSeq, openState);
         cafeOpenReviewMap.put(seq, openReview);
         cafeMap.get(seq).setCurrentState(openState);
+        cafeMap.get(seq).setLastUpdate(new Date());
     }
 }

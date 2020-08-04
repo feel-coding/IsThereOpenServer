@@ -10,16 +10,29 @@ public class Restaurant {
     String runningTime;
     Double rate;
     Integer currentState;
+    String photoURL;
     List<RestaurantInfoReview> restaurantInfoReviewList;
     List<RestaurantOpenReview> restaurantOpenReviewList;
 
-    public Restaurant(Integer seq, String name, String address, String runningTime, Double rate, Integer currentState) {
+    public Restaurant(Integer seq, String name, String address, String runningTime, Double rate) {
         this.seq = seq;
         this.name = name;
         this.address = address;
         this.runningTime = runningTime;
         this.rate = rate;
-        this.currentState = currentState;
+        this.currentState = 3;
+        restaurantInfoReviewList = new ArrayList<>();
+        restaurantOpenReviewList = new ArrayList<>();
+    }
+
+    public Restaurant(Integer seq, String name, String address, String runningTime, Double rate, String photoURL) {
+        this.seq = seq;
+        this.name = name;
+        this.address = address;
+        this.runningTime = runningTime;
+        this.rate = rate;
+        this.currentState = 3;
+        this.photoURL = photoURL;
         restaurantInfoReviewList = new ArrayList<>();
         restaurantOpenReviewList = new ArrayList<>();
     }

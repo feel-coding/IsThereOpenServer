@@ -1,6 +1,7 @@
 package com.flavorsujung.isthereopen;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Cafe {
@@ -10,16 +11,30 @@ public class Cafe {
     private String runningTime;
     private Double rate;
     private Integer currentState;
+    private String photoURL;
+    private Date lastUpdate;
     List<CafeInfoReview> cafeInfoReviewList;
     List<CafeOpenReview> cafeOpenReviewList;
 
-    public Cafe(Integer seq, String name, String address, String runningTime, Double rate, Integer currentState) {
+    public Cafe(Integer seq, String name, String address, String runningTime, Double rate) {
         this.seq = seq;
         this.name = name;
         this.address = address;
         this.runningTime = runningTime;
         this.rate = rate;
-        this.currentState = currentState;
+        this.currentState = 3;
+        cafeInfoReviewList = new ArrayList<>();
+        cafeOpenReviewList = new ArrayList<>();
+    }
+
+    public Cafe(Integer seq, String name, String address, String runningTime, Double rate, String photoURL) {
+        this.seq = seq;
+        this.name = name;
+        this.address = address;
+        this.runningTime = runningTime;
+        this.rate = rate;
+        this.currentState = 3;
+        this.photoURL = photoURL;
         cafeInfoReviewList = new ArrayList<>();
         cafeOpenReviewList = new ArrayList<>();
     }
@@ -78,6 +93,22 @@ public class Cafe {
 
     public void setCafeInfoReviewList(List<CafeInfoReview> cafeInfoReviewList) {
         this.cafeInfoReviewList = cafeInfoReviewList;
+    }
+
+    public String getPhotoURL() {
+        return photoURL;
+    }
+
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
+    }
+
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public List<CafeOpenReview> getCafeOpenReviewList() {
