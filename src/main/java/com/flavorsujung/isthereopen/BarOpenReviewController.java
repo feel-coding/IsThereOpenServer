@@ -3,10 +3,7 @@ package com.flavorsujung.isthereopen;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.flavorsujung.isthereopen.BarController.*;
 
@@ -21,8 +18,8 @@ public class BarOpenReviewController {
     }
 
     @GetMapping("/bar/{seq}/openReview")
-    public List<BarOpenReview> getBarOpenReviewList() {
-        return new ArrayList<BarOpenReview>(barOpenReviewMap.values());
+    public List<BarOpenReview> getBarOpenReviewList(@PathVariable("seq") Integer seq) {
+        return barMap.get(seq).getBarOpenReviewList();
     }
 
     @PutMapping("/bar/{barSeq}/openReview")
@@ -30,6 +27,8 @@ public class BarOpenReviewController {
         int seq = barMap.size();
         BarOpenReview openReview = new BarOpenReview(seq, barSeq, userSeq, openState);
         barOpenReviewMap.put(seq, openReview);
+        barMap.get(barSeq).getBarOpenReviewList().add(openReview);
         barMap.get(barSeq).setCurrentState(openState);
+        barMap.get(barSeq).setLastUpdate(new Date());
     }
 }

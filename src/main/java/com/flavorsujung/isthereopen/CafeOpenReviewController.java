@@ -18,12 +18,12 @@ public class CafeOpenReviewController {
 //        cafeOpenReviewMap.put(2, new CafeOpenReview(2, 2, 1, UNKNOWN));
     }
 
-    @GetMapping("/cafe/{cafeSeq}/openReview") //(API 테스트 완료)
+    @GetMapping("/cafe/{cafeSeq}/openReview") //카페 오픈 리뷰 조회 (API 테스트 완료)
     public List<CafeOpenReview> getCafeOpenReviewList(@PathVariable("cafeSeq") Integer cafeSeq) {
         return cafeMap.get(cafeSeq).getCafeOpenReviewList();
     }
 
-    @PutMapping("/cafe/{cafeSeq}/openReview") //(API 테스트 완료)
+    @PutMapping("/cafe/{cafeSeq}/openReview") //카페 오픈 리뷰 작성 (API 테스트 완료)
     public void putCafeOpenReview(@PathVariable("cafeSeq") Integer cafeSeq, @RequestParam("userSeq") Integer userSeq, @RequestParam("openState") Integer openState) {
         int seq = cafeOpenReviewMap.size();
         CafeOpenReview openReview = new CafeOpenReview(seq, cafeSeq, userSeq, openState);

@@ -1,37 +1,39 @@
 package com.flavorsujung.isthereopen;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Restaurant {
-    Integer seq;
-    String name;
-    String address;
-    String runningTime;
-    Double rate;
-    Integer currentState;
-    String photoURL;
-    List<RestaurantInfoReview> restaurantInfoReviewList;
-    List<RestaurantOpenReview> restaurantOpenReviewList;
+    private Integer seq;
+    private String name;
+    private String address;
+    private String runningTime;
+    private Double rate;
+    private Integer currentState;
+    private String photoURL;
+    private Date lastUpdate;
+    private List<RestaurantInfoReview> restaurantInfoReviewList;
+    private List<RestaurantOpenReview> restaurantOpenReviewList;
 
-    public Restaurant(Integer seq, String name, String address, String runningTime, Double rate) {
+    public Restaurant(Integer seq, String name, String address, String runningTime) {
         this.seq = seq;
         this.name = name;
         this.address = address;
         this.runningTime = runningTime;
-        this.rate = rate;
-        this.currentState = 3;
+        rate = -1.0;
+        currentState = 3;
         restaurantInfoReviewList = new ArrayList<>();
         restaurantOpenReviewList = new ArrayList<>();
     }
 
-    public Restaurant(Integer seq, String name, String address, String runningTime, Double rate, String photoURL) {
+    public Restaurant(Integer seq, String name, String address, String runningTime, String photoURL) {
         this.seq = seq;
         this.name = name;
         this.address = address;
         this.runningTime = runningTime;
-        this.rate = rate;
-        this.currentState = 3;
+        rate = -1.0;
+        currentState = 3;
         this.photoURL = photoURL;
         restaurantInfoReviewList = new ArrayList<>();
         restaurantOpenReviewList = new ArrayList<>();
@@ -99,5 +101,21 @@ public class Restaurant {
 
     public void setRestaurantOpenReviewList(List<RestaurantOpenReview> restaurantOpenReviewList) {
         this.restaurantOpenReviewList = restaurantOpenReviewList;
+    }
+
+    public String getPhotoURL() {
+        return photoURL;
+    }
+
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
+    }
+
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 }

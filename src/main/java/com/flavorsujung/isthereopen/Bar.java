@@ -1,25 +1,28 @@
 package com.flavorsujung.isthereopen;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Bar {
-    Integer seq;
-    String name;
-    String address;
-    String runningTime;
-    Double rate;
-    Integer currentState;
-    List<BarOpenReview> barOpenReviewList;
-    List<BarInfoReview> barInfoReviewList;
+    private Integer seq;
+    private String name;
+    private String address;
+    private String runningTime;
+    private Double rate;
+    private Integer currentState;
+    private String photoURL;
+    private Date lastUpdate;
+    private List<BarOpenReview> barOpenReviewList;
+    private List<BarInfoReview> barInfoReviewList;
 
-    public Bar(Integer seq, String name, String address, String runningTime, Double rate, Integer currentState) {
+    public Bar(Integer seq, String name, String address, String runningTime) {
         this.seq = seq;
         this.name = name;
         this.address = address;
         this.runningTime = runningTime;
-        this.rate = rate;
-        this.currentState = currentState;
+        rate = -1.0;
+        currentState = 3;
         barInfoReviewList = new ArrayList<>();
         barOpenReviewList = new ArrayList<>();
     }
@@ -86,5 +89,9 @@ public class Bar {
 
     public void setBarInfoReviewList(List<BarInfoReview> barInfoReviewList) {
         this.barInfoReviewList = barInfoReviewList;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 }

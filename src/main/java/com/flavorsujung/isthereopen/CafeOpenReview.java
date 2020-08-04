@@ -1,16 +1,20 @@
 package com.flavorsujung.isthereopen;
 
+import java.util.Date;
+
 public class CafeOpenReview {
     Integer seq;
     Integer cafeSeq;
     Integer userSeq;
     Integer openState; //0 close, 1 break time, 2 open, 3 미확인
+    Date lastUpdate;
 
     public CafeOpenReview(Integer seq, Integer cafeSeq, Integer userSeq, Integer openState) {
         this.seq = seq;
         this.cafeSeq = cafeSeq;
         this.userSeq = userSeq;
         this.openState = openState;
+        lastUpdate = new Date();
     }
 
     public Integer getCafeSeq() {
@@ -43,5 +47,9 @@ public class CafeOpenReview {
 
     public void setOpenState(Integer openState) {
         this.openState = openState;
+    }
+
+    public Date getLastUpdate() {
+        return lastUpdate;
     }
 }

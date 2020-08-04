@@ -1,5 +1,6 @@
 package com.flavorsujung.isthereopen;
 
+import jdk.internal.jline.internal.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
@@ -21,13 +22,13 @@ public class CafeController {
     @PostConstruct
     public void init() {
         cafeMap = new HashMap<>();
-        cafeMap.put(0, new Cafe(0, "커피베이 성신여대점", "서울 성북구 보문로34길 80 1층", "매일 10:00 - 23:00", 4.2, "http://ldb.phinf.naver.net/20190922_46/1569123521799gJEQg_JPEG/lxoQ7YkH0Y3AyedAkNbeKJK6.jpeg.jpg"));
-        cafeMap.put(1, new Cafe(1, "카페비", "서울 성북구 보문로30길 71 ", "매일 11:00 - 24:00", 4.5, "http://ldb.phinf.naver.net/20151104_44/1446627314732yeCEp_JPEG/167054578530574_21.jpg"));
-        cafeMap.put(2, new Cafe(2, "홀슈", "서울 성북구 보문로34길 88", "오후 12시~오후 8시", 4.1, "http://ldb.phinf.naver.net/20191002_250/1569986451053OrdX1_JPEG/JcHuVz_SanKstCeTbMuK6O8W.JPG.jpg"));
-        cafeMap.put(3, new Cafe(3, "이디야커피 성신여대점", "서울 성북구 보문로34길 100", "평일 07:30 - 23:00, 주말 08:00 - 23:00, 공휴일 08:00 - 23:00", 4.9, "http://ldb.phinf.naver.net/20170711_282/1499738599754pJSvu_JPEG/186661513339210_0.jpeg"));
-        cafeMap.put(4, new Cafe(4, "스타벅스 성신여대정문점", "서울 성북구 보문로34길 62", " 08:00 - 21:30", 4.1, "http://ldb.phinf.naver.net/20190828_93/1566953601239OT9MQ_PNG/xX7Wv642gXMoTI0DAv0hRymS.png"));
-        cafeMap.put(5, new Cafe(5, "카페온더플랜", "서울 성북구 동소문로22길 39-4", "매일 08:00 - 05:00", 4.2, "http://ldb.phinf.naver.net/20190214_234/1550123304569M0StE_JPEG/omHhVGuluiyH3ye3XAnPu2j1.jpg"));
-        cafeMap.put(6, new Cafe(6, "본크레페", "서울 성북구 동소문로20다길 30", "평일 14:00 - 19:00", 4.9, "http://ldb.phinf.naver.net/20150813_69/1439473829903KC20W_JPEG/SUBMIT_1439434572823_33646766.jpg"));
+        cafeMap.put(0, new Cafe(0, "커피베이 성신여대점", "서울 성북구 보문로34길 80 1층", "매일 10:00 - 23:00", "http://ldb.phinf.naver.net/20190922_46/1569123521799gJEQg_JPEG/lxoQ7YkH0Y3AyedAkNbeKJK6.jpeg.jpg"));
+        cafeMap.put(1, new Cafe(1, "카페비", "서울 성북구 보문로30길 71 ", "매일 11:00 - 24:00", "http://ldb.phinf.naver.net/20151104_44/1446627314732yeCEp_JPEG/167054578530574_21.jpg"));
+        cafeMap.put(2, new Cafe(2, "홀슈", "서울 성북구 보문로34길 88", "오후 12시~오후 8시", "http://ldb.phinf.naver.net/20191002_250/1569986451053OrdX1_JPEG/JcHuVz_SanKstCeTbMuK6O8W.JPG.jpg"));
+        cafeMap.put(3, new Cafe(3, "이디야커피 성신여대점", "서울 성북구 보문로34길 100", "평일 07:30 - 23:00, 주말 08:00 - 23:00, 공휴일 08:00 - 23:00", "http://ldb.phinf.naver.net/20170711_282/1499738599754pJSvu_JPEG/186661513339210_0.jpeg"));
+        cafeMap.put(4, new Cafe(4, "스타벅스 성신여대정문점", "서울 성북구 보문로34길 62", " 08:00 - 21:30", "http://ldb.phinf.naver.net/20190828_93/1566953601239OT9MQ_PNG/xX7Wv642gXMoTI0DAv0hRymS.png"));
+        cafeMap.put(5, new Cafe(5, "카페온더플랜", "서울 성북구 동소문로22길 39-4", "매일 08:00 - 05:00", "http://ldb.phinf.naver.net/20190214_234/1550123304569M0StE_JPEG/omHhVGuluiyH3ye3XAnPu2j1.jpg"));
+        cafeMap.put(6, new Cafe(6, "본크레페", "서울 성북구 동소문로20다길 30", "평일 14:00 - 19:00", "http://ldb.phinf.naver.net/20150813_69/1439473829903KC20W_JPEG/SUBMIT_1439434572823_33646766.jpg"));
         }
 
     @GetMapping("/cafe/{cafeSeq}/openState") // (API 테스트 완료)
@@ -46,9 +47,12 @@ public class CafeController {
     }
 
     @PutMapping("/cafe") //(API 테스트 완료)
-    public void putCafe(@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("runtime") String runningTime) {
+    public void putCafe(@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("runtime") String runningTime, @RequestParam("photoURL") @Nullable String photoUrl) {
         int seq = cafeMap.size();
-        cafeMap.put(seq, new Cafe(seq, name, address, runningTime, 0.0));
+        if(photoUrl == null)
+            cafeMap.put(seq, new Cafe(seq, name, address, runningTime));
+        else
+            cafeMap.put(seq, new Cafe(seq, name, address, runningTime, photoUrl));
     }
 
     @PostMapping("/cafe/{cafeSeq}") //(API 테스트 완료)

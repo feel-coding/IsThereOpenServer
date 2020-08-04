@@ -19,8 +19,8 @@ public class BarController {
     @PostConstruct
     public void init() {
         barMap = new HashMap<>();
-        barMap.put(0, new Bar(0, "육회본가", "성북구 어쩌구", "오전 9시~오후 11시", 4.5, OPEN));
-        barMap.put(1, new Bar(1, "대한맥주집", "정문 앞", "오후 12시~오후 8시", 4.1, UNKNOWN));
+        barMap.put(0, new Bar(0, "육회본가", "성북구 어쩌구", "오전 9시~오후 11시"));
+        barMap.put(1, new Bar(1, "대한맥주집", "정문 앞", "오후 12시~오후 8시"));
     }
     @GetMapping("/bar/{barSeq}/openState") // (API 테스트 완료)
     public Integer getCurrentState(@PathVariable("barSeq") Integer barSeq) {
@@ -40,7 +40,7 @@ public class BarController {
     @PutMapping("/bar") //(API 테스트 완료)
     public void putBar(@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("runtime") String runningTime) {
         int seq = barMap.size();
-        barMap.put(seq, new Bar(seq, name, address, runningTime, 0.0, UNKNOWN));
+        barMap.put(seq, new Bar(seq, name, address, runningTime));
     }
 
     @PostMapping("/bar/{barSeq}") //(API 테스트 완료)

@@ -13,26 +13,26 @@ public class Cafe {
     private Integer currentState;
     private String photoURL;
     private Date lastUpdate;
-    List<CafeInfoReview> cafeInfoReviewList;
-    List<CafeOpenReview> cafeOpenReviewList;
+    private List<CafeInfoReview> cafeInfoReviewList;
+    private List<CafeOpenReview> cafeOpenReviewList;
 
-    public Cafe(Integer seq, String name, String address, String runningTime, Double rate) {
+    public Cafe(Integer seq, String name, String address, String runningTime) {
         this.seq = seq;
         this.name = name;
         this.address = address;
         this.runningTime = runningTime;
-        this.rate = rate;
-        this.currentState = 3;
+        rate = -1.0;
+        currentState = 3;
         cafeInfoReviewList = new ArrayList<>();
         cafeOpenReviewList = new ArrayList<>();
     }
 
-    public Cafe(Integer seq, String name, String address, String runningTime, Double rate, String photoURL) {
+    public Cafe(Integer seq, String name, String address, String runningTime, String photoURL) {
         this.seq = seq;
         this.name = name;
         this.address = address;
         this.runningTime = runningTime;
-        this.rate = rate;
+        rate = -1.0;
         this.currentState = 3;
         this.photoURL = photoURL;
         cafeInfoReviewList = new ArrayList<>();

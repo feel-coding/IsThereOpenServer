@@ -7,14 +7,14 @@ public class RestaurantOpenReview {
     Integer restaurantSeq;
     Integer userSeq;
     Integer openState; //0 close, 1 break time, 2 open, 3 미확인
-    Date updatedTime;
+    Date lastUpdate;
 
     public RestaurantOpenReview(Integer seq, Integer restaurantSeq, Integer userSeq, Integer openState) {
         this.seq = seq;
         this.restaurantSeq = restaurantSeq;
         this.userSeq = userSeq;
         this.openState = openState;
-        updatedTime = new Date();
+        lastUpdate = new Date();
     }
 
     public Integer getSeq() {
@@ -49,7 +49,7 @@ public class RestaurantOpenReview {
         this.openState = openState;
     }
 
-    public Date getUpdatedTime() {
-        return updatedTime;
+    public Date getLastUpdate() {
+        return lastUpdate;
     }
 }

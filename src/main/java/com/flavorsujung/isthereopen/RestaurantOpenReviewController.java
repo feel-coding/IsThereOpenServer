@@ -3,10 +3,7 @@ package com.flavorsujung.isthereopen;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.flavorsujung.isthereopen.RestaurantController.*;
 
@@ -29,6 +26,7 @@ public class RestaurantOpenReviewController {
         restaurantOpenReviewMap.put(seq, new RestaurantOpenReview(seq, restaurantSeq, userSeq, openState));
         restaurantMap.get(restaurantSeq).getRestaurantOpenReviewList().add(new RestaurantOpenReview(seq, restaurantSeq, userSeq, openState));
         restaurantMap.get(restaurantSeq).setCurrentState(openState); //식당 테이블의 현재 상태 업데이트
+        restaurantMap.get(restaurantSeq).setLastUpdate(new Date());
     }
 
     @GetMapping("/restaurant/{restaurantSeq}/openReview") //특정 식당의 오픈리뷰들 가져오기 (API 테스트 완료)
