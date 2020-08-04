@@ -20,7 +20,7 @@ public class CafeOpenReviewController {
 
     @GetMapping("/cafe/{cafeSeq}/openReview")
     public List<CafeOpenReview> getCafeOpenReviewList(@PathVariable("cafeSeq") Integer cafeSeq) {
-        return new ArrayList<CafeOpenReview>(cafeMap.get(cafeSeq).getCafeOpenReviewList());
+        return cafeMap.get(cafeSeq).getCafeOpenReviewList();
     }
 
     @PutMapping("/cafe/{cafeSeq}/openReview")
@@ -28,6 +28,7 @@ public class CafeOpenReviewController {
         int seq = cafeOpenReviewMap.size();
         CafeOpenReview openReview = new CafeOpenReview(seq, cafeSeq, userSeq, openState);
         cafeOpenReviewMap.put(seq, openReview);
+        cafeMap.get(seq).getCafeOpenReviewList().add(openReview);
         cafeMap.get(seq).setCurrentState(openState);
         cafeMap.get(seq).setLastUpdate(new Date());
     }
