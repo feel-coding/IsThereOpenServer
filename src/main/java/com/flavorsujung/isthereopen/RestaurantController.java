@@ -1,6 +1,6 @@
 package com.flavorsujung.isthereopen;
 
-import jdk.internal.jline.internal.Nullable;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
