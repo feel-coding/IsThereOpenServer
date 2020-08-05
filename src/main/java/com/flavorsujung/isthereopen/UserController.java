@@ -17,9 +17,9 @@ public class UserController {
     @PostConstruct
     public void init() {
         userMap = new HashMap<>();
-        userMap.put(1, new User(1, "hek0628", "김효은"));
-        userMap.put(2, new User(2, "yeokyeong", "윤여경"));
-        userMap.put(3, new User(3, "seol", "박설"));
+        userMap.put(0, new User(0, "hek0628", "김효은"));
+        userMap.put(1, new User(1, "yeokyeong", "윤여경"));
+        userMap.put(2, new User(2, "seol", "박설"));
     }
 
     @GetMapping("/user/{seq}")
@@ -32,25 +32,63 @@ public class UserController {
         return new ArrayList<User>(userMap.values());
     }
 
-    @PutMapping("/user/{seq}")
-    public void putUser(@PathVariable("seq") Integer seq, @RequestParam("id") String id, @RequestParam("name") String name) {
+    @PutMapping("/user")
+    public void putUser(@RequestParam("id") String id, @RequestParam("name") String name) {
+        int seq = userMap.size();
         User user = new User(seq, id, name);
         userMap.put(seq, user);
     }
 
     @PostMapping("/user/{seq}")
-    public void postUser(@PathVariable("seq") Integer seq, @RequestParam("id") String id, @RequestParam("name") String name) {
+    public void postUserName(@PathVariable("seq") Integer seq, @RequestParam("name") String name) {
         User user = userMap.get(seq);
         user.setName(name);
     }
 
     @GetMapping("/user/{seq}/patronBar")
-    public List<Bar> getPatronBarList(@PathVariable("userSeq") Integer userSeq) {
-        List<Integer> patronBarSeqList = userMap.get(userSeq).getPatronBarList();
-        List<Bar> patronBarList = new ArrayList<>();
-        for(Integer i : patronBarSeqList) {
-            patronBarList.add(barMap.get(i));
-        }
-        return patronBarList;
+    public List<Integer> getPatronBarList(@PathVariable("seq") Integer seq) {
+        return userMap.get(seq).getPatronBarList();
+    }
+
+    @PutMapping("/user/{seq}/patronBar")
+    public void putPatronBar(@PathVariable("seq") Integer seq, @PathVariable("barSeq") Integer barSeq) {
+        userMap.get(seq).getPatronBarList().add(barSeq);
+    }
+
+    @DeleteMapping("/user/{seq}/patronBar")
+    public void deletePatronBar(@PathVariable("seq") Integer seq, @PathVariable("barSeq") Integer barSeq) {
+        userMap.get(seq).getPatronBarList().remove(barSeq);
+    }
+
+    //단골 카페
+    @GetMapping("/user/{seq}/patronCafe")
+    public List<Integer> getPatronCafeList(@PathVariable("seq") Integer seq) {
+        return userMap.get(seq).getPatronCafeList();
+    }
+
+    @PutMapping("/user/{seq}/patronCafe")
+    public void putPatronCafe(@PathVariable("seq") Integer seq, @PathVariable("cafeSeq") Integer cafeSeq) {
+        userMap.get(seq).getPatronCafeList().add(cafeSeq);
+    }
+
+    @DeleteMapping("/user/{seq}/patronCafe")
+    public void deletePatronCafe(@PathVariable("seq") Integer seq, @PathVariable("cafeSeq") Integer cafeSeq) {
+        userMap.get(seq).getPatronCafeList().remove(cafeSeq);
+    }
+
+    //단골 식당
+    @GetMapping("/user/{seq}/patronRestaurant")
+    public List<Integer> getPatronRestaurantList(@PathVariable("seq") Integer seq) {
+        return userMap.get(seq).getPatronRestaurantList();
+    }
+
+    @PutMapping("/user/{seq}/patronRestaurant")
+    public void putPatronRestaurant(@PathVariable("seq") Integer seq, @PathVariable("restaurantSeq") Integer restaurantSeq) {
+        userMap.get(seq).getPatronRestaurantList().add(restaurantSeq);
+    }
+
+    @DeleteMapping("/user/{seq}/patronRestaurant")
+    public void deletePatronRestaurant(@PathVariable("seq") Integer seq, @PathVariable("restaurantSeq") Integer restaurantSeq) {
+        userMap.get(seq).getPatronRestaurantList().remove(restaurantSeq);
     }
 }
