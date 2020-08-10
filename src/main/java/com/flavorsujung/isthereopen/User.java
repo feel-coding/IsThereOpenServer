@@ -1,50 +1,43 @@
 package com.flavorsujung.isthereopen;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString(exclude = {})
+@Entity
+@Table(name = "user")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer seq;
-    private String id;
+   /* private String id;*/
     private String name;
-    List<Integer> patronBarList; // Bar seq list
+    /*List<Integer> patronBarList; // Bar seq list
     List<Integer> patronCafeList; // Cafe seq list
-    List<Integer> patronRestaurantList; // Restaurant seq list
+    List<Integer> patronRestaurantList; // Restaurant seq list*/
 
     public User(Integer seq, String id, String name) {
         this.seq = seq;
-        this.id = id;
+       /* this.id = id;*/
         this.name = name;
-        patronBarList = new ArrayList<>();
+        /*patronBarList = new ArrayList<>();
         patronCafeList = new ArrayList<>();
-        patronRestaurantList = new ArrayList<>();
+        patronRestaurantList = new ArrayList<>();*/
     }
 
-    public Integer getSeq() {
-        return seq;
-    }
 
-    public void setSeq(Integer seq) {
-        this.seq = seq;
-    }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Integer> getPatronBarList() {
+   /* public List<Integer> getPatronBarList() {
         return patronBarList;
     }
 
@@ -66,5 +59,5 @@ public class User {
 
     public void setPatronRestaurantList(List<Integer> patronRestaurantList) {
         this.patronRestaurantList = patronRestaurantList;
-    }
+    }*/
 }

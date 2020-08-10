@@ -45,7 +45,7 @@ public class UserController {
         user.setName(name);
     }
 
-    //단골 술집
+    /*//단골 술집
     @GetMapping("/user/{seq}/patronBar")//단골 술집 조회
     public List<Integer> getPatronBarList(@PathVariable("seq") Integer seq) {
         return userMap.get(seq).getPatronBarList();
@@ -91,5 +91,5 @@ public class UserController {
     @DeleteMapping("/user/{seq}/patronRestaurant") //단골 식당 삭제
     public void deletePatronRestaurant(@PathVariable("seq") Integer seq, @RequestParam("restaurantSeq") Integer restaurantSeq) {
         userMap.get(seq).getPatronRestaurantList().remove(restaurantSeq);
-    }
+    }*/
 }
