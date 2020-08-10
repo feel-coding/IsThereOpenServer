@@ -1,6 +1,8 @@
 package com.flavorsujung.isthereopen.controller;
 
 import com.flavorsujung.isthereopen.domain.entity.User;
+import com.flavorsujung.isthereopen.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
@@ -10,7 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequiredArgsConstructor
 public class UserController {
+    private final UserService userService;
     private Map<Integer, User> userMap;
 
     @PostConstruct
