@@ -1,23 +1,12 @@
--- MySQL Workbench Forward Engineering
-
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
--- -----------------------------------------------------
--- Schema isthereopen
--- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `isthereopen`;
 
--- -----------------------------------------------------
--- Schema isthereopen
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `isthereopen` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ;
-USE `isthereopen` ;
+--
 
--- -----------------------------------------------------
--- Table `isthereopen`.`bar`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`bar` (
+CREATE TABLE `bar` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `address` VARCHAR(255) NOT NULL,
@@ -31,11 +20,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`bar_info`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`bar_info` (
+CREATE TABLE `bar_info` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `bar_seq` BIGINT(20) UNSIGNED NOT NULL,
   `toilet` TINYINT(4) NULL DEFAULT NULL,
@@ -50,11 +35,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`bar_info_review`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`bar_info_review` (
+CREATE TABLE `bar_info_review` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `bar_seq` BIGINT(20) UNSIGNED NOT NULL,
   `toilet` TINYINT(3) NULL DEFAULT NULL,
@@ -69,11 +50,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`bar_open_review`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`bar_open_review` (
+CREATE TABLE `bar_open_review` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `bar_seq` BIGINT(20) UNSIGNED NOT NULL,
@@ -85,11 +62,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`bar_patron`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`bar_patron` (
+CREATE TABLE `bar_patron` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `bar_seq` BIGINT(20) UNSIGNED NOT NULL,
@@ -100,11 +73,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`cafe`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`cafe` (
+CREATE TABLE `cafe` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `address` VARCHAR(255) NOT NULL,
@@ -118,11 +87,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`cafe_info`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`cafe_info` (
+CREATE TABLE `cafe_info` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `cafe_seq` BIGINT(20) UNSIGNED NOT NULL,
   `waiting_time` TINYINT(4) NULL DEFAULT NULL,
@@ -141,11 +106,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`cafe_info_review`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`cafe_info_review` (
+CREATE TABLE `cafe_info_review` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `cafe_seq` BIGINT(20) UNSIGNED NOT NULL,
   `waiting_time` TINYINT(4) NULL DEFAULT NULL,
@@ -164,11 +125,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`cafe_open_review`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`cafe_open_review` (
+CREATE TABLE cafe_open_review` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `cafe_seq` BIGINT(20) UNSIGNED NOT NULL,
@@ -180,11 +137,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`cafe_patron`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`cafe_patron` (
+CREATE TABLE `cafe_patron` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `cafe_seq` BIGINT(20) UNSIGNED NOT NULL,
@@ -195,11 +148,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`restaurant`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`restaurant` (
+CREATE TABLE `restaurant` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `address` VARCHAR(255) NOT NULL,
@@ -213,11 +162,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`restaurant_info`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`restaurant_info` (
+CREATE TABLE `restaurant_info` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `restaurant_seq` BIGINT(20) UNSIGNED NOT NULL,
   `waiting_time` TINYINT(4) NULL DEFAULT NULL,
@@ -234,11 +179,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`restaurant_info_review`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`restaurant_info_review` (
+CREATE TABLE `restaurant_info_review` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `restaurant_seq` BIGINT(20) UNSIGNED NOT NULL,
   `waiting_time` TINYINT(4) NULL DEFAULT NULL,
@@ -254,11 +195,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`restaurant_open_review`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`restaurant_open_review` (
+CREATE TABLE `restaurant_open_review` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `restaurant_seq` BIGINT(20) UNSIGNED NOT NULL,
@@ -270,11 +207,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`restaurant_patron`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`restaurant_patron` (
+CREATE TABLE `restaurant_patron` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `restaurant_seq` BIGINT(20) UNSIGNED NOT NULL,
@@ -285,11 +218,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-
--- -----------------------------------------------------
--- Table `isthereopen`.`user`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `isthereopen`.`user` (
+CREATE TABLE `user` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -300,7 +229,7 @@ AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
-CREATE TABLE IF NOT EXISTS `isthereopen`.`user_auth` (
+CREATE TABLE `user_auth` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `type` TINYINT(3) UNSIGNED NOT NULL,
