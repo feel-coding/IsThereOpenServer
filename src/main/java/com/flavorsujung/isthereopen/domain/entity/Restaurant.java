@@ -2,12 +2,25 @@ package com.flavorsujung.isthereopen.domain.entity;
 
 import com.flavorsujung.isthereopen.domain.entity.RestaurantInfoReview;
 import com.flavorsujung.isthereopen.domain.entity.RestaurantOpenReview;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString(exclude = {})
+@Entity
+@Table(name = "restaurant")
 public class Restaurant {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer seq;
     private String name;
     private String address;
@@ -16,8 +29,8 @@ public class Restaurant {
     private Integer currentState;
     private String photoURL;
     private Date lastUpdate;
-    private List<RestaurantInfoReview> restaurantInfoReviewList;
-    private List<RestaurantOpenReview> restaurantOpenReviewList;
+//    private List<RestaurantInfoReview> restaurantInfoReviewList;
+//    private List<RestaurantOpenReview> restaurantOpenReviewList;
 
     public Restaurant(Integer seq, String name, String address, String runningTime) {
         this.seq = seq;
@@ -26,8 +39,8 @@ public class Restaurant {
         this.runningTime = runningTime;
         rate = -1.0;
         currentState = 3;
-        restaurantInfoReviewList = new ArrayList<>();
-        restaurantOpenReviewList = new ArrayList<>();
+//        restaurantInfoReviewList = new ArrayList<>();
+//        restaurantOpenReviewList = new ArrayList<>();
     }
 
     public Restaurant(Integer seq, String name, String address, String runningTime, String photoURL) {
@@ -38,59 +51,11 @@ public class Restaurant {
         rate = -1.0;
         currentState = 3;
         this.photoURL = photoURL;
-        restaurantInfoReviewList = new ArrayList<>();
-        restaurantOpenReviewList = new ArrayList<>();
+//        restaurantInfoReviewList = new ArrayList<>();
+//        restaurantOpenReviewList = new ArrayList<>();
     }
 
-    public Integer getSeq() {
-        return seq;
-    }
-
-    public void setSeq(Integer seq) {
-        this.seq = seq;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getRunningTime() {
-        return runningTime;
-    }
-
-    public void setRunningTime(String runningTime) {
-        this.runningTime = runningTime;
-    }
-
-    public Double getRate() {
-        return rate;
-    }
-
-    public void setRate(Double rate) {
-        this.rate = rate;
-    }
-
-    public Integer getCurrentState() {
-        return currentState;
-    }
-
-    public void setCurrentState(Integer currentState) {
-        this.currentState = currentState;
-    }
-
-    public List<RestaurantInfoReview> getRestaurantInfoReviewList() {
+    /*public List<RestaurantInfoReview> getRestaurantInfoReviewList() {
         return restaurantInfoReviewList;
     }
 
@@ -104,21 +69,6 @@ public class Restaurant {
 
     public void setRestaurantOpenReviewList(List<RestaurantOpenReview> restaurantOpenReviewList) {
         this.restaurantOpenReviewList = restaurantOpenReviewList;
-    }
+    }*/
 
-    public String getPhotoURL() {
-        return photoURL;
-    }
-
-    public void setPhotoURL(String photoURL) {
-        this.photoURL = photoURL;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
 }

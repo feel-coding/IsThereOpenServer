@@ -1,6 +1,7 @@
 package com.flavorsujung.isthereopen.controller;
 
 import com.flavorsujung.isthereopen.domain.entity.Restaurant;
+import lombok.RequiredArgsConstructor;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequiredArgsConstructor
 public class RestaurantController {
     public static Map<Integer, Restaurant> restaurantMap;
     public static final Integer CLOSE = 0;

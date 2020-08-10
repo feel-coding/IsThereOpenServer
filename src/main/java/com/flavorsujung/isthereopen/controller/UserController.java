@@ -30,9 +30,9 @@ public class UserController {
         return userMap.get(seq);
     }
 
-    @GetMapping("/user/all")
+    @GetMapping("/user/all") //서비스와 레파지토리 이용하여 수정함
     public List<User> getUserList() {
-        return new ArrayList<User>(userMap.values());
+        return userService.getUserList();
     }
 
     @PutMapping("/user")

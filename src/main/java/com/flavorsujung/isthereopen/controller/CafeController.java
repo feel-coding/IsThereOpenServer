@@ -1,6 +1,8 @@
 package com.flavorsujung.isthereopen.controller;
 
 import com.flavorsujung.isthereopen.domain.entity.Cafe;
+import com.flavorsujung.isthereopen.service.CafeService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequiredArgsConstructor
 public class CafeController {
+    private final CafeService cafeService;
     public static Map<Integer, Cafe> cafeMap;
     public static final Integer CLOSE = 0;
     public static final Integer BREAKTIME = 1;
@@ -35,14 +39,14 @@ public class CafeController {
         return cafeMap.get(cafeSeq).getCurrentState();
     }
 
-    @GetMapping("/cafe/all") // (API 테스트 완료)
+    @GetMapping("/cafe/all") // (API 테스트 완료)//서비스와 레파지토리 이용하여 수정함
     public List<Cafe> getCafeList() {
-        return new ArrayList<Cafe>(cafeMap.values());
+        return cafeService.getCafeList();
     }
 
-    @GetMapping("/cafe/{cafeSeq}") // (API 테스트 완료)
+    @GetMapping("/cafe/{cafeSeq}") // (API 테스트 완료)//서비스와 레파지토리 이용하여 수정함
     public Cafe getCafe(@PathVariable("cafeSeq") Integer cafeSeq) {
-        return cafeMap.get(cafeSeq);
+        return cafeService.getCafe(cafeSeq);
     }
 
     @PutMapping("/cafe") //(API 테스트 완료)

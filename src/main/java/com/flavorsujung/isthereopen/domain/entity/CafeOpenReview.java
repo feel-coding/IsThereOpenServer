@@ -1,8 +1,22 @@
 package com.flavorsujung.isthereopen.domain.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.*;
 import java.util.Date;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString(exclude = {})
+@Entity
+@Table(name = "cafe_open_review")
 public class CafeOpenReview {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     Integer seq;
     Integer cafeSeq;
     Integer userSeq;
@@ -17,39 +31,4 @@ public class CafeOpenReview {
         lastUpdate = new Date();
     }
 
-    public Integer getCafeSeq() {
-        return cafeSeq;
-    }
-
-    public void setCafeSeq(Integer cafeSeq) {
-        this.cafeSeq = cafeSeq;
-    }
-
-    public Integer getSeq() {
-        return seq;
-    }
-
-    public void setSeq(Integer seq) {
-        this.seq = seq;
-    }
-
-    public Integer getUserSeq() {
-        return userSeq;
-    }
-
-    public void setUserSeq(Integer userSeq) {
-        this.userSeq = userSeq;
-    }
-
-    public Integer getOpenState() {
-        return openState;
-    }
-
-    public void setOpenState(Integer openState) {
-        this.openState = openState;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
 }

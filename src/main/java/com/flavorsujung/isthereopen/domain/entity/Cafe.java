@@ -5,13 +5,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString(exclude = {})
+@Entity
+@Table(name = "cafe")
 public class Cafe {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer seq;
     private String name;
     private String address;
@@ -20,8 +27,8 @@ public class Cafe {
     private Integer currentState;
     private String photoURL;
     private Date lastUpdate;
-    private List<CafeInfoReview> cafeInfoReviewList;
-    private List<CafeOpenReview> cafeOpenReviewList;
+//    private List<CafeInfoReview> cafeInfoReviewList;
+//    private List<CafeOpenReview> cafeOpenReviewList;
 
     public Cafe(Integer seq, String name, String address, String runningTime) {
         this.seq = seq;
@@ -30,8 +37,8 @@ public class Cafe {
         this.runningTime = runningTime;
         rate = -1.0;
         currentState = 3;
-        cafeInfoReviewList = new ArrayList<>();
-        cafeOpenReviewList = new ArrayList<>();
+//        cafeInfoReviewList = new ArrayList<>();
+//        cafeOpenReviewList = new ArrayList<>();
     }
 
     public Cafe(Integer seq, String name, String address, String runningTime, String photoURL) {
@@ -42,59 +49,11 @@ public class Cafe {
         rate = -1.0;
         this.currentState = 3;
         this.photoURL = photoURL;
-        cafeInfoReviewList = new ArrayList<>();
-        cafeOpenReviewList = new ArrayList<>();
+//        cafeInfoReviewList = new ArrayList<>();
+//        cafeOpenReviewList = new ArrayList<>();
     }
 
-    public Integer getSeq() {
-        return seq;
-    }
-
-    public void setSeq(Integer seq) {
-        this.seq = seq;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setRunningTime(String runningTime) {
-        this.runningTime = runningTime;
-    }
-
-    public void setRate(Double rate) {
-        this.rate = rate;
-    }
-
-    public void setCurrentState(Integer currentState) {
-        this.currentState = currentState;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getRunningTime() {
-        return runningTime;
-    }
-
-    public Double getRate() {
-        return rate;
-    }
-
-    public Integer getCurrentState() {
-        return currentState;
-    }
-
-    public List<CafeInfoReview> getCafeInfoReviewList() {
+    /*public List<CafeInfoReview> getCafeInfoReviewList() {
         return cafeInfoReviewList;
     }
 
@@ -124,5 +83,5 @@ public class Cafe {
 
     public void setCafeOpenReviewList(List<CafeOpenReview> cafeOpenReviewList) {
         this.cafeOpenReviewList = cafeOpenReviewList;
-    }
+    }*/
 }

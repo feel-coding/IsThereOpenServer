@@ -1,29 +1,15 @@
-package com.flavorsujung.isthereopen.domain.entity;
+package com.flavorsujung.isthereopen.domain.req;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-
-import javax.persistence.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@ToString(exclude = {})
-@Entity
-@Table(name = "bar_info_review")
-public class BarInfoReview {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Integer seq;
+public class ReqBarInfoReviewCreate {
     Integer userSeq;
-    Integer barSeq;
     Integer openStyle; //0 잘 지키는 편, 1 보통, 2 들쭉날쭉 지맘대로
     Integer cleanness;
     Integer mood; //0 조용, 1 보통, 2 시끄러움
     Integer mainAlcohol; // 0 소주, 1 맥주, 2 막걸리, 3 와인, 4 보드카
     Integer price; //0 쌈, 1 보통, 2 비쌈
-
-
 }
