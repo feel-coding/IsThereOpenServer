@@ -1,4 +1,4 @@
-package com.flavorsujung.isthereopen;
+package com.flavorsujung.isthereopen.domain.entity;
 
 public class CafeInfoReview {
     Integer seq;

@@ -1,4 +1,4 @@
-package com.flavorsujung.isthereopen;
+package com.flavorsujung.isthereopen.domain.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,7 @@
-package com.flavorsujung.isthereopen;
+package com.flavorsujung.isthereopen.domain.entity;
+
+import com.flavorsujung.isthereopen.domain.entity.RestaurantInfoReview;
+import com.flavorsujung.isthereopen.domain.entity.RestaurantOpenReview;
 
 import java.util.ArrayList;
 import java.util.Date;

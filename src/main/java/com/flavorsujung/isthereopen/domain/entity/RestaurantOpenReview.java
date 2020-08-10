@@ -1,17 +1,17 @@
-package com.flavorsujung.isthereopen;
+package com.flavorsujung.isthereopen.domain.entity;
 
 import java.util.Date;
 
-public class BarOpenReview {
+public class RestaurantOpenReview {
     Integer seq;
-    Integer cafeSeq;
+    Integer restaurantSeq;
     Integer userSeq;
     Integer openState; //0 close, 1 break time, 2 open, 3 미확인
     Date lastUpdate;
 
-    public BarOpenReview(Integer seq, Integer cafeSeq, Integer userSeq, Integer openState) {
+    public RestaurantOpenReview(Integer seq, Integer restaurantSeq, Integer userSeq, Integer openState) {
         this.seq = seq;
-        this.cafeSeq = cafeSeq;
+        this.restaurantSeq = restaurantSeq;
         this.userSeq = userSeq;
         this.openState = openState;
         lastUpdate = new Date();
@@ -25,12 +25,12 @@ public class BarOpenReview {
         this.seq = seq;
     }
 
-    public Integer getCafeSeq() {
-        return cafeSeq;
+    public Integer getRestaurantSeq() {
+        return restaurantSeq;
     }
 
-    public void setCafeSeq(Integer cafeSeq) {
-        this.cafeSeq = cafeSeq;
+    public void setRestaurantSeq(Integer restaurantSeq) {
+        this.restaurantSeq = restaurantSeq;
     }
 
     public Integer getUserSeq() {

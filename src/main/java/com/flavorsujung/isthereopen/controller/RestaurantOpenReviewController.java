@@ -1,11 +1,12 @@
-package com.flavorsujung.isthereopen;
+package com.flavorsujung.isthereopen.controller;
 
+import com.flavorsujung.isthereopen.domain.entity.RestaurantOpenReview;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
 
-import static com.flavorsujung.isthereopen.RestaurantController.*;
+import static com.flavorsujung.isthereopen.controller.RestaurantController.*;
 
 @RestController
 public class RestaurantOpenReviewController {

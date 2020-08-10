@@ -1,5 +1,6 @@
-package com.flavorsujung.isthereopen;
+package com.flavorsujung.isthereopen.controller;
 
+import com.flavorsujung.isthereopen.domain.entity.User;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
@@ -7,8 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.flavorsujung.isthereopen.BarController.barMap;
 
 @RestController
 public class UserController {

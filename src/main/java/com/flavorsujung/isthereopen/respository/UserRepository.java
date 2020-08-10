@@ -1,10 +1,11 @@
-package com.flavorsujung.isthereopen;
+package com.flavorsujung.isthereopen.respository;
 
+import com.flavorsujung.isthereopen.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User,Integer> {
 
-    User findUserBySeq()
+    User findUserBySeq();
     /*User findUserBySeq(Integer seq)
     SELECT * FROM user WHERE seq = #{seq}*
 

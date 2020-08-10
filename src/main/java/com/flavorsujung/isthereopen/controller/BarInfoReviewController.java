@@ -1,5 +1,6 @@
-package com.flavorsujung.isthereopen;
+package com.flavorsujung.isthereopen.controller;
 
+import com.flavorsujung.isthereopen.domain.entity.BarInfoReview;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
@@ -7,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.flavorsujung.isthereopen.BarController.barMap;
+import static com.flavorsujung.isthereopen.controller.BarController.barMap;
 
 @RestController
 public class BarInfoReviewController {
