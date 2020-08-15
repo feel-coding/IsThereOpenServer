@@ -1,4 +1,5 @@
 spring:
+  profiles: default
   datasource:
     platform: mysql
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -27,21 +28,3 @@ logging:
           descriptor:
             sql:
               BasicBinder: TRACE
----
-spring:
-  profiles: default
-  datasource:
-    platform: h2
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1
-    username: sa
-    password:
-    #initialization-mode: embedded
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      enabled: true
