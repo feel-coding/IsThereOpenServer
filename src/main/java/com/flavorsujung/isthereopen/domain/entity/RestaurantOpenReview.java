@@ -1,5 +1,6 @@
 package com.flavorsujung.isthereopen.domain.entity;
 
+import com.flavorsujung.isthereopen.domain.mappedenum.OpenStateConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,6 +20,7 @@ public class RestaurantOpenReview {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long seq;
     Long userSeq;
+    @Convert(converter = OpenStateConverter.class)
     Long restaurantSeq;
     Integer openState; //0 close, 1 break time, 2 open, 3 미확인
     Date lastUpdate;
