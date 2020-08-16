@@ -2,6 +2,7 @@ package com.flavorsujung.isthereopen.service;
 
 import com.flavorsujung.isthereopen.domain.entity.Restaurant;
 import com.flavorsujung.isthereopen.domain.entity.User;
+import com.flavorsujung.isthereopen.domain.mappedenum.OpenState;
 import com.flavorsujung.isthereopen.respository.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class RestaurantService {
         return restaurantRepository.findAll();
     }
 
-    public Integer getCurrentState(Long seq) {
+    public OpenState getCurrentState(Long seq) {
         Restaurant restaurant = restaurantRepository.findRestaurantBySeq(seq);
         return restaurant.getCurrentState();
     }

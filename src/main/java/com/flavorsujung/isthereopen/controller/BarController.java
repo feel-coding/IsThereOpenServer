@@ -1,6 +1,7 @@
 package com.flavorsujung.isthereopen.controller;
 
 import com.flavorsujung.isthereopen.domain.entity.Bar;
+import com.flavorsujung.isthereopen.domain.mappedenum.OpenState;
 import com.flavorsujung.isthereopen.service.BarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +17,6 @@ import java.util.Map;
 public class BarController {
     private final BarService barService;
     public static Map<Long, Bar> barMap;
-    public static final Integer CLOSE = 0;
-    public static final Integer BREAKTIME = 1;
-    public static final Integer OPEN = 2;
-    public static final Integer UNKNOWN = 3;
 
     @PostConstruct
     public void init() {
@@ -28,7 +25,7 @@ public class BarController {
         barMap.put((long) 1, new Bar((long) 1, "대한맥주집", "정문 앞", "오후 12시~오후 8시"));
     }
     @GetMapping("/bar/{barSeq}/openState") // (API 테스트 완료)
-    public Integer getCurrentState(@PathVariable("barSeq") Long barSeq) {
+    public OpenState getCurrentState(@PathVariable("barSeq") Long barSeq) {
         return barMap.get(barSeq).getCurrentState();
     }
 
@@ -49,7 +46,7 @@ public class BarController {
     }
 
     @PostMapping("/bar/{barSeq}") //(API 테스트 완료)
-    public void postCurrentState(@PathVariable("barSeq") Long barSeq, @RequestParam("openState") Integer openState) {
+    public void postCurrentState(@PathVariable("barSeq") Long barSeq, @RequestParam("openState") OpenState openState) {
         barMap.get(barSeq).setCurrentState(openState);
     }
 }

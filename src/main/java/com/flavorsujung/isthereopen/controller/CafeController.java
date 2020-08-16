@@ -1,6 +1,7 @@
 package com.flavorsujung.isthereopen.controller;
 
 import com.flavorsujung.isthereopen.domain.entity.Cafe;
+import com.flavorsujung.isthereopen.domain.mappedenum.OpenState;
 import com.flavorsujung.isthereopen.service.CafeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.Nullable;
@@ -35,7 +36,7 @@ public class CafeController {
         }
 
     @GetMapping("/cafe/{cafeSeq}/openState") // (API 테스트 완료)
-    public Integer getCurrentState(@PathVariable("cafeSeq") Integer cafeSeq) {
+    public OpenState getCurrentState(@PathVariable("cafeSeq") Long cafeSeq) {
         return cafeMap.get(cafeSeq).getCurrentState();
     }
 
@@ -59,7 +60,7 @@ public class CafeController {
     }
 
     @PostMapping("/cafe/{cafeSeq}") //(API 테스트 완료)
-    public void postCurrentState(@PathVariable("cafeSeq") Integer cafeSeq, @RequestParam("openState") Integer openState) {
+    public void postCurrentState(@PathVariable("cafeSeq") Long cafeSeq, @RequestParam("openState") OpenState openState) {
         cafeMap.get(cafeSeq).setCurrentState(openState);
     }
 }

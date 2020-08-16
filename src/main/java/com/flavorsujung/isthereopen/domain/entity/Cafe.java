@@ -1,5 +1,6 @@
 package com.flavorsujung.isthereopen.domain.entity;
 
+import com.flavorsujung.isthereopen.domain.mappedenum.OpenState;
 import com.flavorsujung.isthereopen.domain.mappedenum.OpenStateConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +26,7 @@ public class Cafe {
     private String runningTime;
     private Double rate;
     @Convert(converter = OpenStateConverter.class)
-    private Integer currentState;
+    private OpenState currentState;
     private String photoURL;
     private Date lastUpdate;
 //    private List<CafeInfoReview> cafeInfoReviewList;
@@ -37,7 +38,7 @@ public class Cafe {
         this.address = address;
         this.runningTime = runningTime;
         rate = -1.0;
-        currentState = 3;
+        currentState = OpenState.UNKNOWN;
 //        cafeInfoReviewList = new ArrayList<>();
 //        cafeOpenReviewList = new ArrayList<>();
     }
@@ -48,7 +49,7 @@ public class Cafe {
         this.address = address;
         this.runningTime = runningTime;
         rate = -1.0;
-        this.currentState = 3;
+        this.currentState = OpenState.UNKNOWN;
         this.photoURL = photoURL;
 //        cafeInfoReviewList = new ArrayList<>();
 //        cafeOpenReviewList = new ArrayList<>();

@@ -1,6 +1,7 @@
 package com.flavorsujung.isthereopen.controller;
 
 import com.flavorsujung.isthereopen.domain.entity.Restaurant;
+import com.flavorsujung.isthereopen.domain.mappedenum.OpenState;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +36,7 @@ public class RestaurantController {
         }
 
     @GetMapping("/restaurant/{restaurantSeq}/openState")
-    public Integer getCurrentState(@PathVariable("restaurantSeq") Integer restaurantSeq) {
+    public OpenState getCurrentState(@PathVariable("restaurantSeq") Long restaurantSeq) {
         return restaurantMap.get(restaurantSeq).getCurrentState();
     }
 
@@ -54,12 +55,12 @@ public class RestaurantController {
     }
 
     @GetMapping("/restaurant/{restaurantSeq}")
-    public Restaurant getRestaurant(@PathVariable("restaurantSeq") Integer restaurantSeq) {
+    public Restaurant getRestaurant(@PathVariable("restaurantSeq") Long restaurantSeq) {
         return restaurantMap.get(restaurantSeq);
     }
 
     @PostMapping("/restaurant/{restaurantSeq}")
-    public void postCurrentState(@PathVariable("restaurantSeq") Integer restaurantSeq, @RequestParam("openState") Integer openState) {
+    public void postCurrentState(@PathVariable("restaurantSeq") Long restaurantSeq, @RequestParam("openState") OpenState openState) {
         restaurantMap.get(restaurantSeq).setCurrentState(openState);
     }
 }

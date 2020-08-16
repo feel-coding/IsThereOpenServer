@@ -1,5 +1,8 @@
 package com.flavorsujung.isthereopen.domain.entity;
 
+import com.flavorsujung.isthereopen.domain.mappedenum.OpenState;
+import com.flavorsujung.isthereopen.domain.mappedenum.OpenStateConverter;
+import com.flavorsujung.isthereopen.domain.mappedenum.OpenStyleConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,7 +26,8 @@ public class Bar {
     private String address;
     private String runningTime;
     private Double avgRate;
-    private Integer currentState;
+    @Convert(converter = OpenStateConverter.class)
+    private OpenState currentState;
     private String photoUrl;
     private Date lastUpdate;
 //    private List<BarOpenReview> barOpenReviewList;
@@ -36,7 +40,7 @@ public class Bar {
         this.address = address;
         this.runningTime = runningTime;
         avgRate = Double.longBitsToDouble(-1);
-        currentState = 3;
+        currentState = OpenState.UNKNOWN;
 //        barInfoReviewList = new ArrayList<>();
 //        barOpenReviewList = new ArrayList<>();
     }

@@ -1,5 +1,6 @@
 package com.flavorsujung.isthereopen.domain.entity;
 
+import com.flavorsujung.isthereopen.domain.mappedenum.OpenState;
 import com.flavorsujung.isthereopen.domain.mappedenum.OpenStateConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,10 +22,10 @@ public class RestaurantOpenReview {
     Long userSeq;
     Long restaurantSeq;
     @Convert(converter = OpenStateConverter.class)
-    Integer openState; //0 close, 1 break time, 2 open, 3 미확인
+    OpenState openState; //0 close, 1 break time, 2 open, 3 미확인
     Date createdAt;
 
-    public RestaurantOpenReview(Long seq, Long restaurantSeq, Long userSeq, Integer openState) {
+    public RestaurantOpenReview(Long seq, Long restaurantSeq, Long userSeq, OpenState openState) {
         this.seq = seq;
         this.restaurantSeq = restaurantSeq;
         this.userSeq = userSeq;

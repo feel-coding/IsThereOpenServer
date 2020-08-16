@@ -34,6 +34,7 @@ COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE `bar_info_review` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `bar_seq` BIGINT(20) UNSIGNED NOT NULL,
   `toilet` TINYINT(3) NULL DEFAULT NULL,
   `mood` TINYINT(3) NULL DEFAULT NULL,
@@ -100,6 +101,7 @@ COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE `cafe_info_review` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `cafe_seq` BIGINT(20) UNSIGNED NOT NULL,
   `waiting_time` TINYINT(4) NULL DEFAULT NULL,
   `price` TINYINT(4) NULL DEFAULT NULL,
@@ -167,6 +169,7 @@ COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE `restaurant_info_review` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `restaurant_seq` BIGINT(20) UNSIGNED NOT NULL,
   `waiting_time` TINYINT(4) NULL DEFAULT NULL,
   `cleanness` TINYINT(4) NULL DEFAULT NULL,
