@@ -21,7 +21,6 @@ public class CafeOpenReview {
     Long userSeq;
     @Convert(converter = OpenStateConverter.class)
     Long cafeSeq;
-
     Integer openState; //0 close, 1 break time, 2 open, 3 미확인
     Date lastUpdate;
 
