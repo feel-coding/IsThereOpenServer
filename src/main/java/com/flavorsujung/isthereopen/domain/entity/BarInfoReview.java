@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class BarInfoReview {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Integer seq;
+    Long seq;
     Long userSeq;
     Long barSeq;
     @Convert(converter = OpenStyleConverter.class)

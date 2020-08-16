@@ -23,7 +23,11 @@ class IsthereopenApplicationTests {
     BarRepository barRepository;
 
     @Autowired
-    BarInfoReviewRepository barInfoReviewRepository;
+    BarRepository barInfoRepository;
+
+
+//    @Autowired
+//    BarInfoReviewRepository barInfoReviewRepository;
 
 
 
@@ -50,6 +54,11 @@ class IsthereopenApplicationTests {
         barRepository.save(bar);
         System.out.println(bar);
 
+//        BarInfoReview barInfoReview = new BarInfoReview();
+//        barInfoReview.setUserSeq((long)1);
+//        barInfoReview.setBarSeq((long)0);
+//        barInfoReviewRepository.save(barInfoReview);
+//        System.out.println(barInfoReview);
         //무드를 설정한다.
 
         //헤더명(이거 꼭 해야함)
