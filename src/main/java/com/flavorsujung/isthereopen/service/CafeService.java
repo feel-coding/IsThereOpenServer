@@ -18,6 +18,6 @@ public class CafeService {
     }
 
     public List<Cafe> getCafeList() {
-        return cafeRepository.findAllCafe();
+        return cafeRepository.findAll();
     }
 }

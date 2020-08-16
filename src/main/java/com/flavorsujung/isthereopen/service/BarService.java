@@ -18,7 +18,7 @@ public class BarService {
     }
 
     public List<Bar> getBarList() {
-        List<Bar> barList = barRepository.findAllBar();
+        List<Bar> barList = barRepository.findAll();
         return barList;
     }
 }

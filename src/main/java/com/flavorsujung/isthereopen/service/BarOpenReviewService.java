@@ -18,7 +18,7 @@ public class BarOpenReviewService {
         barOpenReview.setUserSeq(reqBarOpenReviewCreate.getUserSeq());
         barOpenReview.setOpenState(reqBarOpenReviewCreate.getOpenState());
         barOpenReview.setLastUpdate(reqBarOpenReviewCreate.getLastUpdate());
-        int insertCount = barOpenReviewRepository.insertBarOpenReview(barOpenReview);
+        barOpenReviewRepository.save(barOpenReview);
     }
 
     public List<BarOpenReview> getBarOpenReviewList(Integer barSeq) {

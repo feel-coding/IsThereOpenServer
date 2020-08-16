@@ -1,23 +1,26 @@
 spring:
   datasource:
-    platform: mysql
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://database-1.cvhz8rzfqnup.ap-northeast-2.rds.amazonaws.com:3306/isthereopen?serverTimezone=Asia/Seoul
-    username: flavorsoojung
-    password: ogonge^^
+    platform: h2
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
   jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
     generate-ddl: false
     open-in-view: false
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+        dialect: org.hibernate.dialect.H2Dialect
         ddl-auto: none #validate
         format_sql: true
     hibernate:
       ddl-auto: none
     #  use-new-id-generator-mappings: false
+  h2:
+    console:
+      enabled: true
 logging:
   level:
     org:

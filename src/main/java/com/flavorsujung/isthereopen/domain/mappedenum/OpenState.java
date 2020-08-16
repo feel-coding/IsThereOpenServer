@@ -11,7 +11,6 @@ public enum OpenState {
     OPEN(2),
     UNKNOWN(3);
 
-    @Getter
     private final int state;
 
     public static OpenState valueOf(int state) {

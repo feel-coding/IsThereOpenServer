@@ -9,6 +9,5 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface RestaurantInfoReviewRepository extends JpaRepository<RestaurantInfoReview, Integer> {
-    int insertRestaurantInfoReview(RestaurantInfoReview restaurantInfoReview);
-    List<RestaurantInfoReview> findRestaurantInfoReviewBySeq(@Param("restaurantSeq") Integer restaurantSeq);
+    List<RestaurantInfoReview> findRestaurantInfoReviewBySeq(Integer restaurantSeq);
 }

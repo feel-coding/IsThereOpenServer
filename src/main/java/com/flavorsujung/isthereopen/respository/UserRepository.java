@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User,Integer> {
 
-    List<User> findAllUser();
+    //List<User> findAllUser();
     User findUserBySeq(Integer userSeq);
 
     /*User findUserBySeq(Integer seq)

@@ -17,7 +17,7 @@ public class RestaurantService {
         return restaurantRepository.findRestaurantBySeq(seq);
     }
     public List<Restaurant> getRestaurantList() {
-        return restaurantRepository.findAllRestaurant();
+        return restaurantRepository.findAll();
     }
 
     public Integer getCurrentState(Integer seq) {

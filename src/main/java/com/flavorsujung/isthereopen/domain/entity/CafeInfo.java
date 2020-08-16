@@ -12,7 +12,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString(exclude = {})
 @Entity
-@Table(name = "cafe_info")
 public class CafeInfo {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

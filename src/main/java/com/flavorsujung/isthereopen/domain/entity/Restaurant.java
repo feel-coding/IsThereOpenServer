@@ -17,7 +17,6 @@ import java.util.List;
 @NoArgsConstructor
 @ToString(exclude = {})
 @Entity
-@Table(name = "restaurant")
 public class Restaurant {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

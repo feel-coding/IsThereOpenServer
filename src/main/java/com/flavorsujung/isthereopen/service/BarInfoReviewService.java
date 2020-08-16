@@ -23,7 +23,7 @@ public class BarInfoReviewService {
         barInfoReview.setOpenStyle(reqBarInfoReviewCreate.getOpenStyle());
         barInfoReview.setPrice(reqBarInfoReviewCreate.getPrice());
         barInfoReview.setMainAlcohol(reqBarInfoReviewCreate.getMainAlcohol());
-        int insertCount = barInfoReviewRepository.insertBarInfoReview(barInfoReview);
+        barInfoReviewRepository.save(barInfoReview);
     }
 
     public List<BarInfoReview> getBarInfoReviewList(Integer barSeq) {

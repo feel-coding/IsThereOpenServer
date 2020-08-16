@@ -17,13 +17,13 @@ public class UserController {
     private final UserService userService;
     private Map<Integer, User> userMap;
 
-    @PostConstruct
+    /*@PostConstruct
     public void init() {
         userMap = new HashMap<>();
         userMap.put(0, new User(0, "hek0628", "김효은"));
         userMap.put(1, new User(1, "yeokyeong", "윤여경"));
         userMap.put(2, new User(2, "seol", "박설"));
-    }
+    }*/
 
     @GetMapping("/user/{seq}")
     public User getUser(@PathVariable("seq") Integer seq) {

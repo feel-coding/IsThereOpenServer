@@ -1,5 +1,6 @@
 package com.flavorsujung.isthereopen.domain.entity;
 
+import com.flavorsujung.isthereopen.domain.mappedenum.OpenStateConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,13 +14,13 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString(exclude = {})
 @Entity
-@Table(name = "bar_open_review")
 public class BarOpenReview {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Integer seq;
     Integer barSeq;
     Integer userSeq;
+    @Convert(converter = OpenStateConverter.class)
     Integer openState; //0 close, 1 break time, 2 open, 3 미확인
     Date lastUpdate;
 

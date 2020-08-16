@@ -18,7 +18,7 @@ public class CafeOpenReviewService {
         cafeOpenReview.setUserSeq(reqCafeOpenReviewCreate.getUserSeq());
         cafeOpenReview.setOpenState(reqCafeOpenReviewCreate.getOpenState());
         cafeOpenReview.setLastUpdate(reqCafeOpenReviewCreate.getLastUpdate());
-        int insertCount = cafeOpenReviewRepository.insertCafeOpenReview(cafeOpenReview);
+        cafeOpenReviewRepository.save(cafeOpenReview);
     }
 
     public List<CafeOpenReview> getCafeOpenReviewList(Integer cafeSeq) {

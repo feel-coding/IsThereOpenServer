@@ -25,7 +25,7 @@ public class RestaurantInfoReviewService {
         restaurantInfoReview.setTakeOut(reqRestaurantInfoReviewCreate.getTakeOut());
         restaurantInfoReview.setWaitingTime(reqRestaurantInfoReviewCreate.getWaitingTime());
         restaurantInfoReview.setUserSeq(reqRestaurantInfoReviewCreate.getUserSeq());
-        int insertCount = restaurantInfoReviewRepository.insertRestaurantInfoReview(restaurantInfoReview);
+        restaurantInfoReviewRepository.save(restaurantInfoReview);
     }
 
     public List<RestaurantInfoReview> getRestaurantInfoReviewList(Integer restaurantSeq) {

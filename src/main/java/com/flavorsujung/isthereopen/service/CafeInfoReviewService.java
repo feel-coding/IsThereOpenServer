@@ -26,7 +26,7 @@ public class CafeInfoReviewService {
         cafeInfoReview.setTableHeight(reqCafeInfoReviewCreate.getTableHeight());
         cafeInfoReview.setWaitingTime(reqCafeInfoReviewCreate.getWaitingTime());
         cafeInfoReview.setUserSeq(reqCafeInfoReviewCreate.getUserSeq());
-        int insertCount = cafeInfoReviewRepository.insertCafeInfoReview(cafeInfoReview);
+        cafeInfoReviewRepository.save(cafeInfoReview);
     }
 
     public List<CafeInfoReview> getCafeInfoReviewList(Integer cafeSeq) {

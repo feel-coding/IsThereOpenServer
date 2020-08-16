@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -14,25 +15,17 @@ import java.util.List;
 @NoArgsConstructor
 @ToString(exclude = {})
 @Entity
-@Table(name = "user")
 public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer seq;
-   /* private String id;*/
     private String name;
-    /*List<Integer> patronBarList; // Bar seq list
-    List<Integer> patronCafeList; // Cafe seq list
-    List<Integer> patronRestaurantList; // Restaurant seq list*/
+    //private Date createdAt;
 
     public User(Integer seq, String id, String name) {
         this.seq = seq;
-       /* this.id = id;*/
         this.name = name;
-        /*patronBarList = new ArrayList<>();
-        patronCafeList = new ArrayList<>();
-        patronRestaurantList = new ArrayList<>();*/
     }
 
 

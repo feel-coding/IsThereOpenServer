@@ -1,0 +1,1 @@
+INSERT INTO user(name) VALUES ('동동이');

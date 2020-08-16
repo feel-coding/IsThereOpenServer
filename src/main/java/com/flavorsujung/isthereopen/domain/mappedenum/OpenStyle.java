@@ -9,7 +9,7 @@ public enum OpenStyle {
     STABLE(0),
     NORMAL(1),
     UNSTABLE(2);
-    @Getter
+
     private final int style;
 
     public static OpenStyle valueOf(int style) {

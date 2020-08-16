@@ -13,7 +13,6 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString(exclude = {})
 @Entity
-@Table(name = "cafe_open_review")
 public class CafeOpenReview {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

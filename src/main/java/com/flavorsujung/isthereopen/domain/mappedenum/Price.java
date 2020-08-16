@@ -9,7 +9,7 @@ public enum Price {
     CHEAP(0),
     NORMAL(1),
     EXPENSIVE(2);
-    @Getter
+
     private final int price;
 
     public static Price valueOf(int price) {

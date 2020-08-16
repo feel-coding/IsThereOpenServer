@@ -18,7 +18,7 @@ public class RestaurantOpenReviewService {
         restaurantOpenReview.setUserSeq(reqRestaurantOpenReviewCreate.getUserSeq());
         restaurantOpenReview.setOpenState(reqRestaurantOpenReviewCreate.getOpenState());
         restaurantOpenReview.setLastUpdate(reqRestaurantOpenReviewCreate.getLastUpdate());
-        int insertCount = restaurantOpenReviewRepository.insertRestaurantOpenReview(restaurantOpenReview);
+        restaurantOpenReviewRepository.save(restaurantOpenReview);
     }
 
     public List<RestaurantOpenReview> getRestaurantOpenReviewList(Integer restaurantSeq) {

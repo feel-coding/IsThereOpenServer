@@ -9,7 +9,7 @@ public enum Mood {
     SILENT(0),
     NORMAL(1),
     LOUD(2);
-    @Getter
+
     private final int mood;
 
     public static Mood valueOf(int mood) {
