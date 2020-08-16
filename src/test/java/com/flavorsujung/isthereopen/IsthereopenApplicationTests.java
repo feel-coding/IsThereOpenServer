@@ -26,8 +26,8 @@ class IsthereopenApplicationTests {
     BarRepository barInfoRepository;
 
 
-//    @Autowired
-//    BarInfoReviewRepository barInfoReviewRepository;
+    @Autowired
+    BarInfoReviewRepository barInfoReviewRepository;
 
 
 
@@ -47,7 +47,7 @@ class IsthereopenApplicationTests {
 
         //userRepository.delete(user);
 
-        //List<BarInfoReview> barInfoReviewList = barInfoReviewRepository.findAll();
+        List<BarInfoReview> barInfoReviewList = barInfoReviewRepository.findAll();
 
 
         Bar bar = new Bar((long)0, "육회본가", "성북구 어쩌구","오전 9시~오후 11시");

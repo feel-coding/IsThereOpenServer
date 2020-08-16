@@ -21,7 +21,6 @@ public class User {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long seq;
     private String name;
-    //private Date createdAt;
 
     public User(Long seq, String id, String name) {
         this.seq = seq;

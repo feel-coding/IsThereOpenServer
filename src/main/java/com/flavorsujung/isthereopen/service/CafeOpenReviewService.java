@@ -17,7 +17,6 @@ public class CafeOpenReviewService {
         cafeOpenReview.setCafeSeq(cafeSeq);
         cafeOpenReview.setUserSeq(reqCafeOpenReviewCreate.getUserSeq());
         cafeOpenReview.setOpenState(reqCafeOpenReviewCreate.getOpenState());
-        cafeOpenReview.setLastUpdate(reqCafeOpenReviewCreate.getLastUpdate());
         cafeOpenReviewRepository.save(cafeOpenReview);
     }
 

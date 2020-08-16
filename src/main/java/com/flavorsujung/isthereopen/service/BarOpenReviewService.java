@@ -17,7 +17,6 @@ public class BarOpenReviewService {
         barOpenReview.setBarSeq(barSeq);
         barOpenReview.setUserSeq(reqBarOpenReviewCreate.getUserSeq());
         barOpenReview.setOpenState(reqBarOpenReviewCreate.getOpenState());
-        barOpenReview.setLastUpdate(reqBarOpenReviewCreate.getLastUpdate());
         barOpenReviewRepository.save(barOpenReview);
     }
 

@@ -17,7 +17,6 @@ public class RestaurantOpenReviewService {
         restaurantOpenReview.setRestaurantSeq(restaurantSeq);
         restaurantOpenReview.setUserSeq(reqRestaurantOpenReviewCreate.getUserSeq());
         restaurantOpenReview.setOpenState(reqRestaurantOpenReviewCreate.getOpenState());
-        restaurantOpenReview.setLastUpdate(reqRestaurantOpenReviewCreate.getLastUpdate());
         restaurantOpenReviewRepository.save(restaurantOpenReview);
     }
 

@@ -21,6 +21,7 @@ public class BarInfoReview {
     Long barSeq;
     @Convert(converter = OpenStyleConverter.class)
     Integer openStyle; //0 잘 지키는 편, 1 보통, 2 들쭉날쭉 지맘대로
+    @Convert(converter = CleannessConverter.class)
     Integer cleanness;
     @Convert(converter = MoodConverter.class)
     Mood mood; //0 조용, 1 보통, 2 시끄러움

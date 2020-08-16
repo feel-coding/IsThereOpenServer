@@ -16,7 +16,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString(exclude = {})
 @Entity
-public class RestaurantInfoReview {
+public class RestaurantInfo {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long seq;
@@ -32,5 +32,4 @@ public class RestaurantInfoReview {
     Integer eatAlone; // 0 가능, 1 보통, 2 눈치보임
     @Convert(converter = OpenStyleConverter.class)
     Integer openStyle; //0 잘 지키는 편, 1 보통, 2 들쭉날쭉 지맘대로
-
 }
