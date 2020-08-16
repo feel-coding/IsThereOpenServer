@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class RestaurantPatron {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Integer seq;
+    Long seq;
     Integer restaurantSeq;
     Integer userSeq;
 }

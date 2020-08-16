@@ -13,14 +13,14 @@ import java.util.List;
 public class RestaurantService {
     private final RestaurantRepository restaurantRepository;
 
-    public Restaurant getRestaurant(Integer seq) {
+    public Restaurant getRestaurant(Long seq) {
         return restaurantRepository.findRestaurantBySeq(seq);
     }
     public List<Restaurant> getRestaurantList() {
         return restaurantRepository.findAll();
     }
 
-    public Integer getCurrentState(Integer seq) {
+    public Integer getCurrentState(Long seq) {
         Restaurant restaurant = restaurantRepository.findRestaurantBySeq(seq);
         return restaurant.getCurrentState();
     }

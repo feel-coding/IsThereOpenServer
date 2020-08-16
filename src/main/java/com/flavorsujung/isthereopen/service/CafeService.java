@@ -12,7 +12,7 @@ import java.util.List;
 public class CafeService {
     private final CafeRepository cafeRepository;
 
-    public Cafe getCafe(Integer cafeSeq) {
+    public Cafe getCafe(Long cafeSeq) {
         Cafe cafe = cafeRepository.findCafeBySeq(cafeSeq);
         return cafe;
     }

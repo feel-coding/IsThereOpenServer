@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ReqCafeInfoReviewCreate {
-    Integer userSeq;
+    Long userSeq;
     Integer openStyle; //0 잘 지키는 편, 1 보통, 2 들쭉날쭉 지맘대로
     Integer waitingTime; // 0 짧은 편, 1 보통, 2 긴편
     Integer price; //0 쌈, 1 보통, 2 비쌈

@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface RestaurantInfoReviewRepository extends JpaRepository<RestaurantInfoReview, Integer> {
-    List<RestaurantInfoReview> findRestaurantInfoReviewBySeq(Integer restaurantSeq);
+public interface RestaurantInfoReviewRepository extends JpaRepository<RestaurantInfoReview, Long> {
+    List<RestaurantInfoReview> findRestaurantInfoReviewBySeq(Long restaurantSeq);
 }

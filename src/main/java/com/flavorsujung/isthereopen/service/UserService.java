@@ -11,7 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-    public User getUser(Integer userSeq) {
+    public User getUser(Long userSeq) {
         User user = userRepository.findUserBySeq(userSeq);
         return user;
     }

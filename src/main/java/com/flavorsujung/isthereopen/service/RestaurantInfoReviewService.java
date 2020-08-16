@@ -15,7 +15,7 @@ import java.util.List;
 public class RestaurantInfoReviewService {
     private final RestaurantInfoReviewRepository restaurantInfoReviewRepository;
 
-    public void putRestaurantInfoReview(Integer restaurantSeq, ReqRestaurantInfoReviewCreate reqRestaurantInfoReviewCreate) {
+    public void putRestaurantInfoReview(Long restaurantSeq, ReqRestaurantInfoReviewCreate reqRestaurantInfoReviewCreate) {
         RestaurantInfoReview restaurantInfoReview = new RestaurantInfoReview();
         restaurantInfoReview.setSeq(restaurantSeq);
         restaurantInfoReview.setOpenStyle(reqRestaurantInfoReviewCreate.getOpenStyle());
@@ -28,7 +28,7 @@ public class RestaurantInfoReviewService {
         restaurantInfoReviewRepository.save(restaurantInfoReview);
     }
 
-    public List<RestaurantInfoReview> getRestaurantInfoReviewList(Integer restaurantSeq) {
+    public List<RestaurantInfoReview> getRestaurantInfoReviewList(Long restaurantSeq) {
         return restaurantInfoReviewRepository.findRestaurantInfoReviewBySeq(restaurantSeq);
     }
 }

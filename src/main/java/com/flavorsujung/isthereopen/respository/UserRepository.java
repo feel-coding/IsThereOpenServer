@@ -6,10 +6,10 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface UserRepository extends JpaRepository<User,Integer> {
+public interface UserRepository extends JpaRepository<User,Long> {
 
     //List<User> findAllUser();
-    User findUserBySeq(Integer userSeq);
+    User findUserBySeq(Long userSeq);
 
     /*User findUserBySeq(Integer seq)
     SELECT * FROM user WHERE seq = #{seq}*

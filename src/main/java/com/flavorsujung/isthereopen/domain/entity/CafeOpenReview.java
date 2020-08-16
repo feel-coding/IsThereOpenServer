@@ -16,13 +16,13 @@ import java.util.Date;
 public class CafeOpenReview {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Integer seq;
-    Integer cafeSeq;
-    Integer userSeq;
+    Long seq;
+    Long cafeSeq;
+    Long userSeq;
     Integer openState; //0 close, 1 break time, 2 open, 3 미확인
     Date lastUpdate;
 
-    public CafeOpenReview(Integer seq, Integer cafeSeq, Integer userSeq, Integer openState) {
+    public CafeOpenReview(Long seq, Long cafeSeq, Long userSeq, Integer openState) {
         this.seq = seq;
         this.cafeSeq = cafeSeq;
         this.userSeq = userSeq;

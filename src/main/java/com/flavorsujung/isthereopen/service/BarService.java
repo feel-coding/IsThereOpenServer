@@ -12,7 +12,7 @@ import java.util.List;
 public class BarService {
     private final BarRepository barRepository;
 
-    public Bar getBar(Integer barSeq) {
+    public Bar getBar(Long barSeq) {
         Bar bar = barRepository.findBarBySeq(barSeq);
         return bar;
     }

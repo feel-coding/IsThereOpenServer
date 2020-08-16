@@ -29,7 +29,7 @@ public class RestaurantOpenReviewController {
 
     @PutMapping("/restaurant/{restaurantSeq}/openReview")
     public ResponseEntity<Void> putRestaurantOpenReview( //사용자가 오픈리뷰 작성 (API 테스트 완료)
-                                                         @PathVariable("restaurantSeq") Integer restaurantSeq, @RequestBody ReqRestaurantOpenReviewCreate reqRestaurantOpenReviewCreate) {
+                                                         @PathVariable("restaurantSeq") Long restaurantSeq, @RequestBody ReqRestaurantOpenReviewCreate reqRestaurantOpenReviewCreate) {
 //        int seq = restaurantOpenReviewMap.size();
 //        restaurantOpenReviewMap.put(seq, new RestaurantOpenReview(seq, restaurantSeq, userSeq, openState));
 //        restaurantMap.get(restaurantSeq).getRestaurantOpenReviewList().add(new RestaurantOpenReview(seq, restaurantSeq, userSeq, openState));
@@ -42,7 +42,7 @@ public class RestaurantOpenReviewController {
     }
 
     @GetMapping("/restaurant/{restaurantSeq}/openReview") //특정 식당의 오픈리뷰들 가져오기 (API 테스트 완료)
-    public List<RestaurantOpenReview> getRestaurantOpenReviewList(@PathVariable("restaurantSeq") Integer restaurantSeq) {
+    public List<RestaurantOpenReview> getRestaurantOpenReviewList(@PathVariable("restaurantSeq") Long restaurantSeq) {
 //        return restaurantMap.get(restaurantSeq).getRestaurantOpenReviewList();
         return restaurantOpenReviewService.getRestaurantOpenReviewList(restaurantSeq);
     }

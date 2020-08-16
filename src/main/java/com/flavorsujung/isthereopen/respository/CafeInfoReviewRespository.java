@@ -7,6 +7,6 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface CafeInfoReviewRespository extends JpaRepository<CafeInfoReview,Integer> {
-    List<CafeInfoReview> findCafeInfoReviewBySeq(Integer cafeSeq);
+public interface CafeInfoReviewRespository extends JpaRepository<CafeInfoReview,Long> {
+    List<CafeInfoReview> findCafeInfoReviewBySeq(Long cafeSeq);
 }

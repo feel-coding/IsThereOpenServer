@@ -27,7 +27,7 @@ public class BarInfoReviewController {
 //        barInfoReviewMap = new HashMap<>();
     }
     @PutMapping("/bar/{barSeq}/infoReview")//서비스와 레파지토리 이용하여 수정함
-    public ResponseEntity<Void> putBarInfoReview(@PathVariable("barSeq")Integer barSeq, @RequestBody ReqBarInfoReviewCreate reqBarInfoReviewCreate) {
+    public ResponseEntity<Void> putBarInfoReview(@PathVariable("barSeq")Long barSeq, @RequestBody ReqBarInfoReviewCreate reqBarInfoReviewCreate) {
 //        int seq = barInfoReviewMap.size();
 //        BarInfoReview barInfoReview = new BarInfoReview(seq, barSeq, openStyle, cleanness, mood, mainAlcohol, price);
 //        barInfoReviewMap.put(seq,barInfoReview);
@@ -37,7 +37,7 @@ public class BarInfoReviewController {
     }
 
     @GetMapping("/bar/{barSeq}/infoReview")//서비스와 레파지토리 이용하여 수정함
-    public List<BarInfoReview> getRestaurantInfoReviewList(@PathVariable("barSeq") Integer barSeq) {
+    public List<BarInfoReview> getRestaurantInfoReviewList(@PathVariable("barSeq") Long barSeq) {
 //        return barMap.get(barSeq).getBarInfoReviewList();
         return barInfoReviewService.getBarInfoReviewList(barSeq);
     }

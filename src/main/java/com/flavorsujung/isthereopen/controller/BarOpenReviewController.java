@@ -28,12 +28,12 @@ public class BarOpenReviewController {
     }
 
     @GetMapping("/bar/{seq}/openReview")//서비스와 레파지토리 이용하여 수정함
-    public List<BarOpenReview> getBarOpenReviewList(@PathVariable Integer seq) {
+    public List<BarOpenReview> getBarOpenReviewList(@PathVariable Long seq) {
         return barOpenReviewService.getBarOpenReviewList(seq);
     }
 
     @PutMapping("/bar/{barSeq}/openReview")//서비스와 레파지토리 이용하여 수정함
-    public ResponseEntity<Void> putBarOpenReview(@PathVariable Integer barSeq, @RequestBody ReqBarOpenReviewCreate reqBarOpenReviewCreate) {
+    public ResponseEntity<Void> putBarOpenReview(@PathVariable Long barSeq, @RequestBody ReqBarOpenReviewCreate reqBarOpenReviewCreate) {
 //        int seq = barMap.size();
 //        BarOpenReview openReview = new BarOpenReview(seq, barSeq, userSeq, openState);
 //        barOpenReviewMap.put(seq, openReview);

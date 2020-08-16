@@ -15,7 +15,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-    private Map<Integer, User> userMap;
+    private Map<Long, User> userMap;
 
     /*@PostConstruct
     public void init() {
@@ -26,7 +26,7 @@ public class UserController {
     }*/
 
     @GetMapping("/user/{seq}")
-    public User getUser(@PathVariable("seq") Integer seq) {
+    public User getUser(@PathVariable("seq") Long seq) {
         return userMap.get(seq);
     }
 
@@ -37,13 +37,13 @@ public class UserController {
 
     @PutMapping("/user")
     public void putUser(@RequestParam("id") String id, @RequestParam("name") String name) {
-        int seq = userMap.size();
+        Long seq = (long)(userMap.size());
         User user = new User(seq, id, name);
         userMap.put(seq, user);
     }
 
     @PostMapping("/user/{seq}")
-    public void postUserName(@PathVariable("seq") Integer seq, @RequestParam("name") String name) {
+    public void postUserName(@PathVariable("seq") Long seq, @RequestParam("name") String name) {
         User user = userMap.get(seq);
         user.setName(name);
     }

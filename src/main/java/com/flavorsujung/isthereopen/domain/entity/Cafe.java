@@ -18,7 +18,7 @@ import java.util.List;
 public class Cafe {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer seq;
+    private Long seq;
     private String name;
     private String address;
     private String runningTime;
@@ -29,7 +29,7 @@ public class Cafe {
 //    private List<CafeInfoReview> cafeInfoReviewList;
 //    private List<CafeOpenReview> cafeOpenReviewList;
 
-    public Cafe(Integer seq, String name, String address, String runningTime) {
+    public Cafe(Long seq, String name, String address, String runningTime) {
         this.seq = seq;
         this.name = name;
         this.address = address;
@@ -40,7 +40,7 @@ public class Cafe {
 //        cafeOpenReviewList = new ArrayList<>();
     }
 
-    public Cafe(Integer seq, String name, String address, String runningTime, String photoURL) {
+    public Cafe(Long seq, String name, String address, String runningTime, String photoURL) {
         this.seq = seq;
         this.name = name;
         this.address = address;

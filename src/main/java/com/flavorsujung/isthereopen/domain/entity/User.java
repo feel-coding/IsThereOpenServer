@@ -19,11 +19,11 @@ public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer seq;
+    private Long seq;
     private String name;
     //private Date createdAt;
 
-    public User(Integer seq, String id, String name) {
+    public User(Long seq, String id, String name) {
         this.seq = seq;
         this.name = name;
     }

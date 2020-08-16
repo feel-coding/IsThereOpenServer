@@ -14,7 +14,7 @@ import java.util.List;
 public class BarInfoReviewService {
     private final BarInfoReviewRepository barInfoReviewRepository;
 
-    public void putBarInfoReview(Integer barSeq, ReqBarInfoReviewCreate reqBarInfoReviewCreate) {
+    public void putBarInfoReview(Long barSeq, ReqBarInfoReviewCreate reqBarInfoReviewCreate) {
         BarInfoReview barInfoReview = new BarInfoReview();
         barInfoReview.setBarSeq(barSeq);
         barInfoReview.setUserSeq(reqBarInfoReviewCreate.getUserSeq());
@@ -26,7 +26,7 @@ public class BarInfoReviewService {
         barInfoReviewRepository.save(barInfoReview);
     }
 
-    public List<BarInfoReview> getBarInfoReviewList(Integer barSeq) {
+    public List<BarInfoReview> getBarInfoReviewList(Long barSeq) {
         return barInfoReviewRepository.findBarInfoReviewBySeq(barSeq);
     }
 }

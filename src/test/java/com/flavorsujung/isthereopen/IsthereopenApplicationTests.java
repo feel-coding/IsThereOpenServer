@@ -46,7 +46,7 @@ class IsthereopenApplicationTests {
         //List<BarInfoReview> barInfoReviewList = barInfoReviewRepository.findAll();
 
 
-        Bar bar = new Bar(0, "육회본가", "성북구 어쩌구","오전 9시~오후 11시");
+        Bar bar = new Bar((long)0, "육회본가", "성북구 어쩌구","오전 9시~오후 11시");
         barRepository.save(bar);
         System.out.println(bar);
 

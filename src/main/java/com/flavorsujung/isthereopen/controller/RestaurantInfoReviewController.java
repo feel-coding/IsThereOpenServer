@@ -27,7 +27,7 @@ public class RestaurantInfoReviewController {
     }
     @PutMapping("/restaurant/{restaurantSeq}/infoReview")
     public ResponseEntity<Void> putRestaurantInfoReview( //식당 리뷰 추가 (API 테스트 완료)
-                                                         @PathVariable("restaurantSeq")Integer restaurantSeq, @RequestBody ReqRestaurantInfoReviewCreate reqRestaurantInfoReviewCreate) {
+                                                         @PathVariable("restaurantSeq")Long restaurantSeq, @RequestBody ReqRestaurantInfoReviewCreate reqRestaurantInfoReviewCreate) {
 //        int seq = restaurantInfoReviewMap.size();
 //        RestaurantInfoReview restaurantInfoReview = new RestaurantInfoReview(seq, restaurantSeq, openStyle, waitingTime, cleanness, price, takeOut, eatAlone);
 //        restaurantInfoReviewMap.put(seq,restaurantInfoReview);
@@ -37,7 +37,7 @@ public class RestaurantInfoReviewController {
     }
 
     @GetMapping("/restaurant/{restaurantSeq}/infoReview") //특정 식당의 리뷰들 가져오기 (API 테스트 완료)
-    public List<RestaurantInfoReview> getRestaurantInfoReviewList(@PathVariable("restaurantSeq") Integer restaurantSeq) {
+    public List<RestaurantInfoReview> getRestaurantInfoReviewList(@PathVariable("restaurantSeq") Long restaurantSeq) {
 //        return restaurantMap.get(restaurantSeq).getRestaurantInfoReviewList();
         return restaurantInfoReviewService.getRestaurantInfoReviewList(restaurantSeq);
     }

@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class CafeInfo {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Integer seq;
+    Long seq;
     Integer openStyle; //0 잘 지키는 편, 1 보통, 2 들쭉날쭉 지맘대로
     Integer waitingTime;
     Integer price; //0 쌈, 1 보통, 2 비쌈

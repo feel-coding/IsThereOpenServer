@@ -15,7 +15,7 @@ import java.util.List;
 public class CafeInfoReviewService {
     private final CafeInfoReviewRespository cafeInfoReviewRepository;
 
-    public void putCafeInfoReview(Integer cafeSeq, ReqCafeInfoReviewCreate reqCafeInfoReviewCreate) {
+    public void putCafeInfoReview(Long cafeSeq, ReqCafeInfoReviewCreate reqCafeInfoReviewCreate) {
         CafeInfoReview cafeInfoReview = new CafeInfoReview();
         cafeInfoReview.setCafeSeq(cafeSeq);
         cafeInfoReview.setCustomerNum(reqCafeInfoReviewCreate.getCustomerNum());
@@ -29,7 +29,7 @@ public class CafeInfoReviewService {
         cafeInfoReviewRepository.save(cafeInfoReview);
     }
 
-    public List<CafeInfoReview> getCafeInfoReviewList(Integer cafeSeq) {
+    public List<CafeInfoReview> getCafeInfoReviewList(Long cafeSeq) {
         return cafeInfoReviewRepository.findCafeInfoReviewBySeq(cafeSeq);
     }
 }

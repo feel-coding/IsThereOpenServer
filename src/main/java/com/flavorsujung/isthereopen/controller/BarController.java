@@ -15,7 +15,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class BarController {
     private final BarService barService;
-    public static Map<Integer, Bar> barMap;
+    public static Map<Long, Bar> barMap;
     public static final Integer CLOSE = 0;
     public static final Integer BREAKTIME = 1;
     public static final Integer OPEN = 2;
@@ -24,11 +24,11 @@ public class BarController {
     @PostConstruct
     public void init() {
         barMap = new HashMap<>();
-        barMap.put(0, new Bar(0, "육회본가", "성북구 어쩌구", "오전 9시~오후 11시"));
-        barMap.put(1, new Bar(1, "대한맥주집", "정문 앞", "오후 12시~오후 8시"));
+        barMap.put((long) 0, new Bar((long) 0, "육회본가", "성북구 어쩌구", "오전 9시~오후 11시"));
+        barMap.put((long) 1, new Bar((long) 1, "대한맥주집", "정문 앞", "오후 12시~오후 8시"));
     }
     @GetMapping("/bar/{barSeq}/openState") // (API 테스트 완료)
-    public Integer getCurrentState(@PathVariable("barSeq") Integer barSeq) {
+    public Integer getCurrentState(@PathVariable("barSeq") Long barSeq) {
         return barMap.get(barSeq).getCurrentState();
     }
 
@@ -38,18 +38,18 @@ public class BarController {
     }
 
     @GetMapping("/bar/{barSeq}") // (API 테스트 완료)
-    public Bar getBar(@PathVariable("barSeq") Integer barSeq) {
+    public Bar getBar(@PathVariable("barSeq") Long barSeq) {
         return barMap.get(barSeq);
     }
 
     @PutMapping("/bar") //(API 테스트 완료)
     public void putBar(@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("runtime") String runningTime) {
-        int seq = barMap.size();
+        Long seq = (long)(barMap.size());
         barMap.put(seq, new Bar(seq, name, address, runningTime));
     }
 
     @PostMapping("/bar/{barSeq}") //(API 테스트 완료)
-    public void postCurrentState(@PathVariable("barSeq") Integer barSeq, @RequestParam("openState") Integer openState) {
+    public void postCurrentState(@PathVariable("barSeq") Long barSeq, @RequestParam("openState") Integer openState) {
         barMap.get(barSeq).setCurrentState(openState);
     }
 }

@@ -18,8 +18,8 @@ public class BarOpenReview {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Integer seq;
-    Integer barSeq;
-    Integer userSeq;
+    Long barSeq;
+    Long userSeq;
     @Convert(converter = OpenStateConverter.class)
     Integer openState; //0 close, 1 break time, 2 open, 3 미확인
     Date lastUpdate;

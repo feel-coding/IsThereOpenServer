@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ReqBarInfoReviewCreate {
-    Integer userSeq;
+    Long userSeq;
     Integer openStyle; //0 잘 지키는 편, 1 보통, 2 들쭉날쭉 지맘대로
     Integer cleanness;
     Mood mood; //0 조용, 1 보통, 2 시끄러움

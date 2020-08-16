@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RestaurantOpenReviewService {
     private final RestaurantOpenReviewRepository restaurantOpenReviewRepository;
-    public void putRestaurantOpenReview(Integer restaurantSeq, ReqRestaurantOpenReviewCreate reqRestaurantOpenReviewCreate) {
+    public void putRestaurantOpenReview(Long restaurantSeq, ReqRestaurantOpenReviewCreate reqRestaurantOpenReviewCreate) {
         RestaurantOpenReview restaurantOpenReview = new RestaurantOpenReview();
         restaurantOpenReview.setRestaurantSeq(restaurantSeq);
         restaurantOpenReview.setUserSeq(reqRestaurantOpenReviewCreate.getUserSeq());
@@ -21,7 +21,7 @@ public class RestaurantOpenReviewService {
         restaurantOpenReviewRepository.save(restaurantOpenReview);
     }
 
-    public List<RestaurantOpenReview> getRestaurantOpenReviewList(Integer restaurantSeq) {
+    public List<RestaurantOpenReview> getRestaurantOpenReviewList(Long restaurantSeq) {
         return restaurantOpenReviewRepository.findRestaurantOpenReviewBySeq(restaurantSeq);
     }
 }

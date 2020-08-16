@@ -18,7 +18,7 @@ import java.util.List;
 public class Bar {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer seq;
+    private Long seq;
     private String name;
     private String address;
     private String runningTime;
@@ -29,7 +29,7 @@ public class Bar {
 //    private List<BarOpenReview> barOpenReviewList;
 //    private List<BarInfoReview> barInfoReviewList;
 
-    public Bar(Integer seq, String name, String address,String runningTime) {
+    public Bar(Long seq, String name, String address,String runningTime) {
 
         this.seq = seq;
         this.name = name;

@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BarOpenReviewService {
     private final BarOpenReviewRepository barOpenReviewRepository;
-    public void putBarOpenReview(Integer barSeq, ReqBarOpenReviewCreate reqBarOpenReviewCreate) {
+    public void putBarOpenReview(Long barSeq, ReqBarOpenReviewCreate reqBarOpenReviewCreate) {
         BarOpenReview barOpenReview = new BarOpenReview();
         barOpenReview.setBarSeq(barSeq);
         barOpenReview.setUserSeq(reqBarOpenReviewCreate.getUserSeq());
@@ -21,7 +21,7 @@ public class BarOpenReviewService {
         barOpenReviewRepository.save(barOpenReview);
     }
 
-    public List<BarOpenReview> getBarOpenReviewList(Integer barSeq) {
+    public List<BarOpenReview> getBarOpenReviewList(Long barSeq) {
         return barOpenReviewRepository.findBarOpenReviewBySeq(barSeq);
     }
 }

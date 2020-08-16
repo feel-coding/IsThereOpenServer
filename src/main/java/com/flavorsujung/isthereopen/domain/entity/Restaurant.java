@@ -20,7 +20,7 @@ import java.util.List;
 public class Restaurant {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer seq;
+    private Long seq;
     private String name;
     private String address;
     private String runningTime;
@@ -31,7 +31,7 @@ public class Restaurant {
 //    private List<RestaurantInfoReview> restaurantInfoReviewList;
 //    private List<RestaurantOpenReview> restaurantOpenReviewList;
 
-    public Restaurant(Integer seq, String name, String address, String runningTime) {
+    public Restaurant(Long seq, String name, String address, String runningTime) {
         this.seq = seq;
         this.name = name;
         this.address = address;
@@ -42,7 +42,7 @@ public class Restaurant {
 //        restaurantOpenReviewList = new ArrayList<>();
     }
 
-    public Restaurant(Integer seq, String name, String address, String runningTime, String photoURL) {
+    public Restaurant(Long seq, String name, String address, String runningTime, String photoURL) {
         this.seq = seq;
         this.name = name;
         this.address = address;

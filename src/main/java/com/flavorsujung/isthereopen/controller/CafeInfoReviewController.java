@@ -29,7 +29,7 @@ public class CafeInfoReviewController {
 
     @PutMapping("/cafe/{cafeSeq}/infoReview")
     public ResponseEntity<Void> putCafeInfoReview(
-            @PathVariable("cafeSeq") Integer cafeSeq, @RequestBody ReqCafeInfoReviewCreate reqCafeInfoReviewCreate) {
+            @PathVariable("cafeSeq") Long cafeSeq, @RequestBody ReqCafeInfoReviewCreate reqCafeInfoReviewCreate) {
 //        int seq = cafeInfoReviewMap.size();
 //        CafeInfoReview cafeInfoReview = new CafeInfoReview(seq, cafeSeq, openStyle, waitingTime, price, customerNum, plugNum, tableHeight, longStay);
 //        cafeInfoReviewMap.put(seq, cafeInfoReview);
@@ -39,7 +39,7 @@ public class CafeInfoReviewController {
     }
 
     @GetMapping("/cafe/{cafeSeq}/infoReview")
-    public List<CafeInfoReview> getCafeInfoReviewList(@PathVariable("cafeSeq") Integer cafeSeq) {
+    public List<CafeInfoReview> getCafeInfoReviewList(@PathVariable("cafeSeq") Long cafeSeq) {
 //        return cafeMap.get(cafeSeq).getCafeInfoReviewList();
         return cafeInfoReviewService.getCafeInfoReviewList(cafeSeq);
     }

@@ -29,13 +29,13 @@ public class CafeOpenReviewController {
     }
 
     @GetMapping("/cafe/{cafeSeq}/openReview") //카페 오픈 리뷰 조회 (API 테스트 완료)
-    public List<CafeOpenReview> getCafeOpenReviewList(@PathVariable("cafeSeq") Integer cafeSeq) {
+    public List<CafeOpenReview> getCafeOpenReviewList(@PathVariable("cafeSeq") Long cafeSeq) {
 //        return cafeMap.get(cafeSeq).getCafeOpenReviewList();
         return cafeOpenReviewService.getCafeOpenReviewList(cafeSeq);
     }
 
     @PutMapping("/cafe/{cafeSeq}/openReview") //카페 오픈 리뷰 작성 (API 테스트 완료)
-    public ResponseEntity<Void> putCafeOpenReview(@PathVariable("cafeSeq") Integer cafeSeq, @RequestBody ReqCafeOpenReviewCreate reqCafeOpenReviewCreate) {
+    public ResponseEntity<Void> putCafeOpenReview(@PathVariable("cafeSeq") Long cafeSeq, @RequestBody ReqCafeOpenReviewCreate reqCafeOpenReviewCreate) {
 //        int seq = cafeOpenReviewMap.size();
 //        CafeOpenReview openReview = new CafeOpenReview(seq, cafeSeq, userSeq, openState);
 //        cafeOpenReviewMap.put(seq, openReview);
