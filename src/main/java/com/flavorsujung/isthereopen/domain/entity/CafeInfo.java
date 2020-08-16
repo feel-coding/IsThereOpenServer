@@ -24,10 +24,15 @@ public class CafeInfo {
     WaitingTime waitingTime;
     @Convert(converter = PriceConverter.class)
     Price price; //0 쌈, 1 보통, 2 비쌈
-    Integer customerNum; // 0 적음, 1 보통, 2 많음
-    Integer plugNum; // 0 적음, 1 보통, 2 많음
-    Integer tableHeight; //0 낮음, 1 보통, 2 높음
-    Integer lightness;// 0 어두움, 1 중간, 2 밝음
-    Integer longStay; // 0 가능, 1 보통, 2 눈치보임
+    @Convert(converter = CustomerNumConverter.class)
+    CustomerNum customerNum; // 0 적음, 1 보통, 2 많음
+    @Convert(converter = PlugNumConverter.class)
+    PlugNum plugNum; // 0 적음, 1 보통, 2 많음
+    @Convert(converter = TableHeightConverter.class)
+    TableHeight tableHeight; //0 낮음, 1 보통, 2 높음
+    @Convert(converter = LightnessConverter.class)
+    Lightness lightness;// 0 어두움, 1 중간, 2 밝음
+    @Convert(converter = LongStayConverter.class)
+    LongStay longStay; // 0 가능, 1 보통, 2 눈치보임
 
 }

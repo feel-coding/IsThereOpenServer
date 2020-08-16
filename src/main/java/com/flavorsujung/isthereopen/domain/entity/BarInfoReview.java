@@ -26,7 +26,8 @@ public class BarInfoReview {
     Cleanness cleanness;
     @Convert(converter = MoodConverter.class)
     Mood mood; //0 조용, 1 보통, 2 시끄러움
-    Integer mainAlcohol; // 0 소주, 1 맥주, 2 막걸리, 3 와인, 4 보드카
+    @Convert(converter = AlcoholConverter.class)
+    Alcohol mainAlcohol; // 0 소주, 1 맥주, 2 막걸리, 3 와인, 4 보드카
     @Convert(converter = PriceConverter.class)
     Price price; //0 쌈, 1 보통, 2 비쌈
 }
