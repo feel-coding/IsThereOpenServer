@@ -17,6 +17,7 @@ public class RestaurantPatron {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long seq;
-    Integer restaurantSeq;
     Integer userSeq;
+    Integer restaurantSeq;
+
 }

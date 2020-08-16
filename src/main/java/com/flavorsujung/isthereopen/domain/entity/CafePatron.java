@@ -16,6 +16,7 @@ public class CafePatron {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long seq;
-    Long cafeSeq;
     Long userSeq;
+    Long cafeSeq;
+
 }

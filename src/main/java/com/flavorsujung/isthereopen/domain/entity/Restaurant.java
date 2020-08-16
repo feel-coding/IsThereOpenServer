@@ -24,7 +24,7 @@ public class Restaurant {
     private String name;
     private String address;
     private String runningTime;
-    private Double rate;
+    private Double avgRate;
     private Integer currentState;
     private String photoURL;
     private Date lastUpdate;
@@ -36,7 +36,7 @@ public class Restaurant {
         this.name = name;
         this.address = address;
         this.runningTime = runningTime;
-        rate = -1.0;
+        avgRate = -1.0;
         currentState = 3;
 //        restaurantInfoReviewList = new ArrayList<>();
 //        restaurantOpenReviewList = new ArrayList<>();
@@ -47,7 +47,7 @@ public class Restaurant {
         this.name = name;
         this.address = address;
         this.runningTime = runningTime;
-        rate = -1.0;
+        avgRate = -1.0;
         currentState = 3;
         this.photoURL = photoURL;
 //        restaurantInfoReviewList = new ArrayList<>();

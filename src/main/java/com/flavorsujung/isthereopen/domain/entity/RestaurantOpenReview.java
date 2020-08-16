@@ -18,8 +18,8 @@ public class RestaurantOpenReview {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long seq;
-    Long restaurantSeq;
     Long userSeq;
+    Long restaurantSeq;
     Integer openState; //0 close, 1 break time, 2 open, 3 미확인
     Date lastUpdate;
 
