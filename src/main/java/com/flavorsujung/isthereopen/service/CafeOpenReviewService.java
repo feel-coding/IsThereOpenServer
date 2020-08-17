@@ -13,17 +13,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CafeOpenReviewService {
     private final CafeOpenReviewRepository cafeOpenReviewRepository;
-    public void putCafeOpenReview(Long cafeSeq, Long userSeq, OpenState openState/*ReqCafeOpenReviewCreate reqCafeOpenReviewCreate*/) {
+    public void putCafeOpenReview(Long cafeSeq, Long userSeq, OpenState openState) {
         CafeOpenReview cafeOpenReview = new CafeOpenReview();
         cafeOpenReview.setCafeSeq(cafeSeq);
-//        cafeOpenReview.setUserSeq(reqCafeOpenReviewCreate.getUserSeq());
-//        cafeOpenReview.setOpenState(reqCafeOpenReviewCreate.getOpenState());
         cafeOpenReview.setUserSeq(userSeq);
         cafeOpenReview.setOpenState(openState);
         cafeOpenReviewRepository.save(cafeOpenReview);
     }
 
     public List<CafeOpenReview> getCafeOpenReviewList(Long cafeSeq) {
-        return cafeOpenReviewRepository.findCafeOpenReviewBySeq(cafeSeq);
+        return cafeOpenReviewRepository.findCafeOpenReviewByCafeSeq(cafeSeq);
     }
 }

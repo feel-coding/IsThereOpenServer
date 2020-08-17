@@ -1,6 +1,7 @@
 package com.flavorsujung.isthereopen.service;
 
 import com.flavorsujung.isthereopen.domain.entity.BarOpenReview;
+import com.flavorsujung.isthereopen.domain.mappedenum.OpenState;
 import com.flavorsujung.isthereopen.domain.req.ReqBarOpenReviewCreate;
 import com.flavorsujung.isthereopen.respository.BarOpenReviewRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,15 +13,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BarOpenReviewService {
     private final BarOpenReviewRepository barOpenReviewRepository;
-    public void putBarOpenReview(Long barSeq, ReqBarOpenReviewCreate reqBarOpenReviewCreate) {
+    public void putBarOpenReview(Long barSeq, Long userSeq, OpenState openState) {
         BarOpenReview barOpenReview = new BarOpenReview();
         barOpenReview.setBarSeq(barSeq);
-        barOpenReview.setUserSeq(reqBarOpenReviewCreate.getUserSeq());
-        barOpenReview.setOpenState(reqBarOpenReviewCreate.getOpenState());
+        barOpenReview.setUserSeq(userSeq);
+        barOpenReview.setOpenState(openState);
         barOpenReviewRepository.save(barOpenReview);
     }
 
     public List<BarOpenReview> getBarOpenReviewList(Long barSeq) {
-        return barOpenReviewRepository.findBarOpenReviewBySeq(barSeq);
+        return barOpenReviewRepository.findBarOpenReviewByBarSeq(barSeq);
     }
 }

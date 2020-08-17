@@ -15,8 +15,8 @@ import javax.persistence.*;
 public class PatronCafe {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long seq;
-    Long userSeq;
-    Long cafeSeq;
+    private Long seq;
+    private Long userSeq;
+    private Long cafeSeq;
 
 }

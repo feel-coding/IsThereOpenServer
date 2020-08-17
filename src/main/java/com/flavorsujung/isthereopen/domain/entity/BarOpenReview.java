@@ -23,5 +23,4 @@ public class BarOpenReview {
     private Long barSeq;
     @Convert(converter = OpenStateConverter.class)
     private OpenState openState; //0 close, 1 break time, 2 open, 3 미확인
-    private Date createdAt;
 }

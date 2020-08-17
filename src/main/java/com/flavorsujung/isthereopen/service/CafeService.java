@@ -35,4 +35,8 @@ public class CafeService {
     public void postCafe(Cafe cafe) { //카페 정보 수정
         cafeRepository.save(cafe);
     }
+
+    public void deleteCafe(Long cafeSeq) {
+        cafeRepository.deleteCafeBySeq(cafeSeq);
+    }
 }

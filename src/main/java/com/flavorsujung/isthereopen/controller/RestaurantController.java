@@ -33,7 +33,7 @@ public class RestaurantController {
 //        restaurantMap.put(8L, new Restaurant(8L, "쵸이양식", "서울 성북구 동소문로20나길 24 2층", "매일 12:00 - 21:00, 매주 일요일 휴무", "http://ldb.phinf.naver.net/20190101_187/154635217293249UVn_JPEG/XlyOJgqlT8jtY4Bzb6c-8_TY.jpeg.jpg"));
         }
 
-    @GetMapping("/restaurant/{restaurantSeq}/openState")
+    @GetMapping("/restaurant/{restaurantSeq}/openState") // 식당 오픈 여부 조회 (8/18 API 테스트 완료)
     public OpenState getCurrentState(@PathVariable("restaurantSeq") Long restaurantSeq) {
 //        return restaurantMap.get(restaurantSeq).getCurrentState();
         return restaurantService.getCurrentState(restaurantSeq);
@@ -60,10 +60,9 @@ public class RestaurantController {
         return restaurantService.getRestaurant(restaurantSeq);
     }
 
-    @PostMapping("/restaurant/{restaurantSeq}") //식당 오픈여부 수정 (8/17 API 테스트 완료)
-    public void postCurrentState(@PathVariable("restaurantSeq") Long restaurantSeq, @RequestParam("currentState") OpenState currentState) {
-        Restaurant restaurant = restaurantService.getRestaurant(restaurantSeq);
-        restaurant.setCurrentState(currentState);
-        restaurantService.postRestaurant(restaurant);
+    @DeleteMapping("/restaurant") // 식당 삭제 (8/18 API 테스트 완료)
+    public void deleteRestaurant(Long restaurantSeq) {
+        restaurantService.deleteRestaurant(restaurantSeq);
     }
+
 }

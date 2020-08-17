@@ -2,7 +2,6 @@ package com.flavorsujung.isthereopen.controller;
 
 import com.flavorsujung.isthereopen.domain.entity.CafeInfoReview;
 import com.flavorsujung.isthereopen.domain.req.ReqCafeInfoReviewCreate;
-import com.flavorsujung.isthereopen.respository.CafeInfoReviewRespository;
 import com.flavorsujung.isthereopen.service.CafeInfoReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

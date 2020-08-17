@@ -1,6 +1,8 @@
 package com.flavorsujung.isthereopen.controller;
 
+import com.flavorsujung.isthereopen.domain.entity.Bar;
 import com.flavorsujung.isthereopen.domain.entity.BarOpenReview;
+import com.flavorsujung.isthereopen.domain.mappedenum.OpenState;
 import com.flavorsujung.isthereopen.domain.req.ReqBarOpenReviewCreate;
 import com.flavorsujung.isthereopen.service.BarOpenReviewService;
 import com.flavorsujung.isthereopen.service.BarService;
@@ -27,21 +29,21 @@ public class BarOpenReviewController {
 //        barOpenReviewMap.put(1, new BarOpenReview(2, 2, 1, UNKNOWN));
     }
 
-    @GetMapping("/bar/{seq}/openReview")//서비스와 레파지토리 이용하여 수정함
-    public List<BarOpenReview> getBarOpenReviewList(@PathVariable Long seq) {
+    @GetMapping("/bar/{seq}/openReview")// 술집 오픈리뷰 리스트 조회(8/18 API 테스트 완료)
+    public List<BarOpenReview> getBarOpenReviewList(@PathVariable("seq") Long seq) {
         return barOpenReviewService.getBarOpenReviewList(seq);
     }
 
-    @PutMapping("/bar/{barSeq}/openReview")//서비스와 레파지토리 이용하여 수정함
-    public ResponseEntity<Void> putBarOpenReview(@PathVariable Long barSeq, @RequestBody ReqBarOpenReviewCreate reqBarOpenReviewCreate) {
-//        int seq = barMap.size();
-//        BarOpenReview openReview = new BarOpenReview(seq, barSeq, userSeq, openState);
-//        barOpenReviewMap.put(seq, openReview);
-//        barMap.get(barSeq).getBarOpenReviewList().add(openReview);
-//        barMap.get(barSeq).setCurrentState(openState);
-//        barMap.get(barSeq).setLastUpdate(new Date());
-        barOpenReviewService.putBarOpenReview(barSeq, reqBarOpenReviewCreate);
-        barService.getBar(barSeq).setCurrentState(reqBarOpenReviewCreate.getOpenState());
+    @PutMapping("/bar/{barSeq}/openReview")// 술집 오픈리뷰 작성(8/18 API 테스트 완료)
+    public ResponseEntity<Void> putBarOpenReview(
+            @PathVariable Long barSeq,
+            @RequestParam("userSeq") Long userSeq,
+            @RequestParam("openState") OpenState openState) {
+        barOpenReviewService.putBarOpenReview(barSeq, userSeq, openState);
+        Bar bar = barService.getBar(barSeq);
+        bar.setCurrentState(openState);
+        bar.setLastUpdate(new Date());
+        barService.postBar(bar);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

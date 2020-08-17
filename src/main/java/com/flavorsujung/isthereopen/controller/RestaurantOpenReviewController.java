@@ -1,6 +1,8 @@
 package com.flavorsujung.isthereopen.controller;
 
+import com.flavorsujung.isthereopen.domain.entity.Restaurant;
 import com.flavorsujung.isthereopen.domain.entity.RestaurantOpenReview;
+import com.flavorsujung.isthereopen.domain.mappedenum.OpenState;
 import com.flavorsujung.isthereopen.domain.req.ReqRestaurantOpenReviewCreate;
 import com.flavorsujung.isthereopen.service.RestaurantOpenReviewService;
 import com.flavorsujung.isthereopen.service.RestaurantService;
@@ -27,21 +29,21 @@ public class RestaurantOpenReviewController {
     }
 
 
-    @PutMapping("/restaurant/{restaurantSeq}/openReview")
-    public ResponseEntity<Void> putRestaurantOpenReview( //사용자가 오픈리뷰 작성 (API 테스트 완료)
-                                                         @PathVariable("restaurantSeq") Long restaurantSeq, @RequestBody ReqRestaurantOpenReviewCreate reqRestaurantOpenReviewCreate) {
-//        int seq = restaurantOpenReviewMap.size();
-//        restaurantOpenReviewMap.put(seq, new RestaurantOpenReview(seq, restaurantSeq, userSeq, openState));
-//        restaurantMap.get(restaurantSeq).getRestaurantOpenReviewList().add(new RestaurantOpenReview(seq, restaurantSeq, userSeq, openState));
-//        restaurantMap.get(restaurantSeq).setCurrentState(openState); //식당 테이블의 현재 상태 업데이트
-//        restaurantMap.get(restaurantSeq).setLastUpdate(new Date());
-        restaurantOpenReviewService.putRestaurantOpenReview(restaurantSeq, reqRestaurantOpenReviewCreate);
-        restaurantService.getRestaurant(restaurantSeq).setCurrentState(reqRestaurantOpenReviewCreate.getOpenState());
+    @PutMapping("/restaurant/{restaurantSeq}/openReview")//식당 오픈리뷰 작성 (8/18 API 테스트 완료)
+    public ResponseEntity<Void> putRestaurantOpenReview(
+            @PathVariable("restaurantSeq") Long restaurantSeq,
+            @RequestParam("userSeq") Long userSeq,
+            @RequestParam("openState") OpenState openState) {
+        restaurantOpenReviewService.putRestaurantOpenReview(restaurantSeq, userSeq, openState);
+        Restaurant restaurant = restaurantService.getRestaurant(restaurantSeq);
+        restaurant.setCurrentState(openState);
+        restaurant.setLastUpdate(new Date());
+        restaurantService.postRestaurant(restaurant);
         return new ResponseEntity<>(HttpStatus.OK);
 
     }
 
-    @GetMapping("/restaurant/{restaurantSeq}/openReview") //특정 식당의 오픈리뷰들 가져오기 (API 테스트 완료)
+    @GetMapping("/restaurant/{restaurantSeq}/openReview") //특정 식당의 오픈리뷰들 가져오기 (8/18 API 테스트 완료)
     public List<RestaurantOpenReview> getRestaurantOpenReviewList(@PathVariable("restaurantSeq") Long restaurantSeq) {
 //        return restaurantMap.get(restaurantSeq).getRestaurantOpenReviewList();
         return restaurantOpenReviewService.getRestaurantOpenReviewList(restaurantSeq);

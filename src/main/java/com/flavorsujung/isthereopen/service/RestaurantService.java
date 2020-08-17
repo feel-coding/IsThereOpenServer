@@ -40,4 +40,8 @@ public class RestaurantService {
     public void postRestaurant(Restaurant restaurant) {
         restaurantRepository.save(restaurant);
     }
+
+    public void deleteRestaurant(Long restaurantSeq) {
+        restaurantRepository.deleteBySeq(restaurantSeq);
+    }
 }

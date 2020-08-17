@@ -14,13 +14,11 @@ public class BarService {
     private final BarRepository barRepository;
 
     public Bar getBar(Long barSeq) {
-        Bar bar = barRepository.findBarBySeq(barSeq);
-        return bar;
+        return barRepository.findBarBySeq(barSeq);
     }
 
     public List<Bar> getBarList() {
-        List<Bar> barList = barRepository.findAll();
-        return barList;
+        return barRepository.findAll();
     }
 
     public void putBar(String name, String address, String runningTime, String phoneNum, String photoURL) {
@@ -34,5 +32,7 @@ public class BarService {
         barRepository.save(bar);
     }
 
-
+    public void postBar(Bar bar) {
+        barRepository.save(bar);
+    }
 }

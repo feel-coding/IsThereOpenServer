@@ -18,10 +18,9 @@ import java.util.Date;
 public class CafeOpenReview {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long seq;
-    Long userSeq;
-    Long cafeSeq;
+    private Long seq;
+    private Long userSeq;
+    private Long cafeSeq;
     @Convert(converter = OpenStateConverter.class)
-    OpenState openState; //0 close, 1 break time, 2 open, 3 미확인
-    Date lastUpdate;
+    private OpenState openState; //0 close, 1 break time, 2 open, 3 미확인
 }

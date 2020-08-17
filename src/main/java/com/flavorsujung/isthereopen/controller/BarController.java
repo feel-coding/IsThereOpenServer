@@ -16,37 +16,34 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class BarController {
     private final BarService barService;
-    public static Map<Long, Bar> barMap;
+//    public static Map<Long, Bar> barMap;
 
     @PostConstruct
     public void init() {
-        barMap = new HashMap<>();
+//        barMap = new HashMap<>();
     }
-    @GetMapping("/bar/{barSeq}/openState") // (API 테스트 완료)
+    @GetMapping("/bar/{barSeq}/openState") // 술집 오픈 여부 조회 (8/18 API 테스트 완료)
     public OpenState getCurrentState(@PathVariable("barSeq") Long barSeq) {
-        return barMap.get(barSeq).getCurrentState();
+//        return barMap.get(barSeq).getCurrentState();
+        return barService.getBar(barSeq).getCurrentState();
     }
 
-    @GetMapping("/bar/all") // (API 테스트 완료)
+    @GetMapping("/bar/all") // 술집 리스트 조회 (8/18 API 테스트 완료)
     public List<Bar> getBarList() {
         //return new ArrayList<Bar>(barMap.values());
         return barService.getBarList();
     }
 
-    @GetMapping("/bar/{barSeq}") // (API 테스트 완료)
+    @GetMapping("/bar/{barSeq}") // 술집 조회 (8/18 API 테스트 완료)
     public Bar getBar(@PathVariable("barSeq") Long barSeq) {
-        return barMap.get(barSeq);
+        return barService.getBar(barSeq);
     }
 
-    @PutMapping("/bar") //(API 테스트 완료)
+    @PutMapping("/bar") //술집 추가 (8/18 API 테스트 완료)
     public void putBar(@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("runningTime") String runningTime, @RequestParam("phoneNum") String phoneNum,@RequestParam("photoURL") String photoURL) {
 //        Long seq = (long)(barMap.size());
 //        barMap.put(seq, new Bar(seq, name, address, runningTime));
         barService.putBar(name, address, runningTime, phoneNum, photoURL);
     }
 
-    @PostMapping("/bar/{barSeq}") //(API 테스트 완료)
-    public void postCurrentState(@PathVariable("barSeq") Long barSeq, @RequestParam("openState") OpenState openState) {
-        barMap.get(barSeq).setCurrentState(openState);
-    }
 }
