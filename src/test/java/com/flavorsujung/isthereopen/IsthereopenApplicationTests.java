@@ -49,13 +49,13 @@ class IsthereopenApplicationTests {
         List<BarInfoReview> barInfoReviewList = barInfoReviewRepository.findAll();
 
 
-        Bar bar = new Bar((long)0, "육회본가", "성북구 어쩌구","오전 9시~오후 11시");
+        Bar bar = new Bar(0L, "육회본가", "성북구 어쩌구","오전 9시~오후 11시");
         barRepository.save(bar);
         System.out.println(bar);
 
         BarInfoReview barInfoReview = new BarInfoReview();
-        barInfoReview.setUserSeq((long)1);
-        barInfoReview.setBarSeq((long)0);
+        barInfoReview.setUserSeq(1L);
+        barInfoReview.setBarSeq(0L);
         barInfoReview.setMainAlcohol(Alcohol.SOJU);
         barInfoReview.setPrice(Price.CHEAP);
         barInfoReview.setOpenStyle(OpenStyle.NORMAL);
