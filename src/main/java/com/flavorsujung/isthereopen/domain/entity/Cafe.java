@@ -24,7 +24,7 @@ public class Cafe {
     private String name;
     private String address;
     private String runningTime;
-    private Double rate;
+    private Double avgRate;
     @Convert(converter = OpenStateConverter.class)
     private OpenState currentState;
     private String photoURL;
@@ -37,7 +37,7 @@ public class Cafe {
         this.name = name;
         this.address = address;
         this.runningTime = runningTime;
-        rate = -1.0;
+        avgRate = Double.longBitsToDouble(-1);
         currentState = OpenState.UNKNOWN;
 //        cafeInfoReviewList = new ArrayList<>();
 //        cafeOpenReviewList = new ArrayList<>();
@@ -48,7 +48,7 @@ public class Cafe {
         this.name = name;
         this.address = address;
         this.runningTime = runningTime;
-        rate = -1.0;
+        avgRate = Double.longBitsToDouble(-1);
         this.currentState = OpenState.UNKNOWN;
         this.photoURL = photoURL;
 //        cafeInfoReviewList = new ArrayList<>();
