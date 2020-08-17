@@ -1,9 +1,7 @@
 package com.flavorsujung.isthereopen.service;
 
-import com.flavorsujung.isthereopen.domain.entity.BarInfoReview;
 import com.flavorsujung.isthereopen.domain.entity.CafeInfoReview;
-import com.flavorsujung.isthereopen.domain.req.ReqBarInfoReviewCreate;
-import com.flavorsujung.isthereopen.domain.req.ReqCafeInfoReviewCreate;
+import com.flavorsujung.isthereopen.domain.mappedenum.*;
 import com.flavorsujung.isthereopen.respository.CafeInfoReviewRespository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,17 +13,23 @@ import java.util.List;
 public class CafeInfoReviewService {
     private final CafeInfoReviewRespository cafeInfoReviewRepository;
 
-    public void putCafeInfoReview(Long cafeSeq, ReqCafeInfoReviewCreate reqCafeInfoReviewCreate) {
+    public void putCafeInfoReview(
+            Long cafeSeq, Long userSeq, OpenStyle openStyle,
+            WaitingTime waitingTime, Price price, CustomerNum customerNum,
+            PlugNum plugNum, Rate rate, TableHeight tableHeight,
+            Lightness lightness, StayLong stayLong) {
         CafeInfoReview cafeInfoReview = new CafeInfoReview();
         cafeInfoReview.setCafeSeq(cafeSeq);
-        cafeInfoReview.setCustomerNum(reqCafeInfoReviewCreate.getCustomerNum());
-        cafeInfoReview.setOpenStyle(reqCafeInfoReviewCreate.getOpenStyle());
-        cafeInfoReview.setPrice(reqCafeInfoReviewCreate.getPrice());
-        cafeInfoReview.setPlugNum(reqCafeInfoReviewCreate.getPlugNum());
-        cafeInfoReview.setLongStay(reqCafeInfoReviewCreate.getLongStay());
-        cafeInfoReview.setTableHeight(reqCafeInfoReviewCreate.getTableHeight());
-        cafeInfoReview.setWaitingTime(reqCafeInfoReviewCreate.getWaitingTime());
-        cafeInfoReview.setUserSeq(reqCafeInfoReviewCreate.getUserSeq());
+        cafeInfoReview.setCustomerNum(customerNum);
+        cafeInfoReview.setOpenStyle(openStyle);
+        cafeInfoReview.setPrice(price);
+        cafeInfoReview.setPlugNum(plugNum);
+        cafeInfoReview.setRate(rate);
+        cafeInfoReview.setStayLong(stayLong);
+        cafeInfoReview.setTableHeight(tableHeight);
+        cafeInfoReview.setWaitingTime(waitingTime);
+        cafeInfoReview.setUserSeq(userSeq);
+        cafeInfoReview.setLightness(lightness);
         cafeInfoReviewRepository.save(cafeInfoReview);
     }
 

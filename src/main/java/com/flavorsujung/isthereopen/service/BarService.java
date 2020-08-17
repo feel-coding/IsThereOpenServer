@@ -35,4 +35,8 @@ public class BarService {
     public void postBar(Bar bar) {
         barRepository.save(bar);
     }
+
+    public void deleteBar(Long barSeq) {
+        barRepository.deleteBarBySeq(barSeq);
+    }
 }

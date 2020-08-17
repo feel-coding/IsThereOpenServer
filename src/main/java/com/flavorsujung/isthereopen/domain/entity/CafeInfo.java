@@ -31,8 +31,8 @@ public class CafeInfo {
     private TableHeight tableHeight; //0 낮음, 1 보통, 2 높음
     @Convert(converter = LightnessConverter.class)
     private Lightness lightness;// 0 어두움, 1 중간, 2 밝음
-    @Convert(converter = LongStayConverter.class)
-    private LongStay stayLong; // 0 가능, 1 보통, 2 눈치보임
+    @Convert(converter = StayLongConverter.class)
+    private StayLong stayLong; // 0 가능, 1 보통, 2 눈치보임
     @Convert(converter = OpenStyleConverter.class)
     private OpenStyle openStyle; //0 잘 지키는 편, 1 보통, 2 들쭉날쭉 지맘대로
 }

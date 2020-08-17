@@ -46,4 +46,9 @@ public class BarController {
         barService.putBar(name, address, runningTime, phoneNum, photoURL);
     }
 
+    @DeleteMapping("/bar")// 술집 삭제 (8/18 API 테스트 완료)
+    public void deleteBar(Long barSeq) {
+        barService.deleteBar(barSeq);
+    }
+
 }

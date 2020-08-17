@@ -1,6 +1,7 @@
 package com.flavorsujung.isthereopen.controller;
 
 import com.flavorsujung.isthereopen.domain.entity.BarInfoReview;
+import com.flavorsujung.isthereopen.domain.mappedenum.*;
 import com.flavorsujung.isthereopen.domain.req.ReqBarInfoReviewCreate;
 import com.flavorsujung.isthereopen.service.BarInfoReviewService;
 import com.flavorsujung.isthereopen.service.BarService;
@@ -10,10 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 
 @RestController
 @RequiredArgsConstructor
@@ -25,17 +23,23 @@ public class BarInfoReviewController {
     public void init() {
 //        barInfoReviewMap = new HashMap<>();
     }
-    @PutMapping("/bar/{barSeq}/infoReview")//서비스와 레파지토리 이용하여 수정함
-    public ResponseEntity<Void> putBarInfoReview(@PathVariable("barSeq")Long barSeq, @RequestBody ReqBarInfoReviewCreate reqBarInfoReviewCreate) {
-//        int seq = barInfoReviewMap.size();
-//        BarInfoReview barInfoReview = new BarInfoReview(seq, barSeq, openStyle, cleanness, mood, mainAlcohol, price);
-//        barInfoReviewMap.put(seq,barInfoReview);
-//        barMap.get(barSeq).getBarInfoReviewList().add(barInfoReview);
-        barInfoReviewService.putBarInfoReview(barSeq, reqBarInfoReviewCreate);
+
+    @PutMapping("/bar/{barSeq}/infoReview")// 술집 정보 리뷰 추가 (8/18 API 테스트 완료)
+    public ResponseEntity<Void> putBarInfoReview(
+            @PathVariable("barSeq") Long barSeq,
+            @RequestParam("userSeq") Long userSeq,
+            @RequestParam("rate") Rate rate,
+            @RequestParam("toilet") Toilet toilet,
+            @RequestParam("mood") Mood mood,
+            @RequestParam("mainAlcohol") Alcohol mainAlcohol,
+            @RequestParam("price") Price price,
+            @RequestParam("cleanness") Cleanness cleanness,
+            @RequestParam("openStyle") OpenStyle openStyle) {
+        barInfoReviewService.putBarInfoReview(barSeq, userSeq, rate, toilet, mood, mainAlcohol, price, cleanness, openStyle);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/bar/{barSeq}/infoReview")//서비스와 레파지토리 이용하여 수정함
+    @GetMapping("/bar/{barSeq}/infoReview")// 술집 리뷰 리스트 조회 (8/18 API 테스트 완료)
     public List<BarInfoReview> getRestaurantInfoReviewList(@PathVariable("barSeq") Long barSeq) {
 //        return barMap.get(barSeq).getBarInfoReviewList();
         return barInfoReviewService.getBarInfoReviewList(barSeq);

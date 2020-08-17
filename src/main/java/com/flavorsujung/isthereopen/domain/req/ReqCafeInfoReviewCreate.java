@@ -23,7 +23,7 @@ public class ReqCafeInfoReviewCreate {
     @Convert(converter = TableHeightConverter.class)
     TableHeight tableHeight; //0 낮음, 1 보통, 2 높음
     Lightness lightness; // 0 어두움, 1 중간, 2 밝음
-    @Convert(converter = LongStayConverter.class)
-    @Convert(converter = LongStayConverter.class)
-    LongStay longStay; // 0 가능, 1 보통, 2 눈치보임
+    @Convert(converter = StayLongConverter.class)
+    @Convert(converter = StayLongConverter.class)
+    StayLong stayLong; // 0 가능, 1 보통, 2 눈치보임
 }
