@@ -15,5 +15,5 @@ public class ReqCafeOpenReviewCreate {
     Long userSeq;
     @Convert(converter = OpenStateConverter.class)
     OpenState openState; //0 close, 1 break time, 2 open, 3 미확인
-    Date lastUpdate;
+    //Date lastUpdate;
 }

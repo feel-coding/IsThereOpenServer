@@ -30,5 +30,9 @@ public class CafeService {
         cafe.setPhoneNum(phoneNum);
         cafe.setPhotoUrl(photoUrl);
         cafe.setCurrentState(OpenState.UNKNOWN);
+        cafeRepository.save(cafe);
+    }
+    public void postCafe(Cafe cafe) { //카페 정보 수정
+        cafeRepository.save(cafe);
     }
 }

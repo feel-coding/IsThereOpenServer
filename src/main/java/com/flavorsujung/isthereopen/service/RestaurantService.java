@@ -25,4 +25,19 @@ public class RestaurantService {
         Restaurant restaurant = restaurantRepository.findRestaurantBySeq(seq);
         return restaurant.getCurrentState();
     }
+
+    public void putRestaurant(String name, String address, String runningTime, String phoneNum, String photoUrl) {
+        Restaurant restaurant = new Restaurant();
+        restaurant.setCurrentState(OpenState.UNKNOWN);
+        restaurant.setAddress(address);
+        restaurant.setName(name);
+        restaurant.setPhotoUrl(photoUrl);
+        restaurant.setRunningTime(runningTime);
+        restaurant.setPhoneNum(phoneNum);
+        restaurantRepository.save(restaurant);
+    }
+
+    public void postRestaurant(Restaurant restaurant) {
+        restaurantRepository.save(restaurant);
+    }
 }
