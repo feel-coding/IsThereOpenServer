@@ -23,7 +23,7 @@ public class RestaurantOpenReview {
     Long restaurantSeq;
     @Convert(converter = OpenStateConverter.class)
     OpenState openState; //0 close, 1 break time, 2 open, 3 미확인
-    Date createdAt;
+    Date lastUpdate;
 
     public RestaurantOpenReview(Long seq, Long restaurantSeq, Long userSeq, OpenState openState) {
         this.seq = seq;

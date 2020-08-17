@@ -25,6 +25,7 @@ public class Restaurant {
     private Long seq;
     private String name;
     private String address;
+    private String phoneNum;
     private String runningTime;
     private Double avgRate;
     @Convert(converter = OpenStateConverter.class)
@@ -34,10 +35,11 @@ public class Restaurant {
 //    private List<RestaurantInfoReview> restaurantInfoReviewList;
 //    private List<RestaurantOpenReview> restaurantOpenReviewList;
 
-    public Restaurant(Long seq, String name, String address, String runningTime) {
+    public Restaurant(Long seq, String name, String address,String phoneNum, String runningTime) {
         this.seq = seq;
         this.name = name;
         this.address = address;
+        this.phoneNum=phoneNum;
         this.runningTime = runningTime;
         avgRate = -1.0;
         currentState = OpenState.UNKNOWN;
@@ -45,10 +47,11 @@ public class Restaurant {
 //        restaurantOpenReviewList = new ArrayList<>();
     }
 
-    public Restaurant(Long seq, String name, String address, String runningTime, String photoURL) {
+    public Restaurant(Long seq, String name, String address,String phoneNum, String runningTime, String photoURL) {
         this.seq = seq;
         this.name = name;
         this.address = address;
+        this.phoneNum=phoneNum;
         this.runningTime = runningTime;
         avgRate = -1.0;
         currentState = OpenState.UNKNOWN;

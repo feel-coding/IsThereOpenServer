@@ -19,6 +19,8 @@ public class RestaurantInfoReview {
     Long seq;
     Long restaurantSeq;
     Long userSeq;
+    @Convert(converter = RateConverter.class)
+    Rate rate;
     @Convert(converter = WaitingTimeConverter.class)
     WaitingTime waitingTime; // 0 짧은 편, 1 보통, 2 긴편
     @Convert(converter = CleannessConverter.class)

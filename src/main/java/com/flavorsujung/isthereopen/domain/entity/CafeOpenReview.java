@@ -24,14 +24,15 @@ public class CafeOpenReview {
     Long cafeSeq;
     @Convert(converter = OpenStateConverter.class)
     OpenState openState; //0 close, 1 break time, 2 open, 3 미확인
-    Date createdAt;
-    Integer lightness; // 0 어두움, 1 중간, 2 밝음
+    Date lastUpdate;
+    //Integer lightness; // 0 어두움, 1 중간, 2 밝음
 
     public CafeOpenReview(Long seq, Long cafeSeq, Long userSeq, OpenState openState) {
         this.seq = seq;
         this.cafeSeq = cafeSeq;
         this.userSeq = userSeq;
         this.openState = openState;
+
     }
 
 }
