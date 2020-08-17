@@ -34,35 +34,42 @@ class IsthereopenApplicationTests {
 
     @Test
     void contextLoads() {
-        List<User> userList = userRepository.findAll();
-        System.out.println(userList);
-        User user = new User();
-        user.setName("봉봉이");
-        userRepository.save(user);
-        System.out.println(user); //name말고 다른게 자동으로 등록됨
-        //save한다음에 seq값을 써야한다. 저절로 seq가 들어가있는지 확인한다.
 
-        System.out.println(userList);
+        //User 검사코드
+//        List<User> userList = userRepository.findAll();
+//        System.out.println(userList);
+//        User user = new User();
+//        user.setName("봉봉이");
+//        userRepository.save(user);
+//        System.out.println(user); //name말고 다른게 자동으로 등록됨
+//        //save한다음에 seq값을 써야한다. 저절로 seq가 들어가있는지 확인한다.
+//
+//        System.out.println(userList);
+//
+//        userRepository.delete(user);
 
-        userRepository.delete(user);
-
-        List<BarInfoReview> barInfoReviewList = barInfoReviewRepository.findAll();
+       /* List<BarInfoReview> barInfoReviewList = barInfoReviewRepository.findAll();*/
 
 
         Bar bar = new Bar(0L, "육회본가", "성북구 어쩌구","오전 9시~오후 11시");
         barRepository.save(bar);
         System.out.println(bar);
 
+
         BarInfoReview barInfoReview = new BarInfoReview();
         barInfoReview.setUserSeq(1L);
         barInfoReview.setBarSeq(0L);
+
+        /*BarInfoReview barInfoReview = new BarInfoReview();
+        barInfoReview.setUserSeq((long)1);
+        barInfoReview.setBarSeq((long)0);
         barInfoReview.setMainAlcohol(Alcohol.SOJU);
         barInfoReview.setPrice(Price.CHEAP);
         barInfoReview.setOpenStyle(OpenStyle.NORMAL);
         barInfoReview.setCleanness(Cleanness.CLEAN);
         barInfoReview.setMood(Mood.LOUD);
         barInfoReviewRepository.save(barInfoReview);
-        System.out.println(barInfoReview);
+        System.out.println(barInfoReview);*/
         //무드를 설정한다.
 
         //헤더명(이거 꼭 해야함)

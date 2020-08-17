@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class BarPatron {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long seq;
-    Long barSeq;
-    Long userSeq;
+    private Long seq;
+    private Long userSeq;
+    private Long barSeq;
 }

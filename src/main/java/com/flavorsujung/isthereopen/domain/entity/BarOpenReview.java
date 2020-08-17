@@ -18,13 +18,10 @@ import java.util.Date;
 public class BarOpenReview {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Integer seq;
-    Long barSeq;
-    Long userSeq;
+    private Long seq;
+    private Long userSeq;
+    private Long barSeq;
     @Convert(converter = OpenStateConverter.class)
-    OpenState openState; //0 close, 1 break time, 2 open, 3 미확인
-    Date createdAt;
-
-
-
+    private OpenState openState; //0 close, 1 break time, 2 open, 3 미확인
+    private Date createdAt;
 }
