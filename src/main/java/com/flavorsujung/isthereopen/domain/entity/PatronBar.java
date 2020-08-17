@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString(exclude = {})
 @Entity
-public class BarPatron {
+public class PatronBar {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long seq;

@@ -2,17 +2,17 @@ DROP TABLE IF EXISTS `bar`;
 DROP TABLE IF EXISTS `bar_info`;
 DROP TABLE IF EXISTS `bar_info_review`;
 DROP TABLE IF EXISTS `bar_open_review`;
-DROP TABLE IF EXISTS `bar_patron`;
+DROP TABLE IF EXISTS `patron_bar`;
 DROP TABLE IF EXISTS `cafe`;
 DROP TABLE IF EXISTS `cafe_info`;
 DROP TABLE IF EXISTS `cafe_info_review`;
 DROP TABLE IF EXISTS `cafe_open_review`;
-DROP TABLE IF EXISTS `cafe_patron`;
+DROP TABLE IF EXISTS `patron_cafe`;
 DROP TABLE IF EXISTS `restaurant`;
 DROP TABLE IF EXISTS `restaurant_info`;
 DROP TABLE IF EXISTS `restaurant_info_review`;
 DROP TABLE IF EXISTS `restaurant_open_review`;
-DROP TABLE IF EXISTS `restaurant_patron`;
+DROP TABLE IF EXISTS `patron_restaurant`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `user_auth`;
 
@@ -73,7 +73,7 @@ CREATE TABLE `bar_open_review` (
   PRIMARY KEY (`seq`))
 DEFAULT CHARACTER SET = utf8mb4;
 
-CREATE TABLE `bar_patron` (
+CREATE TABLE `patron_bar` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `bar_seq` BIGINT(20) UNSIGNED NOT NULL,
@@ -143,7 +143,7 @@ CREATE TABLE `cafe_open_review` (
   PRIMARY KEY (`seq`))
 DEFAULT CHARACTER SET = utf8mb4;
 
-CREATE TABLE `cafe_patron` (
+CREATE TABLE `patron_cafe` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `cafe_seq` BIGINT(20) UNSIGNED NOT NULL,
@@ -209,7 +209,7 @@ CREATE TABLE `restaurant_open_review` (
   PRIMARY KEY (`seq`))
 DEFAULT CHARACTER SET = utf8mb4;
 
-CREATE TABLE `restaurant_patron` (
+CREATE TABLE `patron_restaurant` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `restaurant_seq` BIGINT(20) UNSIGNED NOT NULL,

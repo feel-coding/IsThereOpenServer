@@ -37,12 +37,12 @@ public class CafeController {
         return cafeService.getCafe(cafeSeq).getCurrentState();
     }
 
-    @GetMapping("/cafe/all") // (8/17 API 테스트 완료)
+    @GetMapping("/cafe/all") // 카페 리스트 조회 (8/17 API 테스트 완료)
     public List<Cafe> getCafeList() {
         return cafeService.getCafeList();
     }
 
-    @GetMapping("/cafe/{cafeSeq}") // (8/17 API 테스트 완료)
+    @GetMapping("/cafe/{cafeSeq}") // 카페 조회 (8/17 API 테스트 완료)
     public Cafe getCafe(@PathVariable("cafeSeq") Long cafeSeq) {
         return cafeService.getCafe(cafeSeq);
     }
@@ -56,7 +56,7 @@ public class CafeController {
         cafeService.putCafe(name, address, runningTime, phoneNum, photoURL);
     }
 
-    @PostMapping("/cafe/{cafeSeq}") //카페 오픈 여부 수정 (8/17 API 테스트 완료)
+    @PostMapping("/cafe/{cafeSeq}") //카페 오픈 여부 변경 (8/17 API 테스트 완료)
     public void postCafeCurrentState(@PathVariable("cafeSeq") Long cafeSeq, @RequestParam("currentState") OpenState currentState) {
         Cafe cafe = cafeService.getCafe(cafeSeq);
         cafe.setCurrentState(currentState);

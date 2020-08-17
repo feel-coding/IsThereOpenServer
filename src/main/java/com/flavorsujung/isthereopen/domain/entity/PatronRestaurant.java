@@ -12,11 +12,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString(exclude = {})
 @Entity
-public class RestaurantPatron {
+public class PatronRestaurant {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long seq;
-    Integer userSeq;
-    Integer restaurantSeq;
+    private Long seq;
+    private Long userSeq;
+    private Long restaurantSeq;
 
 }

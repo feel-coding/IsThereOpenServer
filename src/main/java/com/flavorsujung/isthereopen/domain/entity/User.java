@@ -22,7 +22,7 @@ public class User {
     private Long seq;
     private String name;
 
-    public User(Long seq, String id, String name) {
+    public User(Long seq, String name) {
         this.seq = seq;
         this.name = name;
     }

@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString(exclude = {})
 @Entity
-public class CafePatron {
+public class PatronCafe {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long seq;

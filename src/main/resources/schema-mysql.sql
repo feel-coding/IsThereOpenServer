@@ -60,7 +60,7 @@ CREATE TABLE `bar_open_review` (
 DEFAULT CHARACTER SET = utf8mb4;
 COLLATE = utf8mb4_unicode_ci;
 
-CREATE TABLE `bar_patron` (
+CREATE TABLE `patron_bar` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `bar_seq` BIGINT(20) UNSIGNED NOT NULL,
@@ -132,7 +132,7 @@ CREATE TABLE `cafe_open_review` (
 DEFAULT CHARACTER SET = utf8mb4;
 COLLATE = utf8mb4_unicode_ci;
 
-CREATE TABLE `cafe_patron` (
+CREATE TABLE `patron_cafe` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `cafe_seq` BIGINT(20) UNSIGNED NOT NULL,
@@ -200,7 +200,7 @@ CREATE TABLE `restaurant_open_review` (
 DEFAULT CHARACTER SET = utf8mb4;
 COLLATE = utf8mb4_unicode_ci;
 
-CREATE TABLE `restaurant_patron` (
+CREATE TABLE `patron_restaurant` (
   `seq` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_seq` BIGINT(20) UNSIGNED NOT NULL,
   `restaurant_seq` BIGINT(20) UNSIGNED NOT NULL,

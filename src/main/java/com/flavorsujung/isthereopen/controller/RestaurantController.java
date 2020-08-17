@@ -46,12 +46,12 @@ public class RestaurantController {
     }
 
     @PutMapping("/restaurant") //식당 추가 (8/17 API 테스트 완료)
-    public void putRestaurant(@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("runningTime") String runningTime, @RequestParam("phoneNum") String phoneNum,@RequestParam("photoURL") @Nullable String photoUrl) {
-//        Long seq = (long)(restaurantMap.size());
-//        if(photoUrl == null)
-//            restaurantMap.put(seq, new Restaurant(seq, name, address, runningTime));
-//        else
-//            restaurantMap.put(seq, new Restaurant(seq, name, address, runningTime, photoUrl));
+    public void putRestaurant(
+            @RequestParam("name") String name,
+            @RequestParam("address") String address,
+            @RequestParam("runningTime") String runningTime,
+            @RequestParam("phoneNum") String phoneNum,
+            @RequestParam("photoURL") @Nullable String photoUrl) {
         restaurantService.putRestaurant(name, address, runningTime, phoneNum, photoUrl);
     }
 

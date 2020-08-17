@@ -22,4 +22,10 @@ public class UserService {
         return userList;
     }
 
+    public void putUser(String name) {
+        User user = new User();
+        user.setName(name);
+        userRepository.save(user);
+    }
+
 }
