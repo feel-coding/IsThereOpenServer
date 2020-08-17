@@ -24,6 +24,7 @@ public class Bar {
     private Long seq;
     private String name;
     private String address;
+    private String phoneNum;
     private String runningTime;
     private Double avgRate;
     @Convert(converter = OpenStateConverter.class)
@@ -32,17 +33,4 @@ public class Bar {
     private Date lastUpdate;
 //    private List<BarOpenReview> barOpenReviewList;
 //    private List<BarInfoReview> barInfoReviewList;
-
-    public Bar(Long seq, String name, String address,String runningTime) {
-
-        this.seq = seq;
-        this.name = name;
-        this.address = address;
-        this.runningTime = runningTime;
-        avgRate = Double.longBitsToDouble(-1);
-        currentState = OpenState.UNKNOWN;
-//        barInfoReviewList = new ArrayList<>();
-//        barOpenReviewList = new ArrayList<>();
-    }
-
 }

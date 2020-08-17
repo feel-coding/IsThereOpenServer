@@ -18,10 +18,6 @@ import java.util.Map;
 public class CafeController {
     private final CafeService cafeService;
     public static Map<Long, Cafe> cafeMap;
-    public static final Integer CLOSE = 0;
-    public static final Integer BREAKTIME = 1;
-    public static final Integer OPEN = 2;
-    public static final Integer UNKNOWN = 3;
 
     @PostConstruct
     public void init() {
@@ -51,12 +47,13 @@ public class CafeController {
     }
 
     @PutMapping("/cafe") //(API 테스트 완료)
-    public void putCafe(@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("runtime") String runningTime, @RequestParam("photoURL") @Nullable String photoUrl) {
-        Long seq = (long)(cafeMap.size());
-        if(photoUrl == null)
-            cafeMap.put(seq, new Cafe(seq, name, address, runningTime));
-        else
-            cafeMap.put(seq, new Cafe(seq, name, address, runningTime, photoUrl));
+    public void putCafe(@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("runningTime") String runningTime, @RequestParam("phoneNum") String phoneNum,@RequestParam("photoURL") String photoURL) {
+//        Long seq = (long)(cafeMap.size());
+//        if(photoUrl == null)
+//            cafeMap.put(seq, new Cafe(seq, name, address, runningTime));
+//        else
+//            cafeMap.put(seq, new Cafe(seq, name, address, runningTime, photoUrl));
+        cafeService.putCafe(name, address, runningTime, phoneNum, photoURL);
     }
 
     @PostMapping("/cafe/{cafeSeq}") //(API 테스트 완료)

@@ -51,7 +51,14 @@ class IsthereopenApplicationTests {
        /* List<BarInfoReview> barInfoReviewList = barInfoReviewRepository.findAll();*/
 
 
-        Bar bar = new Bar(0L, "육회본가", "성북구 어쩌구","오전 9시~오후 11시");
+        Bar bar = new Bar();
+        bar.setName("육회본가");
+        bar.setAddress("02-922-5590");
+        bar.setRunningTime("매일 18:00 - 06:00");
+        bar.setAddress("서울 성북구 동소문로20길 29-12");
+        bar.setCurrentState(OpenState.UNKNOWN);
+        bar.setPhoneNum("02-922-5590");
+        bar.setPhotoUrl("http://ldb.phinf.naver.net/20180730_123/1532951596640gxkI3_JPEG/50dfaDeftI3Q2xsQVpyg9KK8.jpg");
         barRepository.save(bar);
         System.out.println(bar);
 

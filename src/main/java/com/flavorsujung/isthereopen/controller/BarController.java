@@ -21,8 +21,6 @@ public class BarController {
     @PostConstruct
     public void init() {
         barMap = new HashMap<>();
-        barMap.put((long) 0, new Bar((long) 0, "육회본가", "성북구 어쩌구", "오전 9시~오후 11시"));
-        barMap.put((long) 1, new Bar((long) 1, "대한맥주집", "정문 앞", "오후 12시~오후 8시"));
     }
     @GetMapping("/bar/{barSeq}/openState") // (API 테스트 완료)
     public OpenState getCurrentState(@PathVariable("barSeq") Long barSeq) {
@@ -31,7 +29,8 @@ public class BarController {
 
     @GetMapping("/bar/all") // (API 테스트 완료)
     public List<Bar> getBarList() {
-        return new ArrayList<Bar>(barMap.values());
+        //return new ArrayList<Bar>(barMap.values());
+        return barService.getBarList();
     }
 
     @GetMapping("/bar/{barSeq}") // (API 테스트 완료)
@@ -40,9 +39,10 @@ public class BarController {
     }
 
     @PutMapping("/bar") //(API 테스트 완료)
-    public void putBar(@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("runtime") String runningTime) {
-        Long seq = (long)(barMap.size());
-        barMap.put(seq, new Bar(seq, name, address, runningTime));
+    public void putBar(@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("runningTime") String runningTime, @RequestParam("phoneNum") String phoneNum,@RequestParam("photoURL") String photoURL) {
+//        Long seq = (long)(barMap.size());
+//        barMap.put(seq, new Bar(seq, name, address, runningTime));
+        barService.putBar(name, address, runningTime, phoneNum, photoURL);
     }
 
     @PostMapping("/bar/{barSeq}") //(API 테스트 완료)

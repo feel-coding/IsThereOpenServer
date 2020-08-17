@@ -28,16 +28,15 @@ public class Cafe {
     private Double avgRate;
     @Convert(converter = OpenStateConverter.class)
     private OpenState currentState;
-    private String photoURL;
+    private String photoUrl;
     private Date lastUpdate;
 //    private List<CafeInfoReview> cafeInfoReviewList;
 //    private List<CafeOpenReview> cafeOpenReviewList;
 
-    public Cafe(Long seq, String name, String address,String phoneNum, String runningTime) {
+    public Cafe(Long seq, String name, String address,String runningTime) {
         this.seq = seq;
         this.name = name;
         this.address = address;
-        this.phoneNum = phoneNum;
         this.runningTime = runningTime;
         avgRate = Double.longBitsToDouble(-1);
         currentState = OpenState.UNKNOWN;
@@ -45,7 +44,7 @@ public class Cafe {
 //        cafeOpenReviewList = new ArrayList<>();
     }
 
-    public Cafe(Long seq, String name, String address, String phoneNum, String runningTime, String photoURL) {
+    public Cafe(Long seq, String name, String address, String runningTime, String photoUrl) {
         this.seq = seq;
         this.name = name;
         this.address = address;
@@ -53,7 +52,7 @@ public class Cafe {
         this.runningTime = runningTime;
         avgRate = Double.longBitsToDouble(-1);
         this.currentState = OpenState.UNKNOWN;
-        this.photoURL = photoURL;
+        this.photoUrl = photoUrl;
 //        cafeInfoReviewList = new ArrayList<>();
 //        cafeOpenReviewList = new ArrayList<>();
     }

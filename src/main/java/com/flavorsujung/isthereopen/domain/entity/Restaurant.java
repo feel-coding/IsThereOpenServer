@@ -30,32 +30,26 @@ public class Restaurant {
     private Double avgRate;
     @Convert(converter = OpenStateConverter.class)
     private OpenState currentState;
-    private String photoURL;
+    private String photoUrl;
     private Date lastUpdate;
-//    private List<RestaurantInfoReview> restaurantInfoReviewList;
-//    private List<RestaurantOpenReview> restaurantOpenReviewList;
 
-    public Restaurant(Long seq, String name, String address,String phoneNum, String runningTime) {
+    public Restaurant(Long seq, String name, String address,String runningTime) {
         this.seq = seq;
         this.name = name;
         this.address = address;
-        this.phoneNum=phoneNum;
         this.runningTime = runningTime;
         avgRate = -1.0;
         currentState = OpenState.UNKNOWN;
-//        restaurantInfoReviewList = new ArrayList<>();
-//        restaurantOpenReviewList = new ArrayList<>();
     }
 
-    public Restaurant(Long seq, String name, String address,String phoneNum, String runningTime, String photoURL) {
+    public Restaurant(Long seq, String name, String address, String runningTime, String photoUrl) {
         this.seq = seq;
         this.name = name;
         this.address = address;
-        this.phoneNum=phoneNum;
         this.runningTime = runningTime;
         avgRate = -1.0;
         currentState = OpenState.UNKNOWN;
-        this.photoURL = photoURL;
+        this.photoUrl = photoUrl;
 //        restaurantInfoReviewList = new ArrayList<>();
 //        restaurantOpenReviewList = new ArrayList<>();
     }
