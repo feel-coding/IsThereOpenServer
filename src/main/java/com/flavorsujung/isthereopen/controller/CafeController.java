@@ -32,7 +32,7 @@ public class CafeController {
 //        cafeMap.put((long) 6, new Cafe((long) 6, "본크레페", "서울 성북구 동소문로20다길 30", "평일 14:00 - 19:00", "http://ldb.phinf.naver.net/20150813_69/1439473829903KC20W_JPEG/SUBMIT_1439434572823_33646766.jpg"));
         }
 
-    @GetMapping("/cafe/{cafeSeq}/openState") // (8/17 API 테스트 완료)
+    @GetMapping("/cafe/{cafeSeq}/openState") // 카페 오픈 여부 조회 (8/17 API 테스트 완료)
     public OpenState getCurrentState(@PathVariable("cafeSeq") Long cafeSeq) {
         return cafeService.getCafe(cafeSeq).getCurrentState();
     }
@@ -85,7 +85,7 @@ public class CafeController {
     }
 
     @DeleteMapping("/cafe") // 카페 삭제 (8/18 API 테스트 완료)
-    public void deleteCafe(Long cafeSeq){
+    public void deleteCafe(@PathVariable("cafeSeq") Long cafeSeq){
         cafeService.deleteCafe(cafeSeq);
     }
 }

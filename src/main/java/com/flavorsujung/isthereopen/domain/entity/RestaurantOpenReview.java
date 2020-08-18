@@ -24,11 +24,5 @@ public class RestaurantOpenReview {
     @Convert(converter = OpenStateConverter.class)
     private OpenState openState; //0 close, 1 break time, 2 open, 3 미확인
 
-    public RestaurantOpenReview(Long seq, Long restaurantSeq, Long userSeq, OpenState openState) {
-        this.seq = seq;
-        this.restaurantSeq = restaurantSeq;
-        this.userSeq = userSeq;
-        this.openState = openState;
-    }
 
 }

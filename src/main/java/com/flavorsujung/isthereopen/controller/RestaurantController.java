@@ -61,7 +61,7 @@ public class RestaurantController {
     }
 
     @DeleteMapping("/restaurant") // 식당 삭제 (8/18 API 테스트 완료)
-    public void deleteRestaurant(Long restaurantSeq) {
+    public void deleteRestaurant(@RequestParam("restaurantSeq") Long restaurantSeq) {
         restaurantService.deleteRestaurant(restaurantSeq);
     }
 

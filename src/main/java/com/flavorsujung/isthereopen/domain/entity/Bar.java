@@ -31,6 +31,4 @@ public class Bar {
     private OpenState currentState;
     private String photoUrl;
     private Date lastUpdate;
-//    private List<BarOpenReview> barOpenReviewList;
-//    private List<BarInfoReview> barInfoReviewList;
 }

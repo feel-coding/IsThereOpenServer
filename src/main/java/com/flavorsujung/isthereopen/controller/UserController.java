@@ -37,11 +37,24 @@ public class UserController {
     }
 
     @PutMapping("/user")
-    public void putUser( @RequestParam("name") String name) {
+    public Integer putUser( @RequestParam("name") String name) {
 //        Long seq = (long)(userMap.size());
 //        User user = new User(seq, name);
 //        userMap.put(seq, user);
-        userService.putUser(name);
+        boolean exist = false;
+        for(User user : userService.getUserList()) {
+            if(user.getName().equals(name)) {
+                exist = true;
+                break;
+            }
+        }
+        if(!exist) {
+            userService.putUser(name);
+            return 0;
+        }
+        else {
+            return -1;
+        }
     }
 
     @PostMapping("/user/{seq}")
