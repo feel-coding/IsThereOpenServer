@@ -36,6 +36,6 @@ public class RestaurantInfoReviewService {
     }
 
     public List<RestaurantInfoReview> getRestaurantInfoReviewList(Long restaurantSeq) {
-        return restaurantInfoReviewRepository.findRestaurantInfoReviewBySeq(restaurantSeq);
+        return restaurantInfoReviewRepository.findRestaurantInfoReviewByRestaurantSeq(restaurantSeq);
     }
 }

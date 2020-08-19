@@ -9,5 +9,5 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface RestaurantInfoReviewRepository extends JpaRepository<RestaurantInfoReview, Long> {
-    List<RestaurantInfoReview> findRestaurantInfoReviewBySeq(Long restaurantSeq);
+    List<RestaurantInfoReview> findRestaurantInfoReviewByRestaurantSeq(Long restaurantSeq);
 }

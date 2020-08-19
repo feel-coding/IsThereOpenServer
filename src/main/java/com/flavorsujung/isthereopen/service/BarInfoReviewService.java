@@ -32,6 +32,6 @@ public class BarInfoReviewService {
     }
 
     public List<BarInfoReview> getBarInfoReviewList(Long barSeq) {
-        return barInfoReviewRepository.findBarInfoReviewBySeq(barSeq);
+        return barInfoReviewRepository.findBarInfoReviewByBarSeq(barSeq);
     }
 }

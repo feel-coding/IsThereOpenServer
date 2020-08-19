@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.TimeZone;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,7 +22,6 @@ public class BarInfoReviewController {
 
     @PostConstruct
     public void init() {
-//        barInfoReviewMap = new HashMap<>();
     }
 
     @PutMapping("/bar/{barSeq}/infoReview")// 술집 정보 리뷰 추가 (8/18 API 테스트 완료)

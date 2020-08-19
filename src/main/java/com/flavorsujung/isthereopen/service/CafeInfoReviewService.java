@@ -34,6 +34,6 @@ public class CafeInfoReviewService {
     }
 
     public List<CafeInfoReview> getCafeInfoReviewList(Long cafeSeq) {
-        return cafeInfoReviewRepository.findCafeInfoReviewBySeq(cafeSeq);
+        return cafeInfoReviewRepository.findCafeInfoReviewByCafeSeq(cafeSeq);
     }
 }
