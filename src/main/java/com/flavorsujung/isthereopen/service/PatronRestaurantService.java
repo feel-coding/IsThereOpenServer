@@ -21,4 +21,8 @@ public class PatronRestaurantService {
         patronRestaurant.setUserSeq(userSeq);
         patronRestaurantRepository.save(patronRestaurant);
     }
+
+    public void deletePatronRestaurant(Long userSeq, Long restaurantSeq) {
+        patronRestaurantRepository.deletePatronRestaurantByUserSeqAndRestaurantSeq(userSeq, restaurantSeq);
+    }
 }

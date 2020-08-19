@@ -22,5 +22,8 @@ public class PatronCafeService {
         patronCafe.setUserSeq(userSeq);
         patronCafeRepository.save(patronCafe);
     }
+    public void deletePatronCafe(Long userSeq, Long cafeSeq) {
+        patronCafeRepository.deletePatronCafeByUserSeqAndCafeSeq(userSeq, cafeSeq);
+    }
 
 }

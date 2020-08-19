@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -37,4 +38,8 @@ public class CafeInfoReview {
     private StayLong stayLong; // 0 가능, 1 보통, 2 눈치보임
     @Convert(converter = OpenStyleConverter.class)
     private OpenStyle openStyle; //0 잘 지키는 편, 1 보통, 2 들쭉날쭉 지맘대로
+    @Basic(optional = false)
+    @Column(name = "createdAt", insertable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
 }

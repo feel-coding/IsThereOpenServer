@@ -22,4 +22,8 @@ public class PatronBarService {
         patronBar.setUserSeq(userSeq);
         patronBarRepository.save(patronBar);
     }
+
+    public void deleteBar(Long userSeq, Long barSeq) {
+        patronBarRepository.deletePatronBarByUserSeqAndAndBarSeq(userSeq, barSeq);
+    }
 }

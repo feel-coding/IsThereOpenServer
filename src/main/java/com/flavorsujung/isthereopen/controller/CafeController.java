@@ -85,7 +85,7 @@ public class CafeController {
     }
 
     @DeleteMapping("/cafe") // 카페 삭제 (8/18 API 테스트 완료)
-    public void deleteCafe(@PathVariable("cafeSeq") Long cafeSeq){
+    public void deleteCafe(@RequestParam("cafeSeq") Long cafeSeq){
         cafeService.deleteCafe(cafeSeq);
     }
 }

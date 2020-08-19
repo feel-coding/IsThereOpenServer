@@ -8,7 +8,8 @@ import lombok.RequiredArgsConstructor;
 public enum TableHeight {//0 낮음, 1 보통, 2 높음
     LOW(0),
     NORMAL(1),
-    HIGH(2);
+    HIGH(2),
+    NOTABLE(3);
     private final int tableHeight;
     public static TableHeight valueOf(int tableHeight) {
         for(TableHeight height : values())

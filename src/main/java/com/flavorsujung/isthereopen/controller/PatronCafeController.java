@@ -21,4 +21,9 @@ public class PatronCafeController {
     public void putPatronCafe(@PathVariable("seq") Long userSeq, @RequestParam("cafeSeq") Long cafeSeq) {
         patronCafeService.putPatronCafe(userSeq, cafeSeq);
     }
+
+    @DeleteMapping("/user/{seq}/patronCafe")
+    public void deletePatronCafe(@PathVariable("seq") Long userSeq, @RequestParam("cafeSeq") Long cafeSeq) {
+        patronCafeService.deletePatronCafe(userSeq, cafeSeq);
+    }
 }

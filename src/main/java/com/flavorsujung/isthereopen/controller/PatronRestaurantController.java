@@ -20,4 +20,9 @@ public class PatronRestaurantController {
     public void putPatronRestaurant(@PathVariable("seq") Long userSeq, @RequestParam("restaurantSeq") Long restaurantSeq) {
         patronRestaurantService.putPatronRestaurant(userSeq, restaurantSeq);
     }
+
+    @DeleteMapping("/user/{seq}/patronRestaurant")
+    public void deletePatronRestaurant(@PathVariable("seq") Long userSeq, @RequestParam("restaurantSeq") Long restaurantSeq) {
+        patronRestaurantService.deletePatronRestaurant(userSeq, restaurantSeq);
+    }
 }

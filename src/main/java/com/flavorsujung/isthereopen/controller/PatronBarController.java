@@ -20,4 +20,9 @@ public class PatronBarController {
     public void putPatronBar(@PathVariable("seq") Long userSeq, @RequestParam("barSeq") Long barSeq) {
         patronBarService.putPatronBar(userSeq, barSeq);
     }
+
+    @DeleteMapping("/user/{seq}/patronBar")
+    public void deletePatronBar(@PathVariable("seq") Long userSeq, @RequestParam("barSeq") Long barSeq) {
+        patronBarService.deleteBar(userSeq, barSeq);
+    }
 }
