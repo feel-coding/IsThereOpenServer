@@ -36,7 +36,7 @@ public class BarOpenReviewController {
 
     @PutMapping("/bar/{barSeq}/openReview")// 술집 오픈리뷰 작성(8/18 API 테스트 완료)
     public ResponseEntity<Void> putBarOpenReview(
-            @PathVariable Long barSeq,
+            @PathVariable("barSeq") Long barSeq,
             @RequestParam("userSeq") Long userSeq,
             @RequestParam("openState") OpenState openState) {
         barOpenReviewService.putBarOpenReview(barSeq, userSeq, openState);

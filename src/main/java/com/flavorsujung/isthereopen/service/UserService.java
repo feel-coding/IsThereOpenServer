@@ -22,10 +22,11 @@ public class UserService {
         return userList;
     }
 
-    public void putUser(String name) {
+    public Long putUser(String name) {
         User user = new User();
         user.setName(name);
-        userRepository.save(user);
+        user = userRepository.save(user);
+        return user.getSeq();
     }
 
 }

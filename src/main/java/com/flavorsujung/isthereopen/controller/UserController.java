@@ -37,10 +37,7 @@ public class UserController {
     }
 
     @PutMapping("/user")
-    public Integer putUser( @RequestParam("name") String name) {
-//        Long seq = (long)(userMap.size());
-//        User user = new User(seq, name);
-//        userMap.put(seq, user);
+    public Long putUser( @RequestParam("name") String name) {
         boolean exist = false;
         for(User user : userService.getUserList()) {
             if(user.getName().equals(name)) {
@@ -49,11 +46,10 @@ public class UserController {
             }
         }
         if(!exist) {
-            userService.putUser(name);
-            return 0;
+            return userService.putUser(name);
         }
         else {
-            return -1;
+            return -1L;
         }
     }
 
