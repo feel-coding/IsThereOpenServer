@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.text.CollationElementIterator;
+import java.util.Collections;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -41,8 +43,11 @@ public class BarInfoReviewController {
 
     @GetMapping("/bar/{barSeq}/infoReview")// 술집 리뷰 리스트 조회 (8/18 API 테스트 완료)
     public List<BarInfoReview> getRestaurantInfoReviewList(@PathVariable("barSeq") Long barSeq) {
-//        return barMap.get(barSeq).getBarInfoReviewList();
-        return barInfoReviewService.getBarInfoReviewList(barSeq);
+        List<BarInfoReview> reviewList = barInfoReviewService.getBarInfoReviewList(barSeq);
+        if(reviewList != null) {
+            Collections.sort(reviewList, (r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt()));
+        }
+        return reviewList;
     }
 
 //    @GetMapping("/bar/{barSeq}/infoReview/{infoReviewSeq}")

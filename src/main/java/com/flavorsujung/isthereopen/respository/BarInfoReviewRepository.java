@@ -9,5 +9,5 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface BarInfoReviewRepository extends JpaRepository<BarInfoReview, Long> {
-    List<BarInfoReview> findBarInfoReviewByBarSeq(Long barSeq);
+    List<BarInfoReview> findBarInfoReviewsByBarSeq(Long barSeq);
 }

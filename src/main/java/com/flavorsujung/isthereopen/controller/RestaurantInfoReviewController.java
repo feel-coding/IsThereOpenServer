@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.Convert;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +30,7 @@ public class RestaurantInfoReviewController {
     }
 
     @PutMapping("/restaurant/{restaurantSeq}/infoReview") // 식당 정보 리뷰 작성 (8/18 API 테스트 완료)
-    public ResponseEntity<Void> putRestaurantInfoReview(
+    public ResponseEntity<Void> putRestaurantInfoReviewList(
             @PathVariable("restaurantSeq") Long restaurantSeq,
             @RequestParam("userSeq") Long userSeq,
             @RequestParam("rate") Rate rate,
@@ -46,7 +47,11 @@ public class RestaurantInfoReviewController {
     @GetMapping("/restaurant/{restaurantSeq}/infoReview") // 식당 정보 리뷰 리스트 조회 (8/18 API 테스트 완료)
     public List<RestaurantInfoReview> getRestaurantInfoReviewList(@PathVariable("restaurantSeq") Long restaurantSeq) {
 //        return restaurantMap.get(restaurantSeq).getRestaurantInfoReviewList();
-        return restaurantInfoReviewService.getRestaurantInfoReviewList(restaurantSeq);
+        List<RestaurantInfoReview> reviewList =  restaurantInfoReviewService.getRestaurantInfoReviewList(restaurantSeq);
+        if(reviewList != null) {
+            Collections.sort(reviewList, (r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt()));
+        }
+        return reviewList;
     }
 
 //    @GetMapping("/restaurant/{restaurantSeq}/infoReview/{infoReviewSeq}") //특정 식당의 몇 번째 리뷰 가져오기 (API 테스트 완료)

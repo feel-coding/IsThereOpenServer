@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -40,7 +41,11 @@ public class CafeInfoReviewController {
 
     @GetMapping("/cafe/{cafeSeq}/infoReview") //카페 정보 리뷰 리스트 조회 (8/18 API 테스트 완료)
     public List<CafeInfoReview> getCafeInfoReviewList(@PathVariable("cafeSeq") Long cafeSeq) {
-        return cafeInfoReviewService.getCafeInfoReviewList(cafeSeq);
+        List<CafeInfoReview> reviewList = cafeInfoReviewService.getCafeInfoReviewList(cafeSeq);
+        if(reviewList != null) {
+            Collections.sort(reviewList, (r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt()));
+        }
+        return reviewList;
     }
 
 
