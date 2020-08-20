@@ -1,5 +1,6 @@
 package com.flavorsujung.isthereopen.controller;
 
+import com.flavorsujung.isthereopen.domain.entity.BarOpenReview;
 import com.flavorsujung.isthereopen.domain.entity.Cafe;
 import com.flavorsujung.isthereopen.domain.entity.CafeOpenReview;
 import com.flavorsujung.isthereopen.domain.mappedenum.OpenState;
@@ -32,7 +33,11 @@ public class CafeOpenReviewController {
 
     @GetMapping("/cafe/{cafeSeq}/openReview") //카페 오픈 리뷰 조회 (8/17 API 테스트 완료)
     public List<CafeOpenReview> getCafeOpenReviewList(@PathVariable("cafeSeq") Long cafeSeq) {
-        return cafeOpenReviewService.getCafeOpenReviewList(cafeSeq);
+        List<CafeOpenReview> reviewList = cafeOpenReviewService.getCafeOpenReviewList(cafeSeq);
+        if(reviewList != null) {
+            Collections.sort(reviewList, (r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt()));
+        }
+        return reviewList;
     }
 
     @PutMapping("/cafe/{cafeSeq}/openReview") //카페 오픈 리뷰 작성 (8/17 API 테스트 완료)

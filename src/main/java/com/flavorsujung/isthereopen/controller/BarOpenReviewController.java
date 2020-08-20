@@ -31,7 +31,11 @@ public class BarOpenReviewController {
 
     @GetMapping("/bar/{seq}/openReview")// 술집 오픈리뷰 리스트 조회(8/18 API 테스트 완료)
     public List<BarOpenReview> getBarOpenReviewList(@PathVariable("seq") Long seq) {
-        return barOpenReviewService.getBarOpenReviewList(seq);
+        List<BarOpenReview> reviewList = barOpenReviewService.getBarOpenReviewList(seq);
+        if(reviewList != null) {
+            Collections.sort(reviewList, (r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt()));
+        }
+        return reviewList;
     }
 
     @PutMapping("/bar/{barSeq}/openReview")// 술집 오픈리뷰 작성(8/18 API 테스트 완료)

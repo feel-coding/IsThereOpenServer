@@ -16,6 +16,13 @@ public class UserService {
         User user = userRepository.findUserBySeq(userSeq);
         return user;
     }
+    public Long getUserSeq(String userName) {
+        User user = userRepository.findUserByName(userName);
+        if (user == null) {
+            return putUser(userName);
+        }
+        return user.getSeq();
+    }
 
     public List<User> getUserList() {
         List<User> userList = userRepository.findAll();

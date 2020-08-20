@@ -11,6 +11,8 @@ public interface UserRepository extends JpaRepository<User,Long> {
     //List<User> findAllUser();
     User findUserBySeq(Long userSeq);
 
+    User findUserByName(String name);
+
     /*User findUserBySeq(Integer seq)
     SELECT * FROM user WHERE seq = #{seq}*
 

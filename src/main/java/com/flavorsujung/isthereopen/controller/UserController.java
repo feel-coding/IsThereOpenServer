@@ -31,6 +31,11 @@ public class UserController {
         return userService.getUser(seq);
     }
 
+    @GetMapping("/user")
+    public Long getUserSeq(@RequestParam("name") String name) {
+        return userService.getUserSeq(name);
+    }
+
     @GetMapping("/user/all") //서비스와 레파지토리 이용하여 수정함
     public List<User> getUserList() {
         return userService.getUserList();

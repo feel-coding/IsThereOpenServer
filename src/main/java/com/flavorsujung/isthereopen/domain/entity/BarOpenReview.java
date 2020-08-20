@@ -23,4 +23,8 @@ public class BarOpenReview {
     private Long barSeq;
     @Convert(converter = OpenStateConverter.class)
     private OpenState openState; //0 close, 1 break time, 2 open, 3 미확인
+    @Basic(optional = false)
+    @Column(name = "createdAt", insertable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
 }

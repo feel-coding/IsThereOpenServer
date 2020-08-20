@@ -1,5 +1,6 @@
 package com.flavorsujung.isthereopen.controller;
 
+import com.flavorsujung.isthereopen.domain.entity.BarOpenReview;
 import com.flavorsujung.isthereopen.domain.entity.Restaurant;
 import com.flavorsujung.isthereopen.domain.entity.RestaurantOpenReview;
 import com.flavorsujung.isthereopen.domain.mappedenum.OpenState;
@@ -45,8 +46,11 @@ public class RestaurantOpenReviewController {
 
     @GetMapping("/restaurant/{restaurantSeq}/openReview") //특정 식당의 오픈리뷰들 가져오기 (8/18 API 테스트 완료)
     public List<RestaurantOpenReview> getRestaurantOpenReviewList(@PathVariable("restaurantSeq") Long restaurantSeq) {
-//        return restaurantMap.get(restaurantSeq).getRestaurantOpenReviewList();
-        return restaurantOpenReviewService.getRestaurantOpenReviewList(restaurantSeq);
+        List<RestaurantOpenReview> reviewList = restaurantOpenReviewService.getRestaurantOpenReviewList(restaurantSeq);
+        if(reviewList != null) {
+            Collections.sort(reviewList, (r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt()));
+        }
+        return reviewList;
     }
 
 //    @GetMapping("/restaurant/{restaurantSeq}/openReview/{openReviewSeq}") //특정 식당의 몇 번째 오픈리뷰 가져오기 (API 테스트 완료)
