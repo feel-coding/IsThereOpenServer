@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -52,33 +53,135 @@ public class BarInfoReviewController {
     }
 
     @GetMapping("/bar/{barSeq}/toilet")
-    public Long countByToilet(@PathVariable("barSeq") Long barSeq, @RequestParam("toilet") Toilet toilet) {
-        return barInfoReviewService.countByToilet(barSeq, toilet);
+    public List<String> getAvgToilet(@PathVariable("barSeq") Long barSeq) {
+        Long one = barInfoReviewService.countByToilet(barSeq, Toilet.ONE);
+        Long separate = barInfoReviewService.countByToilet(barSeq, Toilet.SEPARATION);
+        List<String> list = new ArrayList<>();
+        Long maxCount = Math.max(one, separate);
+        if(maxCount != 0) {
+            if (one.equals(maxCount)) {
+                list.add("남녀 공용");
+            }
+            if (separate.equals(maxCount)) {
+                list.add("남녀 분리");
+            }
+
+        }
+        return list;
     }
 
     @GetMapping("/bar/{barSeq}/openStyle")
-    public Long countByToilet(@PathVariable("barSeq") Long barSeq, @RequestParam("openStyle") OpenStyle openStyle) {
-        return barInfoReviewService.countByOpenStyle(barSeq, openStyle);
+    public List<String> getAvgOpenStyle(@PathVariable("barSeq") Long barSeq) {
+        Long stable = barInfoReviewService.countByOpenStyle(barSeq, OpenStyle.STABLE);
+        Long normal = barInfoReviewService.countByOpenStyle(barSeq, OpenStyle.NORMAL);
+        Long unstable = barInfoReviewService.countByOpenStyle(barSeq, OpenStyle.UNSTABLE);
+        List<String> openStyleList = new ArrayList<>();
+        Long maxCount = Math.max(stable, Math.max(normal, unstable));
+        if(maxCount != 0) {
+            if(stable.equals(maxCount)) {
+                openStyleList.add("잘 지키는 편");
+            }
+            if (normal.equals(maxCount)) {
+                openStyleList.add("보통");
+            }
+            if(unstable.equals(maxCount)) {
+                openStyleList.add("마음대로 여는 편");
+            }
+        }
+        return openStyleList;
     }
 
     @GetMapping("/bar/{barSeq}/mood")
-    public Long countByMood(@PathVariable("barSeq") Long barSeq, @RequestParam("mood")  Mood mood) {
-        return barInfoReviewService.countByMood(barSeq, mood);
+    public List<String> getAvgMood(@PathVariable("barSeq") Long barSeq) {
+        Long loudCount = barInfoReviewService.countByMood(barSeq, Mood.LOUD);
+        Long normalCount = barInfoReviewService.countByMood(barSeq, Mood.NORMAL);
+        Long silentCount = barInfoReviewService.countByMood(barSeq, Mood.SILENT);
+        List<String> moodList = new ArrayList<>();
+        Long maxCount = Math.max(loudCount, Math.max(normalCount, silentCount));
+        if(maxCount != 0) {
+            if (silentCount.equals(maxCount)) {
+                moodList.add("조용한 편");
+            }
+            if (normalCount.equals(maxCount)) {
+                moodList.add("보통");
+            }
+            if (loudCount.equals(maxCount)) {
+                moodList.add("시끄러운 편");
+            }
+        }
+        return moodList;
     }
 
     @GetMapping("/bar/{barSeq}/alcohol")
-    public Long countByAlcohol(@PathVariable("barSeq") Long barSeq, @RequestParam("alcohol") Alcohol alcohol) {
-        return barInfoReviewService.countByAlcohol(barSeq, alcohol);
+    public List<String> getAvgAlcohol(@PathVariable("barSeq") Long barSeq) {
+        Long soju = barInfoReviewService.countByAlcohol(barSeq, Alcohol.SOJU);
+        Long beer = barInfoReviewService.countByAlcohol(barSeq, Alcohol.BEER);
+        Long makgeolli = barInfoReviewService.countByAlcohol(barSeq, Alcohol.MAKGEOLLI);
+        Long wine = barInfoReviewService.countByAlcohol(barSeq, Alcohol.WINE);
+        Long vodka = barInfoReviewService.countByAlcohol(barSeq, Alcohol.VODKA);
+        List<String> list = new ArrayList<>();
+        Long maxCount = Math.max(soju, Math.max(beer, Math.max(makgeolli, Math.max(wine, vodka))));
+        if(maxCount != 0) {
+            if(soju.equals(maxCount)) {
+                list.add("소주");
+            }
+            if (beer.equals(maxCount)) {
+                list.add("맥주");
+            }
+            if (makgeolli.equals(maxCount)) {
+                list.add("막걸리");
+            }
+            if (wine.equals(maxCount)) {
+                list.add("와인");
+            }
+            if(vodka.equals(maxCount)) {
+                list.add("보드카");
+            }
+        }
+        return list;
+
     }
 
     @GetMapping("/bar/{barSeq}/cleanness")
-    public Long countByToilet(@PathVariable("barSeq") Long barSeq, @RequestParam("cleanness") Cleanness cleanness) {
-        return barInfoReviewService.countByCleanness(barSeq, cleanness);
+    public List<String> getAvgCleanness(@PathVariable("barSeq") Long barSeq) {
+        Long clean = barInfoReviewService.countByCleanness(barSeq, Cleanness.CLEAN);
+        Long normal = barInfoReviewService.countByCleanness(barSeq, Cleanness.NORMAL);
+        Long dirty = barInfoReviewService.countByCleanness(barSeq, Cleanness.DIRTY);
+        List<String> list = new ArrayList<>();
+        Long maxCount = Math.max(clean, Math.max(normal, dirty));
+        if(maxCount != 0) {
+            if (dirty.equals(maxCount)) {
+                list.add("더러운 편");
+            }
+            if (normal.equals(maxCount)) {
+                list.add("보통");
+            }
+            if (clean.equals(maxCount)) {
+                list.add("깨끗한 편");
+            }
+        }
+        return list;
     }
 
     @GetMapping("/bar/{barSeq}/price")
-    public Long countByToilet(@PathVariable("barSeq") Long barSeq, @RequestParam("price") Price price) {
-        return barInfoReviewService.countByPrice(barSeq, price);
+    public List<String> getAvgPrice(@PathVariable("barSeq") Long barSeq) {
+        Long cheap = barInfoReviewService.countByPrice(barSeq, Price.CHEAP);
+        Long normal = barInfoReviewService.countByPrice(barSeq, Price.NORMAL);
+        Long expensive = barInfoReviewService.countByPrice(barSeq, Price.EXPENSIVE);
+        List<String> priceList = new ArrayList<>();
+        Long maxCount = Math.max(cheap, Math.max(normal, expensive));
+        if(maxCount != 0) {
+            if(cheap.equals(maxCount)) {
+                priceList.add("싼 편");
+            }
+            if (normal.equals(maxCount)) {
+                priceList.add("보통");
+            }
+            if(expensive.equals(maxCount)) {
+                priceList.add("비싼 편");
+            }
+        }
+        return priceList;
     }
 
     @GetMapping("/bar/{barSeq}/avgRate")

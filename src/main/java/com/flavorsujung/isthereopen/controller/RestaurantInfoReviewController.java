@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.Convert;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.flavorsujung.isthereopen.controller.RestaurantController.restaurantMap;
 
@@ -59,34 +56,127 @@ public class RestaurantInfoReviewController {
 
 
     @GetMapping("/restaurant/{restaurantSeq}/cleanness")
-    public Long countByCleanness(@PathVariable("restaurantSeq") Long restaurantSeq, @RequestParam("cleanness") Cleanness cleanness) {
-        return restaurantInfoReviewService.countByCleanness(restaurantSeq, cleanness);
+    public List<String> getAvgCleanness(@PathVariable("restaurantSeq") Long restaurantSeq) {
+        Long clean = restaurantInfoReviewService.countByCleanness(restaurantSeq, Cleanness.CLEAN);
+        Long normal = restaurantInfoReviewService.countByCleanness(restaurantSeq, Cleanness.NORMAL);
+        Long dirty = restaurantInfoReviewService.countByCleanness(restaurantSeq, Cleanness.DIRTY);
+        List<String> list = new ArrayList<>();
+        Long maxCount = Math.max(clean, Math.max(normal, dirty));
+        if(maxCount != 0) {
+            if (dirty.equals(maxCount)) {
+                list.add("더러운 편");
+            }
+            if (normal.equals(maxCount)) {
+                list.add("보통");
+            }
+            if (clean.equals(maxCount)) {
+                list.add("깨끗한 편");
+            }
+        }
+        return list;
     }
 
     @GetMapping("/restaurant/{restaurantSeq}/price")
-    public Long countByPrice(@PathVariable("restaurantSeq") Long restaurantSeq, @RequestParam("price") Price price) {
-        return restaurantInfoReviewService.countByPrice(restaurantSeq, price);
+    public List<String> getAvgPrice(@PathVariable("restaurantSeq") Long restaurantSeq) {
+        Long cheap = restaurantInfoReviewService.countByPrice(restaurantSeq, Price.CHEAP);
+        Long normal = restaurantInfoReviewService.countByPrice(restaurantSeq, Price.NORMAL);
+        Long expensive = restaurantInfoReviewService.countByPrice(restaurantSeq, Price.EXPENSIVE);
+        List<String> priceList = new ArrayList<>();
+        Long maxCount = Math.max(cheap, Math.max(normal, expensive));
+        if(maxCount != 0) {
+            if(cheap.equals(maxCount)) {
+                priceList.add("싼 편");
+            }
+            if (normal.equals(maxCount)) {
+                priceList.add("보통");
+            }
+            if(expensive.equals(maxCount)) {
+                priceList.add("비싼 편");
+            }
+        }
+        return priceList;
     }
 
     @GetMapping("/restaurant/{restaurantSeq}/openStyle")
-    public Long countByOpenStyle(@PathVariable("restaurantSeq") Long restaurantSeq, @RequestParam("openStyle") OpenStyle openStyle) {
-        return restaurantInfoReviewService.countByOpenStyle(restaurantSeq, openStyle);
+    public List<String> getAvgOpenStyle(@PathVariable("restaurantSeq") Long restaurantSeq) {
+        Long stable = restaurantInfoReviewService.countByOpenStyle(restaurantSeq, OpenStyle.STABLE);
+        Long normal = restaurantInfoReviewService.countByOpenStyle(restaurantSeq, OpenStyle.NORMAL);
+        Long unstable = restaurantInfoReviewService.countByOpenStyle(restaurantSeq, OpenStyle.UNSTABLE);
+        List<String> openStyleList = new ArrayList<>();
+        Long maxCount = Math.max(stable, Math.max(normal, unstable));
+        if(maxCount != 0) {
+            if(unstable.equals(maxCount)) {
+                openStyleList.add("마음대로 여는 편");
+            }
+            if (normal.equals(maxCount)) {
+                openStyleList.add("보통");
+            }
+            if(stable.equals(maxCount)) {
+                openStyleList.add("잘 지키는 편");
+            }
+        }
+        return openStyleList;
     }
 
+
     @GetMapping("/restaurant/{restaurantSeq}/takeout")
-    public Long countByTakeOut(@PathVariable("restaurantSeq") Long restaurantSeq, @RequestParam("takeout") TakeOut takeOut) {
-        return restaurantInfoReviewService.countByTakeout(restaurantSeq, takeOut);
+    public List<String> getAvgTakeOut(@PathVariable("restaurantSeq") Long restaurantSeq) {
+        Long possible = restaurantInfoReviewService.countByTakeout(restaurantSeq, TakeOut.POSSIBLE);
+        Long unable = restaurantInfoReviewService.countByTakeout(restaurantSeq, TakeOut.UNABLE);
+        List<String> list = new ArrayList<>();
+        Long maxCount = Math.max(possible, unable);
+        if(maxCount != 0) {
+            if (possible.equals(maxCount)) {
+                list.add("포장 가능");
+            }
+            if (unable.equals(maxCount)) {
+                list.add("포장 불가능");
+            }
+        }
+        return list;
     }
 
 
     @GetMapping("/restaurant/{restaurantSeq}/waitingTime")
-    public Long countByWaitingTime(@PathVariable("restaurantSeq") Long restaurantSeq, @RequestParam("waitingTime") WaitingTime waitingTime) {
-        return restaurantInfoReviewService.countByWaitingTime(restaurantSeq, waitingTime);
+    public List<String> countByWaitingTime(@PathVariable("restaurantSeq") Long restaurantSeq) {
+        Long longCount = restaurantInfoReviewService.countByWaitingTime(restaurantSeq, WaitingTime.LONG);
+        Long normalCount = restaurantInfoReviewService.countByWaitingTime(restaurantSeq, WaitingTime.NORMAL);
+        Long shortCount = restaurantInfoReviewService.countByWaitingTime(restaurantSeq, WaitingTime.SHORT);
+        List<String> waitingTimeList = new ArrayList<>();
+        Long maxCount = Math.max(longCount, Math.max(normalCount, shortCount));
+        if(maxCount != 0) {
+            if(shortCount.equals(maxCount)) {
+                waitingTimeList.add("금방 나오는 편");
+            }
+            if (normalCount.equals(maxCount)) {
+                waitingTimeList.add("보통");
+            }
+            if(longCount.equals(maxCount)) {
+                waitingTimeList.add("오래 걸리는 편");
+            }
+        }
+        return waitingTimeList;
     }
 
     @GetMapping("/restaurant/{restaurantSeq}/eatAlone")
-    public Long countByEatAlone(@PathVariable("restaurantSeq") Long restaurantSeq, @RequestParam("eatAlone") EatAlone eatAlone) {
-        return restaurantInfoReviewService.countByEatAlone(restaurantSeq, eatAlone);
+    public List<String> countByEatAlone(@PathVariable("restaurantSeq") Long restaurantSeq) {
+        Long possible = restaurantInfoReviewService.countByEatAlone(restaurantSeq, EatAlone.POSSIBLE);
+        Long normal = restaurantInfoReviewService.countByEatAlone(restaurantSeq, EatAlone.UNCOMFORTABLE);
+        Long unable = restaurantInfoReviewService.countByEatAlone(restaurantSeq, EatAlone.UNABLE);
+        List<String> list = new ArrayList<>();
+        Long maxCount = Math.max(possible, Math.max(normal, unable));
+        if(maxCount != 0) {
+            if (unable.equals(maxCount)) {
+                list.add("불가능");
+            }
+            if (normal.equals(maxCount)) {
+                list.add("혼잡 시간 피하면 가능");
+            }
+            if (possible.equals(maxCount)) {
+                list.add("완전 가능");
+            }
+        }
+        return list;
     }
 
     @GetMapping("/restaurant/{restaurantSeq}/avgRate")
