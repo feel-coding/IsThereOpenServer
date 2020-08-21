@@ -56,178 +56,178 @@ public class CafeInfoReviewController {
     }
 
     @GetMapping("/cafe/{cafeSeq}/openStyle")
-    public List<OpenStyle> getAvgOpenStyle(@PathVariable("cafeSeq") Long cafeSeq) {
+    public List<String> getAvgOpenStyle(@PathVariable("cafeSeq") Long cafeSeq) {
         Long stable = cafeInfoReviewService.countByOpenStyle(cafeSeq, OpenStyle.STABLE);
         Long normal = cafeInfoReviewService.countByOpenStyle(cafeSeq, OpenStyle.NORMAL);
         Long unstable = cafeInfoReviewService.countByOpenStyle(cafeSeq, OpenStyle.UNSTABLE);
-        List<OpenStyle> openStyleList = new ArrayList<>();
+        List<String> openStyleList = new ArrayList<>();
         Long maxCount = Math.max(stable, Math.max(normal, unstable));
         if(maxCount != 0) {
-            if(stable.equals(maxCount)) {
-                openStyleList.add(OpenStyle.STABLE);
+            if(unstable.equals(maxCount)) {
+                openStyleList.add("마음대로 여는 편");
             }
             if (normal.equals(maxCount)) {
-                openStyleList.add(OpenStyle.NORMAL);
+                openStyleList.add("보통");
             }
-            if(unstable.equals(maxCount)) {
-                openStyleList.add(OpenStyle.UNSTABLE);
+            if(stable.equals(maxCount)) {
+                openStyleList.add("잘 지키는 편");
             }
         }
         return openStyleList;
     }
 
     @GetMapping("/cafe/{cafeSeq}/waitingTime")
-    public List<WaitingTime> countByWaitingTime(@PathVariable("cafeSeq") Long cafeSeq) {
+    public List<String> countByWaitingTime(@PathVariable("cafeSeq") Long cafeSeq) {
         Long longCount = cafeInfoReviewService.countByWaitingTime(cafeSeq, WaitingTime.LONG);
         Long normalCount = cafeInfoReviewService.countByWaitingTime(cafeSeq, WaitingTime.NORMAL);
         Long shortCount = cafeInfoReviewService.countByWaitingTime(cafeSeq, WaitingTime.SHORT);
-        List<WaitingTime> waitingTimeList = new ArrayList<>();
+        List<String> waitingTimeList = new ArrayList<>();
         Long maxCount = Math.max(longCount, Math.max(normalCount, shortCount));
         if(maxCount != 0) {
             if(shortCount.equals(maxCount)) {
-                waitingTimeList.add(WaitingTime.SHORT);
+                waitingTimeList.add("금방 나오는 편");
             }
             if (normalCount.equals(maxCount)) {
-                waitingTimeList.add(WaitingTime.NORMAL);
+                waitingTimeList.add("보통");
             }
             if(longCount.equals(maxCount)) {
-                waitingTimeList.add(WaitingTime.LONG);
+                waitingTimeList.add("오래 걸리는 편");
             }
         }
         return waitingTimeList;
     }
 
     @GetMapping("/cafe/{cafeSeq}/price")
-    public List<Price> getAvgPrice(@PathVariable("cafeSeq") Long cafeSeq) {
+    public List<String> getAvgPrice(@PathVariable("cafeSeq") Long cafeSeq) {
         Long cheap = cafeInfoReviewService.countByPrice(cafeSeq, Price.CHEAP);
         Long normal = cafeInfoReviewService.countByPrice(cafeSeq, Price.NORMAL);
         Long expensive = cafeInfoReviewService.countByPrice(cafeSeq, Price.EXPENSIVE);
-        List<Price> priceList = new ArrayList<>();
+        List<String> priceList = new ArrayList<>();
         Long maxCount = Math.max(cheap, Math.max(normal, expensive));
         if(maxCount != 0) {
             if(cheap.equals(maxCount)) {
-                priceList.add(Price.CHEAP);
+                priceList.add("싼 편");
             }
             if (normal.equals(maxCount)) {
-                priceList.add(Price.NORMAL);
+                priceList.add("보통");
             }
             if(expensive.equals(maxCount)) {
-                priceList.add(Price.EXPENSIVE);
+                priceList.add("비싼 편");
             }
         }
         return priceList;
     }
 
     @GetMapping("/cafe/{cafeSeq}/customerNum")
-    public List<CustomerNum> getAvgCustomerNum(@PathVariable("cafeSeq") Long cafeSeq) {
+    public List<String> getAvgCustomerNum(@PathVariable("cafeSeq") Long cafeSeq) {
         Long many = cafeInfoReviewService.countByCustomerNum(cafeSeq, CustomerNum.CROWDED);
         Long normal = cafeInfoReviewService.countByCustomerNum(cafeSeq, CustomerNum.NORMAL);
         Long little = cafeInfoReviewService.countByCustomerNum(cafeSeq, CustomerNum.UNCROWDED);
-        List<CustomerNum> customerNumList = new ArrayList<>();
+        List<String> customerNumList = new ArrayList<>();
         Long maxCount = Math.max(little, Math.max(normal, many));
         if(maxCount != 0) {
             if(little.equals(maxCount)) {
-                customerNumList.add(CustomerNum.UNCROWDED);
+                customerNumList.add("적은 편");
             }
             if (normal.equals(maxCount)) {
-                customerNumList.add(CustomerNum.NORMAL);
+                customerNumList.add("보통");
             }
             if(many.equals(maxCount)) {
-                customerNumList.add(CustomerNum.CROWDED);
+                customerNumList.add("많은 편");
             }
         }
         return customerNumList;
     }
 
     @GetMapping("/cafe/{cafeSeq}/stayLong")
-    public List<StayLong> countByStayLong(@PathVariable("cafeSeq") Long cafeSeq) {
+    public List<String> countByStayLong(@PathVariable("cafeSeq") Long cafeSeq) {
         Long possible = cafeInfoReviewService.countByStayLong(cafeSeq, StayLong.POSSIBLE);
         Long normal = cafeInfoReviewService.countByStayLong(cafeSeq, StayLong.NORMAL);
         Long unable = cafeInfoReviewService.countByStayLong(cafeSeq, StayLong.UNCOMFORTABLE);
         Long takeout = cafeInfoReviewService.countByStayLong(cafeSeq, StayLong.TAKEOUT);
-        List<StayLong> stayLongList = new ArrayList<>();
+        List<String> stayLongList = new ArrayList<>();
         Long maxCount = Math.max(possible, Math.max(normal, Math.max(unable, takeout)));
         if(maxCount != 0) {
-            if(unable.equals(maxCount)) {
-                stayLongList.add(StayLong.POSSIBLE);
+            if(possible.equals(maxCount)) {
+                stayLongList.add("가능");
             }
             if (normal.equals(maxCount)) {
-                stayLongList.add(StayLong.NORMAL);
+                stayLongList.add("보통");
             }
-            if(possible.equals(maxCount)) {
-                stayLongList.add(StayLong.UNCOMFORTABLE);
+            if(unable.equals(maxCount)) {
+                stayLongList.add("눈치보여요");
             }
             if (takeout.equals(maxCount)) {
-                stayLongList.add(StayLong.TAKEOUT);
+                stayLongList.add("테이블 없음");
             }
         }
         return stayLongList;
     }
 
     @GetMapping("/cafe/{cafeSeq}/plugNum")
-    public List<PlugNum> getAvgPlugNum(@PathVariable("cafeSeq") Long cafeSeq) {
+    public List<String> getAvgPlugNum(@PathVariable("cafeSeq") Long cafeSeq) {
         Long many = cafeInfoReviewService.countByPlugNum(cafeSeq, PlugNum.MANY);
         Long normal = cafeInfoReviewService.countByPlugNum(cafeSeq, PlugNum.NORMAL);
         Long little = cafeInfoReviewService.countByPlugNum(cafeSeq, PlugNum.LITTLE);
         Long no = cafeInfoReviewService.countByPlugNum(cafeSeq, PlugNum.NOTABLE);
-        List<PlugNum> plugNumList = new ArrayList<>();
+        List<String> plugNumList = new ArrayList<>();
         Long maxCount = Math.max(many, Math.max(normal, Math.max(normal, little)));
         if(maxCount != 0) {
             if(little.equals(maxCount)) {
-                plugNumList.add(PlugNum.LITTLE);
+                plugNumList.add("적은 편");
             }
             if (normal.equals(maxCount)) {
-                plugNumList.add(PlugNum.NORMAL);
+                plugNumList.add("보통");
             }
             if(many.equals(maxCount)) {
-                plugNumList.add(PlugNum.MANY);
+                plugNumList.add("많은 편");
             }
             if (no.equals(maxCount)) {
-                plugNumList.add(PlugNum.NOTABLE);
+                plugNumList.add("테이블 없음");
             }
         }
         return plugNumList;
     }
 
     @GetMapping("/cafe/{cafeSeq}/tableHeight")
-    public List<TableHeight> getAvgTableHeight(@PathVariable("cafeSeq") Long cafeSeq) {
+    public List<String> getAvgTableHeight(@PathVariable("cafeSeq") Long cafeSeq) {
         Long highCount = cafeInfoReviewService.countByTableHeight(cafeSeq, TableHeight.HIGH);
         Long normalCount = cafeInfoReviewService.countByTableHeight(cafeSeq, TableHeight.NORMAL);
         Long lowCount = cafeInfoReviewService.countByTableHeight(cafeSeq, TableHeight.LOW);
         Long noCount = cafeInfoReviewService.countByTableHeight(cafeSeq, TableHeight.NOTABLE);
-        List<TableHeight> tableHeightList = new ArrayList<>();
+        List<String> tableHeightList = new ArrayList<>();
         Long maxCount = Math.max(highCount, Math.max(normalCount,Math.max(lowCount, noCount)));
         if(maxCount != 0) {
-            if (maxCount.equals(highCount)) {
-                tableHeightList.add(TableHeight.HIGH);
+            if (maxCount.equals(lowCount)) {
+                tableHeightList.add("낮은 편");
             }
             if (maxCount.equals(normalCount)) {
-                tableHeightList.add(TableHeight.NORMAL);
+                tableHeightList.add("보통");
             }
-            if (maxCount.equals(lowCount)) {
-                tableHeightList.add(TableHeight.LOW);
+            if (maxCount.equals(highCount)) {
+                tableHeightList.add("높은 편");
             }
             if (maxCount.equals(noCount)) {
-                tableHeightList.add(TableHeight.NOTABLE);
+                tableHeightList.add("테이블 없음");
             }
         }
         return tableHeightList;
     }
 
     @GetMapping("/cafe/{cafeSeq}/lightness")
-    public List<Lightness> getAvgLightness(@PathVariable("cafeSeq") Long cafeSeq) {
+    public List<String> getAvgLightness(@PathVariable("cafeSeq") Long cafeSeq) {
         Long lightCount = cafeInfoReviewService.countByLightness(cafeSeq, Lightness.LIGHT);
         Long normalCount = cafeInfoReviewService.countByLightness(cafeSeq, Lightness.NORMAL);
         Long darkCount = cafeInfoReviewService.countByLightness(cafeSeq, Lightness.DARK);
-        List<Lightness> lightnessList = new ArrayList<>();
+        List<String> lightnessList = new ArrayList<>();
         Long maxCount = Math.max(Math.max(lightCount, normalCount), darkCount);
         if(maxCount != 0) {
-            if (lightCount.equals(maxCount))
-                lightnessList.add(Lightness.LIGHT);
-            if (normalCount.equals(maxCount))
-                lightnessList.add(Lightness.NORMAL);
             if (darkCount.equals(maxCount))
-                lightnessList.add(Lightness.DARK);
+                lightnessList.add("어두운 편");
+            if (normalCount.equals(maxCount))
+                lightnessList.add("보통");
+            if (lightCount.equals(maxCount))
+                lightnessList.add("밝은 편");
         }
         return lightnessList;
     }
