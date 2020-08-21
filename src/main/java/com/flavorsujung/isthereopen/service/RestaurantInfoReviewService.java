@@ -38,4 +38,32 @@ public class RestaurantInfoReviewService {
     public List<RestaurantInfoReview> getRestaurantInfoReviewList(Long restaurantSeq) {
         return restaurantInfoReviewRepository.findRestaurantInfoReviewByRestaurantSeq(restaurantSeq);
     }
+
+    public Long countByOpenStyle(Long restaurantSeq, OpenStyle openStyle) {
+        return restaurantInfoReviewRepository.countByRestaurantSeqAndOpenStyle(restaurantSeq, openStyle);
+    }
+
+    public Long countByPrice(Long restaurantSeq, Price price) {
+        return restaurantInfoReviewRepository.countByRestaurantSeqAndPrice(restaurantSeq, price);
+    }
+
+    public Long countByTakeout(Long restaurantSeq, TakeOut takeOut) {
+        return restaurantInfoReviewRepository.countByRestaurantSeqAndTakeOut(restaurantSeq, takeOut);
+    }
+
+    public long countByEatAlone(Long restaurantSeq, EatAlone eatAlone) {
+        return restaurantInfoReviewRepository.countByRestaurantSeqAndEatAlone(restaurantSeq, eatAlone);
+    }
+
+    public long countByWaitingTime(Long restaurantSeq, WaitingTime waitingTime) {
+        return restaurantInfoReviewRepository.countByRestaurantSeqAndWaitingTime(restaurantSeq, waitingTime);
+    }
+
+    public long countByCleanness(Long restaurantSeq, Cleanness cleanness) {
+        return restaurantInfoReviewRepository.countByRestaurantSeqAndCleanness(restaurantSeq, cleanness);
+    }
+
+    public long countReviews(Long restaurantSeq) {
+        return restaurantInfoReviewRepository.countByRestaurantSeq(restaurantSeq);
+    }
 }

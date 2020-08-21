@@ -36,4 +36,40 @@ public class CafeInfoReviewService {
     public List<CafeInfoReview> getCafeInfoReviewList(Long cafeSeq) {
         return cafeInfoReviewRepository.findCafeInfoReviewByCafeSeq(cafeSeq);
     }
+
+    public Long countByOpenStyle(Long cafeSeq, OpenStyle openStyle) {
+        return cafeInfoReviewRepository.countByCafeSeqAndOpenStyle(cafeSeq, openStyle);
+    }
+
+    public Long countByWaitingTime(Long cafeSeq, WaitingTime waitingTime) {
+        return cafeInfoReviewRepository.countByCafeSeqAndWaitingTime(cafeSeq, waitingTime);
+    }
+
+    public Long countByPrice(Long cafeSeq, Price price) {
+        return cafeInfoReviewRepository.countByCafeSeqAndPrice(cafeSeq, price);
+    }
+
+    public Long countByCustomerNum(Long cafeSeq, CustomerNum customerNum) {
+        return cafeInfoReviewRepository.countByCafeSeqAndCustomerNum(cafeSeq, customerNum);
+    }
+
+    public Long countByStayLong(Long cafeSeq, StayLong stayLong) {
+        return cafeInfoReviewRepository.countByCafeSeqAndStayLong(cafeSeq, stayLong);
+    }
+
+    public Long countByPlugNum(Long cafeSeq, PlugNum plugNum) {
+        return cafeInfoReviewRepository.countByCafeSeqAndPlugNum(cafeSeq, plugNum);
+    }
+
+    public Long countByTableHeight(Long cafeSeq, TableHeight tableHeight) {
+        return cafeInfoReviewRepository.countByCafeSeqAndTableHeight(cafeSeq, tableHeight);
+    }
+
+    public Long countByLightness(Long cafeSeq, Lightness lightness) {
+        return cafeInfoReviewRepository.countByCafeSeqAndLightness(cafeSeq, lightness);
+    }
+
+    public Long countReviews(Long cafeSeq) {
+        return cafeInfoReviewRepository.countByCafeSeq(cafeSeq);
+    }
 }

@@ -1,9 +1,10 @@
 package com.flavorsujung.isthereopen.controller;
 
+import com.flavorsujung.isthereopen.domain.entity.Restaurant;
 import com.flavorsujung.isthereopen.domain.entity.RestaurantInfoReview;
 import com.flavorsujung.isthereopen.domain.mappedenum.*;
-import com.flavorsujung.isthereopen.domain.req.ReqRestaurantInfoReviewCreate;
 import com.flavorsujung.isthereopen.service.RestaurantInfoReviewService;
+import com.flavorsujung.isthereopen.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,7 @@ import static com.flavorsujung.isthereopen.controller.RestaurantController.resta
 @RequiredArgsConstructor
 public class RestaurantInfoReviewController {
     private final RestaurantInfoReviewService restaurantInfoReviewService;
-//    Map<Integer, RestaurantInfoReview> restaurantInfoReviewMap;
+    private final RestaurantService restaurantService;
 
     @PostConstruct
     public void init() {
@@ -41,21 +42,61 @@ public class RestaurantInfoReviewController {
             @RequestParam("eatAlone") EatAlone eatAlone,
             @RequestParam("openStyle") OpenStyle openStyle) {
         restaurantInfoReviewService.putRestaurantInfoReview(restaurantSeq,userSeq, rate, waitingTime, cleanness, price, takeOut, eatAlone, openStyle);
+        Restaurant restaurant = restaurantService.getRestaurant(restaurantSeq);
+        restaurant.setAvgRate(getAvgRate(restaurantSeq));
+        restaurantService.postRestaurant(restaurant);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/restaurant/{restaurantSeq}/infoReview") // 식당 정보 리뷰 리스트 조회 (8/18 API 테스트 완료)
     public List<RestaurantInfoReview> getRestaurantInfoReviewList(@PathVariable("restaurantSeq") Long restaurantSeq) {
-//        return restaurantMap.get(restaurantSeq).getRestaurantInfoReviewList();
         List<RestaurantInfoReview> reviewList =  restaurantInfoReviewService.getRestaurantInfoReviewList(restaurantSeq);
         if(reviewList != null) {
-            Collections.sort(reviewList, (r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt()));
+            Collections.sort(reviewList, (r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt())); //최신순으로 정렬
         }
         return reviewList;
     }
 
-//    @GetMapping("/restaurant/{restaurantSeq}/infoReview/{infoReviewSeq}") //특정 식당의 몇 번째 리뷰 가져오기 (API 테스트 완료)
-//    public RestaurantInfoReview getRestaurantInfoReview(@PathVariable("restaurantSeq") Integer restaurantSeq, @PathVariable("infoReviewSeq") Integer infoReviewSeq) {
-//        return restaurantMap.get(restaurantSeq).getRestaurantInfoReviewList().get(infoReviewSeq);
-//    }
+
+    @GetMapping("/restaurant/{restaurantSeq}/cleanness")
+    public Long countByCleanness(@PathVariable("restaurantSeq") Long restaurantSeq, @RequestParam("cleanness") Cleanness cleanness) {
+        return restaurantInfoReviewService.countByCleanness(restaurantSeq, cleanness);
+    }
+
+    @GetMapping("/restaurant/{restaurantSeq}/price")
+    public Long countByPrice(@PathVariable("restaurantSeq") Long restaurantSeq, @RequestParam("price") Price price) {
+        return restaurantInfoReviewService.countByPrice(restaurantSeq, price);
+    }
+
+    @GetMapping("/restaurant/{restaurantSeq}/openStyle")
+    public Long countByOpenStyle(@PathVariable("restaurantSeq") Long restaurantSeq, @RequestParam("openStyle") OpenStyle openStyle) {
+        return restaurantInfoReviewService.countByOpenStyle(restaurantSeq, openStyle);
+    }
+
+    @GetMapping("/restaurant/{restaurantSeq}/takeout")
+    public Long countByTakeOut(@PathVariable("restaurantSeq") Long restaurantSeq, @RequestParam("takeout") TakeOut takeOut) {
+        return restaurantInfoReviewService.countByTakeout(restaurantSeq, takeOut);
+    }
+
+
+    @GetMapping("/restaurant/{restaurantSeq}/waitingTime")
+    public Long countByWaitingTime(@PathVariable("restaurantSeq") Long restaurantSeq, @RequestParam("waitingTime") WaitingTime waitingTime) {
+        return restaurantInfoReviewService.countByWaitingTime(restaurantSeq, waitingTime);
+    }
+
+    @GetMapping("/restaurant/{restaurantSeq}/eatAlone")
+    public Long countByEatAlone(@PathVariable("restaurantSeq") Long restaurantSeq, @RequestParam("eatAlone") EatAlone eatAlone) {
+        return restaurantInfoReviewService.countByEatAlone(restaurantSeq, eatAlone);
+    }
+
+    @GetMapping("/restaurant/{restaurantSeq}/avgRate")
+    public Double getAvgRate(@PathVariable("restaurantSeq") Long restaurantSeq) {
+        List<RestaurantInfoReview> restaurantInfoReviewList = restaurantInfoReviewService.getRestaurantInfoReviewList(restaurantSeq);
+        Double sum = 0.0;
+        Long count = restaurantInfoReviewService.countReviews(restaurantSeq);
+        for(RestaurantInfoReview review : restaurantInfoReviewList) {
+            sum += review.getRate().getRate();
+        }
+        return sum / count;
+    }
 }

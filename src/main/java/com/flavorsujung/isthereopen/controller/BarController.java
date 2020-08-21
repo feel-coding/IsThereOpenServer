@@ -16,15 +16,13 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class BarController {
     private final BarService barService;
-//    public static Map<Long, Bar> barMap;
 
     @PostConstruct
     public void init() {
-//        barMap = new HashMap<>();
+
     }
     @GetMapping("/bar/{barSeq}/openState") // 술집 오픈 여부 조회 (8/18 API 테스트 완료)
     public OpenState getCurrentState(@PathVariable("barSeq") Long barSeq) {
-//        return barMap.get(barSeq).getCurrentState();
         return barService.getBar(barSeq).getCurrentState();
     }
 

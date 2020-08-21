@@ -5,6 +5,7 @@ import com.flavorsujung.isthereopen.domain.entity.BarOpenReview;
 import com.flavorsujung.isthereopen.domain.mappedenum.*;
 import com.flavorsujung.isthereopen.domain.req.ReqBarInfoReviewCreate;
 import com.flavorsujung.isthereopen.respository.BarInfoReviewRepository;
+import com.mysql.cj.x.protobuf.MysqlxCursor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +34,34 @@ public class BarInfoReviewService {
 
     public List<BarInfoReview> getBarInfoReviewList(Long barSeq) {
         return barInfoReviewRepository.findBarInfoReviewsByBarSeq(barSeq);
+    }
+
+    public Long countByToilet(Long barSeq, Toilet toilet) {
+        return barInfoReviewRepository.countByBarSeqAndToilet(barSeq, toilet);
+    }
+
+    public Long countByOpenStyle(Long barSeq, OpenStyle openStyle) {
+        return barInfoReviewRepository.countByBarSeqAndOpenStyle(barSeq, openStyle);
+    }
+
+    public Long countByAlcohol(Long barSeq, Alcohol alcohol) {
+        return barInfoReviewRepository.countByBarSeqAndMainAlcohol(barSeq, alcohol);
+    }
+
+    public Long countByMood(Long barSeq, Mood mood) {
+        return barInfoReviewRepository.countByBarSeqAndMood(barSeq, mood);
+    }
+
+    public Long countByPrice(Long barSeq, Price price) {
+        return barInfoReviewRepository.countByBarSeqAndPrice(barSeq, price);
+    }
+
+    public Long countByCleanness(Long barSeq,Cleanness cleanness) {
+        return barInfoReviewRepository.countByBarSeqAndCleanness(barSeq, cleanness);
+
+    }
+
+    public Long countReview(Long barSeq) {
+        return barInfoReviewRepository.countByBarSeq(barSeq);
     }
 }

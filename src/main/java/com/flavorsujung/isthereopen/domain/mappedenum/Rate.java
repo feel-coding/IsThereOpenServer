@@ -6,11 +6,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 public enum Rate {
-    WORST(0),
-    BAD(1),
-    SOSO(2),
-    GOOD(3),
-    BEST(4);
+    WORST(1),
+    BAD(2),
+    SOSO(3),
+    GOOD(4),
+    BEST(5);
 
     private final int rate;
 
