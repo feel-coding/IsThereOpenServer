@@ -187,6 +187,9 @@ public class RestaurantInfoReviewController {
         for(RestaurantInfoReview review : restaurantInfoReviewList) {
             sum += review.getRate().getRate();
         }
+        if(sum == 0.0) {
+            return 0.0;
+        }
         return sum / count;
     }
 }

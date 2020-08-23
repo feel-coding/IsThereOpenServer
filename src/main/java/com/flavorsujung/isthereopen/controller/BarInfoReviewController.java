@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static java.lang.Float.NaN;
+
 @RestController
 @RequiredArgsConstructor
 public class BarInfoReviewController {
@@ -191,6 +193,9 @@ public class BarInfoReviewController {
         Long count = barInfoReviewService.countReview(barSeq);
         for(BarInfoReview review : barInfoReviewList) {
             sum += review.getRate().getRate();
+        }
+        if(sum == 0.0) {
+            return 0.0;
         }
         return sum / count;
     }

@@ -240,6 +240,9 @@ public class CafeInfoReviewController {
         for(CafeInfoReview review : cafeInfoReviewList) {
             sum += review.getRate().getRate();
         }
+        if(sum == 0.0) {
+            return 0.0;
+        }
         return sum / count;
     }
 
