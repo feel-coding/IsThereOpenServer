@@ -19,7 +19,11 @@ public class BarController {
 
     @PostConstruct
     public void init() {
-
+        putBar("도시포차", "서울 성북구 동소문로20길 37-6", "매일 18:00 - 06:00","02-921-7233", "https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=http%3A%2F%2Fldb.phinf.naver.net%2F20161202_250%2F1480683381497gM2lV_JPEG%2F177152618641360_0.jpeg");
+        putBar("반듯한잔", "서울 성북구 동소문로22길 80", "평일 17:30 - 02:00, 주말 17:30 - 04:00, 매주 수요일 휴무", "02-942-5577", "https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=http%3A%2F%2Fldb.phinf.naver.net%2F20200319_218%2F1584614780723SCdVU_JPEG%2FWl_MfUCe9fGV4uM7kztMgxlZ.jpg");
+        putBar("달밫자전거", "서울 성북구 보문로32길 49", "평일 17:00-04:00, 금요일 17:00-04:00, 토요일 17:00-04:00", "0507-1495-6000", "https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=http%3A%2F%2Fldb.phinf.naver.net%2F20190615_73%2F1560589828187ujcs1_JPEG%2FMHR6GjfhH-z5hK5dTopMKXo0.JPG.jpg");
+        putBar("청춘예찬", "서울 성북구 동소문로20길 29-14", "매일 17:00~04:00 연중무휴", "02-953-2848", "https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=http%3A%2F%2Fldb.phinf.naver.net%2F20171110_67%2F1510319776366LXjSr_JPEG%2F85RWl6M0FqFXtZv8wttK8XGl.jpg");
+        putBar("오늘와인한잔 성신여대점", "서울 성북구 보문로34길 56", "매일 16:00~03:00, 마지막 주문 메뉴2:30 주류2:40","02-6956-1787", "https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=http%3A%2F%2Fldb.phinf.naver.net%2F20190215_298%2F1550199616157ttDKr_JPEG%2FwRGIn4Wpj9Nbox_f_xLKgxz9.jpg");
     }
     @GetMapping("/bar/{barSeq}/openState") // 술집 오픈 여부 조회 (8/18 API 테스트 완료)
     public OpenState getCurrentState(@PathVariable("barSeq") Long barSeq) {
