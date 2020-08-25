@@ -40,8 +40,11 @@ public class CafeOpenReviewController {
         return reviewList;
     }
 
-    @PutMapping("/cafe/{cafeSeq}/openReview") //카페 오픈 리뷰 작성 (8/17 API 테스트 완료)
-    public ResponseEntity<Void> putCafeOpenReview(@PathVariable("cafeSeq") Long cafeSeq, @RequestParam("userSeq") Long userSeq, @RequestParam("openState") OpenState openState) {
+    @PutMapping("/cafe/{cafeSeq}/openReview") //카페 오픈 리뷰 작성
+    public ResponseEntity<Void> putCafeOpenReview(
+            @PathVariable("cafeSeq") Long cafeSeq,
+            @RequestParam("userSeq") Long userSeq,
+            @RequestParam("openState") OpenState openState) {
         cafeOpenReviewService.putCafeOpenReview(cafeSeq, userSeq, openState);
         Cafe cafe = cafeService.getCafe(cafeSeq);
         cafe.setCurrentState(openState);
