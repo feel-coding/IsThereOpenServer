@@ -26,18 +26,9 @@ public class BarInfoReviewController {
     public void init() {
     }
 
-    @PutMapping("/bar/{barSeq}/infoReview")// 술집 정보 리뷰 추가 (8/18 API 테스트 완료)
-    public ResponseEntity<Void> putBarInfoReview(
-            @PathVariable("barSeq") Long barSeq,
-            @RequestParam("userSeq") Long userSeq,
-            @RequestParam("rate") Rate rate,
-            @RequestParam("toilet") Toilet toilet,
-            @RequestParam("mood") Mood mood,
-            @RequestParam("mainAlcohol") Alcohol mainAlcohol,
-            @RequestParam("price") Price price,
-            @RequestParam("cleanness") Cleanness cleanness,
-            @RequestParam("openStyle") OpenStyle openStyle) {
-        barInfoReviewService.putBarInfoReview(barSeq, userSeq, rate, toilet, mood, mainAlcohol, price, cleanness, openStyle);
+    @PutMapping("/bar/infoReview")// 술집 정보 리뷰 추가 (8/18 API 테스트 완료)
+    public ResponseEntity<Void> putBarInfoReview(@RequestBody BarInfoReview barInfoReview) {
+        barInfoReviewService.putBarInfoReview(barInfoReview/*barSeq, userSeq, rate, toilet, mood, mainAlcohol, price, cleanness, openStyle*/);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

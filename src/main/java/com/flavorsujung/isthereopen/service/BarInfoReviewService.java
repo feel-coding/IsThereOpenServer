@@ -21,22 +21,10 @@ public class BarInfoReviewService {
     private final BarInfoReviewRepository barInfoReviewRepository;
     private final BarRepository barRepository;
 
-    public void putBarInfoReview(
-            Long barSeq, Long userSeq, Rate rate, Toilet toilet,
-            Mood mood, Alcohol mainAlcohol, Price price, Cleanness cleanness, OpenStyle openStyle) {
-        BarInfoReview barInfoReview = new BarInfoReview();
-        barInfoReview.setBarSeq(barSeq);
-        barInfoReview.setUserSeq(userSeq);
-        barInfoReview.setCleanness(cleanness);
-        barInfoReview.setToilet(toilet);
-        barInfoReview.setRate(rate);
-        barInfoReview.setMood(mood);
-        barInfoReview.setOpenStyle(openStyle);
-        barInfoReview.setPrice(price);
-        barInfoReview.setMainAlcohol(mainAlcohol);
+    public void putBarInfoReview(BarInfoReview barInfoReview) {
         barInfoReviewRepository.save(barInfoReview);
-        Bar bar = barRepository.findBarBySeq(barSeq);
-        bar.setAvgRate(getAvgRate(barSeq));
+        Bar bar = barRepository.findBarBySeq(barInfoReview.getBarSeq());
+        bar.setAvgRate(getAvgRate(barInfoReview.getBarSeq()));
         barRepository.save(bar);
     }
 

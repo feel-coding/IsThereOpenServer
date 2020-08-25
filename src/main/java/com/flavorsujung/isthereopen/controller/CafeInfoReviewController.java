@@ -23,20 +23,9 @@ public class CafeInfoReviewController {
     public void init() {
     }
 
-    @PutMapping("/cafe/{cafeSeq}/infoReview") // 카페 정보 리뷰 작성 (8/18 API 테스트 완료)
-    public ResponseEntity<Void> putCafeInfoReview(
-            @PathVariable("cafeSeq") Long cafeSeq,
-            @RequestParam("userSeq") Long userSeq,
-            @RequestParam("openStyle") OpenStyle openStyle,
-            @RequestParam("waitingTime") WaitingTime waitingTime,
-            @RequestParam("price") Price price,
-            @RequestParam("customerNum") CustomerNum customerNum,
-            @RequestParam("plugNum") PlugNum plugNum,
-            @RequestParam("rate") Rate rate,
-            @RequestParam("tableHeight") TableHeight tableHeight,
-            @RequestParam("lightness") Lightness lightness,
-            @RequestParam("stayLong") StayLong stayLong) {
-        cafeInfoReviewService.putCafeInfoReview(cafeSeq, userSeq, openStyle, waitingTime, price, customerNum, plugNum, rate, tableHeight, lightness, stayLong);
+    @PutMapping("/cafe/infoReview") // 카페 정보 리뷰 작성 (8/18 API 테스트 완료)
+    public ResponseEntity<Void> putCafeInfoReview(@RequestBody CafeInfoReview cafeInfoReview) {
+        cafeInfoReviewService.putCafeInfoReview(cafeInfoReview);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

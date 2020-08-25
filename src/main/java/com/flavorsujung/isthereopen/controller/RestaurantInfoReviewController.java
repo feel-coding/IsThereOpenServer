@@ -27,9 +27,9 @@ public class RestaurantInfoReviewController {
 //        restaurantInfoReviewMap = new HashMap<>();
     }
 
-    @PutMapping("/restaurant/{restaurantSeq}/infoReview") // 식당 정보 리뷰 작성 (8/18 API 테스트 완료)
-    public ResponseEntity<Void> putRestaurantInfoReviewList(
-            @PathVariable("restaurantSeq") Long restaurantSeq,
+    @PutMapping("/restaurant/infoReview") // 식당 정보 리뷰 작성 (8/18 API 테스트 완료)
+    public ResponseEntity<Void> putRestaurantInfoReviewList(@RequestBody RestaurantInfoReview restaurantInfoReview
+            /*@PathVariable("restaurantSeq") Long restaurantSeq,
             @RequestParam("userSeq") Long userSeq,
             @RequestParam("rate") Rate rate,
             @RequestParam("waitingTime") WaitingTime waitingTime,
@@ -37,8 +37,8 @@ public class RestaurantInfoReviewController {
             @RequestParam("price") Price price,
             @RequestParam("takeOut") TakeOut takeOut,
             @RequestParam("eatAlone") EatAlone eatAlone,
-            @RequestParam("openStyle") OpenStyle openStyle) {
-        restaurantInfoReviewService.putRestaurantInfoReview(restaurantSeq,userSeq, rate, waitingTime, cleanness, price, takeOut, eatAlone, openStyle);
+            @RequestParam("openStyle") OpenStyle openStyle*/) {
+        restaurantInfoReviewService.putRestaurantInfoReview(restaurantInfoReview/*restaurantSeq,userSeq, rate, waitingTime, cleanness, price, takeOut, eatAlone, openStyle*/);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

@@ -2,6 +2,7 @@ package com.flavorsujung.isthereopen.service;
 
 import com.flavorsujung.isthereopen.domain.entity.CafeInfoReview;
 import com.flavorsujung.isthereopen.domain.entity.Restaurant;
+import com.flavorsujung.isthereopen.domain.entity.RestaurantInfo;
 import com.flavorsujung.isthereopen.domain.entity.RestaurantInfoReview;
 import com.flavorsujung.isthereopen.domain.mappedenum.*;
 import com.flavorsujung.isthereopen.domain.req.ReqRestaurantInfoReviewCreate;
@@ -22,11 +23,11 @@ public class RestaurantInfoReviewService {
     private final RestaurantInfoReviewRepository restaurantInfoReviewRepository;
     private final RestaurantRepository restaurantRepository;
 
-    public void putRestaurantInfoReview(
-            Long restaurantSeq, Long userSeq, Rate rate,
+    public void putRestaurantInfoReview(RestaurantInfoReview restaurantInfoReview
+            /*Long restaurantSeq, Long userSeq, Rate rate,
             WaitingTime waitingTime, Cleanness cleanness,
-            Price price, TakeOut takeOut, EatAlone eatAlone, OpenStyle openStyle) {
-        RestaurantInfoReview restaurantInfoReview = new RestaurantInfoReview();
+            Price price, TakeOut takeOut, EatAlone eatAlone, OpenStyle openStyle*/) {
+        /*RestaurantInfoReview restaurantInfoReview = new RestaurantInfoReview();
         restaurantInfoReview.setRestaurantSeq(restaurantSeq);
         restaurantInfoReview.setOpenStyle(openStyle);
         restaurantInfoReview.setCleanness(cleanness);
@@ -35,10 +36,10 @@ public class RestaurantInfoReviewService {
         restaurantInfoReview.setTakeOut(takeOut);
         restaurantInfoReview.setWaitingTime(waitingTime);
         restaurantInfoReview.setUserSeq(userSeq);
-        restaurantInfoReview.setRate(rate);
+        restaurantInfoReview.setRate(rate);*/
         restaurantInfoReviewRepository.save(restaurantInfoReview);
-        Restaurant restaurant = restaurantRepository.findRestaurantBySeq(restaurantSeq);
-        restaurant.setAvgRate(getAvgRate(restaurantSeq));
+        Restaurant restaurant = restaurantRepository.findRestaurantBySeq(restaurantInfoReview.getRestaurantSeq());
+        restaurant.setAvgRate(getAvgRate(restaurantInfoReview.getRestaurantSeq()));
         restaurantRepository.save(restaurant);
     }
 
