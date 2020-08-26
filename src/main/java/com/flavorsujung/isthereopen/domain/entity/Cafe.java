@@ -1,7 +1,6 @@
 package com.flavorsujung.isthereopen.domain.entity;
 
-import com.flavorsujung.isthereopen.domain.mappedenum.OpenState;
-import com.flavorsujung.isthereopen.domain.mappedenum.OpenStateConverter;
+import com.flavorsujung.isthereopen.domain.mappedenum.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,66 +25,24 @@ public class Cafe {
     private String phoneNum;
     private String runningTime;
     private Double avgRate;
-    @Convert(converter = OpenStateConverter.class)
     private OpenState currentState;
     private String photoUrl;
     private Date lastUpdate;
-//    private List<CafeInfoReview> cafeInfoReviewList;
-//    private List<CafeOpenReview> cafeOpenReviewList;
+    private String avgWaitingTime;
+    private String avgPrice;
+    private String avgCustomerNum;
+    private String avgPlugNum;
+    private String avgTableHeight;
+    private String avgLightness;
+    private String avgStayLong;
+    private String avgOpenStyle;
+    private Integer manyPlug;
+    private Integer cheap;
+    private Integer littlePeople;
+    private Integer stayLong;
+    private Integer light;
+    private Integer stable;
+    private Integer notLow;
+    private Integer shortWaiting;
 
-    public Cafe(Long seq, String name, String address,String runningTime) {
-        this.seq = seq;
-        this.name = name;
-        this.address = address;
-        this.runningTime = runningTime;
-        avgRate = Double.longBitsToDouble(-1);
-        currentState = OpenState.UNKNOWN;
-//        cafeInfoReviewList = new ArrayList<>();
-//        cafeOpenReviewList = new ArrayList<>();
-    }
-
-    public Cafe(Long seq, String name, String address, String runningTime, String photoUrl) {
-        this.seq = seq;
-        this.name = name;
-        this.address = address;
-        this.phoneNum = phoneNum;
-        this.runningTime = runningTime;
-        avgRate = Double.longBitsToDouble(-1);
-        this.currentState = OpenState.UNKNOWN;
-        this.photoUrl = photoUrl;
-//        cafeInfoReviewList = new ArrayList<>();
-//        cafeOpenReviewList = new ArrayList<>();
-    }
-
-    /*public List<CafeInfoReview> getCafeInfoReviewList() {
-        return cafeInfoReviewList;
-    }
-
-    public void setCafeInfoReviewList(List<CafeInfoReview> cafeInfoReviewList) {
-        this.cafeInfoReviewList = cafeInfoReviewList;
-    }
-
-    public String getPhotoURL() {
-        return photoURL;
-    }
-
-    public void setPhotoURL(String photoURL) {
-        this.photoURL = photoURL;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    public List<CafeOpenReview> getCafeOpenReviewList() {
-        return cafeOpenReviewList;
-    }
-
-    public void setCafeOpenReviewList(List<CafeOpenReview> cafeOpenReviewList) {
-        this.cafeOpenReviewList = cafeOpenReviewList;
-    }*/
 }

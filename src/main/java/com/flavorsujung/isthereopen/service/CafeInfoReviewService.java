@@ -22,6 +22,148 @@ public class CafeInfoReviewService {
         cafeInfoReviewRepository.save(cafeInfoReview);
         Cafe cafe = cafeRepository.findCafeBySeq(cafeInfoReview.getCafeSeq());
         cafe.setAvgRate(getAvgRate(cafeInfoReview.getCafeSeq()));
+        Long cafeSeq = cafeInfoReview.getCafeSeq();
+        List<String> list = getAvgLightness(cafeSeq);
+        if (list.contains("밝은 편"))
+            cafe.setLight(1);
+        else
+            cafe.setLight(0);
+        if (list.size() == 0) {
+            cafe.setAvgLightness("정보 없음");
+        }
+        else if(list.size() == 1) {
+            cafe.setAvgLightness(list.get(0));
+        }
+        else if(list.size() == 2 && list.contains("보통")) {
+            cafe.setAvgLightness(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            cafe.setAvgLightness("의견이 많이 갈려요");
+            cafe.setLight(0);
+        }
+        list = getAvgTableHeight(cafeSeq);
+        if(list.contains("높은 편") || list.contains("보통"))
+            cafe.setNotLow(1);
+        else
+            cafe.setNotLow(0);
+        if(list.size() == 0) {
+            cafe.setAvgTableHeight("정보 없음");
+        }
+        else if (list.size() == 1) {
+            cafe.setAvgTableHeight(list.get(0));
+        }
+        else if (list.size() == 2 && list.contains("보통")) {
+            cafe.setAvgTableHeight(list.get(0) + "~" + list.get(1));
+        }
+        else if (list.size() == 3) {
+            cafe.setAvgTableHeight("의견이 많이 갈려요");
+        }
+        list = getAvgPrice(cafeSeq);
+        if(list.contains("싼 편"))
+            cafe.setCheap(1);
+        else
+            cafe.setCheap(0);
+        if(list.size() == 0) {
+            cafe.setAvgPrice("정보 없음");
+        }
+        else if (list.size() == 1) {
+            cafe.setAvgPrice(list.get(0));
+        }
+        else if (list.size() == 2 && list.contains("보통")) {
+            cafe.setAvgPrice(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            cafe.setAvgPrice("의견이 많이 갈려요");
+            cafe.setCheap(0);
+        }
+        list = getAvgPlugNum(cafeSeq);
+        if(list.contains("많은 편"))
+            cafe.setManyPlug(1);
+        else
+            cafe.setManyPlug(0);
+        if(list.size() == 0) {
+            cafe.setAvgPlugNum("정보 없음");
+        }
+        else if (list.size() == 1) {
+            cafe.setAvgPlugNum(list.get(0));
+        }
+        else if (list.size() == 2 && list.contains("보통")) {
+            cafe.setAvgPlugNum(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            cafe.setAvgPlugNum("의견이 많이 갈려요");
+            cafe.setManyPlug(0);
+        }
+        list = getAvgCustomerNum(cafeSeq);
+        if(list.contains("적은 편"))
+            cafe.setLittlePeople(1);
+        else
+            cafe.setLittlePeople(0);
+        if(list.size() == 0) {
+            cafe.setAvgCustomerNum("정보 없음");
+        }
+        else if (list.size() == 1) {
+            cafe.setAvgCustomerNum(list.get(0));
+        }
+        else if (list.size() == 2 && list.contains("보통")) {
+            cafe.setAvgCustomerNum(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            cafe.setAvgCustomerNum("의견이 많이 갈려요");
+            cafe.setLittlePeople(0);
+        }
+        list = getAvgOpenStyle(cafeSeq);
+        if(list.contains("잘 지키는 편"))
+            cafe.setStable(1);
+        else
+            cafe.setStable(0);
+        if(list.size() == 0) {
+            cafe.setAvgOpenStyle("정보 없음");
+        }
+        else if (list.size() == 1) {
+            cafe.setAvgOpenStyle(list.get(0));
+        }
+        else if (list.size() == 2 && list.contains("보통")) {
+            cafe.setAvgOpenStyle(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            cafe.setAvgOpenStyle("의견이 많이 갈려요");
+            cafe.setStable(0);
+        }
+        list = getAvgStayLong(cafeSeq);
+        if(list.contains("가능"))
+            cafe.setStayLong(1);
+        else
+            cafe.setStayLong(0);
+        if(list.size() == 0) {
+            cafe.setAvgStayLong("정보 없음");
+        }
+        else if (list.size() == 1) {
+            cafe.setAvgStayLong(list.get(0));
+        }
+        else if (list.size() == 2 && list.contains("보통")) {
+            cafe.setAvgStayLong(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            cafe.setAvgStayLong("의견이 많이 갈려요");
+        }
+        list = getAvgWaitingTime(cafeSeq);
+        if(list.contains("금방 나오는 편"))
+            cafe.setShortWaiting(1);
+        else
+            cafe.setShortWaiting(0);
+        if(list.size() == 0) {
+            cafe.setAvgWaitingTime("정보 없음");
+        }
+        else if (list.size() == 1) {
+            cafe.setAvgWaitingTime(list.get(0));
+        }
+        else if (list.size() == 2 && list.contains("보통")) {
+            cafe.setAvgWaitingTime(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            cafe.setAvgStayLong("의견이 많이 갈려요");
+        }
         cafeRepository.save(cafe);
     }
 
