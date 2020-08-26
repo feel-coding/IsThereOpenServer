@@ -31,4 +31,5 @@ public class Bar {
     private OpenState currentState;
     private String photoUrl;
     private Date lastUpdate;
+
 }

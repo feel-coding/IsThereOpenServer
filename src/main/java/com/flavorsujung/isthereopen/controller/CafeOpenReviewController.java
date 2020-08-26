@@ -21,26 +21,19 @@ import static com.flavorsujung.isthereopen.controller.CafeController.*;
 @RequiredArgsConstructor
 public class CafeOpenReviewController {
     private final CafeOpenReviewService cafeOpenReviewService;
-//    public static Map<Integer, CafeOpenReview> cafeOpenReviewMap;
 
     @PostConstruct
     public void init(){
-//        cafeOpenReviewMap = new HashMap<>();
-//        cafeOpenReviewMap.put(1, new CafeOpenReview(1, 1, 2, CLOSE));
-//        cafeOpenReviewMap.put(2, new CafeOpenReview(2, 2, 1, UNKNOWN));
+
     }
 
-    @GetMapping("/cafe/{cafeSeq}/openReview") //카페 오픈 리뷰 조회 (8/17 API 테스트 완료)
+    @GetMapping("/cafe/{cafeSeq}/openReview") //카페 오픈 리뷰 조회
     public List<CafeOpenReview> getCafeOpenReviewList(@PathVariable("cafeSeq") Long cafeSeq) {
-        List<CafeOpenReview> reviewList = cafeOpenReviewService.getCafeOpenReviewList(cafeSeq);
-        if(reviewList != null) {
-            Collections.sort(reviewList, (r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt()));
-        }
-        return reviewList;
+        return cafeOpenReviewService.getCafeOpenReviewList(cafeSeq);
     }
 
     @PutMapping("/cafe/openReview") //카페 오픈 리뷰 작성
-    public ResponseEntity<Void> putCafeOpenReview(@RequestBody CafeOpenReview cafeOpenReview) {
+    public ResponseEntity<Void> createCafeOpenReview(@RequestBody CafeOpenReview cafeOpenReview) {
         cafeOpenReviewService.putCafeOpenReview(cafeOpenReview);
         return new ResponseEntity<>(HttpStatus.OK);
     }

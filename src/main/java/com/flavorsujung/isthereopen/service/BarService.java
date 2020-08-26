@@ -21,13 +21,14 @@ public class BarService {
         return barRepository.findAll();
     }
 
-    public void putBar(String name, String address, String runningTime, String phoneNum, String photoURL) {
-        Bar bar = new Bar();
+    public void putBar(Bar bar/*String name, String address, String runningTime, String phoneNum, String photoURL*/) {
+       /* Bar bar = new Bar();
         bar.setName(name);
         bar.setPhoneNum(phoneNum);
         bar.setAddress(address);
         bar.setRunningTime(runningTime);
         bar.setPhotoUrl(photoURL);
+        bar.setCurrentState(OpenState.UNKNOWN);*/
         bar.setCurrentState(OpenState.UNKNOWN);
         barRepository.save(bar);
     }

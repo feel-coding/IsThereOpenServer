@@ -20,29 +20,19 @@ import static com.flavorsujung.isthereopen.controller.RestaurantController.resta
 @RequiredArgsConstructor
 public class RestaurantInfoReviewController {
     private final RestaurantInfoReviewService restaurantInfoReviewService;
-    private final RestaurantService restaurantService;
 
     @PostConstruct
     public void init() {
-//        restaurantInfoReviewMap = new HashMap<>();
+
     }
 
-    @PutMapping("/restaurant/infoReview") // 식당 정보 리뷰 작성 (8/18 API 테스트 완료)
-    public ResponseEntity<Void> putRestaurantInfoReviewList(@RequestBody RestaurantInfoReview restaurantInfoReview
-            /*@PathVariable("restaurantSeq") Long restaurantSeq,
-            @RequestParam("userSeq") Long userSeq,
-            @RequestParam("rate") Rate rate,
-            @RequestParam("waitingTime") WaitingTime waitingTime,
-            @RequestParam("cleanness") Cleanness cleanness,
-            @RequestParam("price") Price price,
-            @RequestParam("takeOut") TakeOut takeOut,
-            @RequestParam("eatAlone") EatAlone eatAlone,
-            @RequestParam("openStyle") OpenStyle openStyle*/) {
-        restaurantInfoReviewService.putRestaurantInfoReview(restaurantInfoReview/*restaurantSeq,userSeq, rate, waitingTime, cleanness, price, takeOut, eatAlone, openStyle*/);
+    @PutMapping("/restaurant/infoReview") // 식당 정보 리뷰 작성
+    public ResponseEntity<Void> createRestaurantInfoReviewList(@RequestBody RestaurantInfoReview restaurantInfoReview) {
+        restaurantInfoReviewService.putRestaurantInfoReview(restaurantInfoReview);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/restaurant/{restaurantSeq}/infoReview") // 식당 정보 리뷰 리스트 조회 (8/18 API 테스트 완료)
+    @GetMapping("/restaurant/{restaurantSeq}/infoReview") // 식당 정보 리뷰 리스트 조회
     public List<RestaurantInfoReview> getRestaurantInfoReviewList(@PathVariable("restaurantSeq") Long restaurantSeq) {
         return restaurantInfoReviewService.getRestaurantInfoReviewList(restaurantSeq);
     }
@@ -71,12 +61,12 @@ public class RestaurantInfoReviewController {
 
 
     @GetMapping("/restaurant/{restaurantSeq}/waitingTime")
-    public List<String> countByWaitingTime(@PathVariable("restaurantSeq") Long restaurantSeq) {
+    public List<String> getAvgWaitingTime(@PathVariable("restaurantSeq") Long restaurantSeq) {
         return restaurantInfoReviewService.getAvgWaitingTime(restaurantSeq);
     }
 
     @GetMapping("/restaurant/{restaurantSeq}/eatAlone")
-    public List<String> countByEatAlone(@PathVariable("restaurantSeq") Long restaurantSeq) {
+    public List<String> getAvgEatAlone(@PathVariable("restaurantSeq") Long restaurantSeq) {
         return restaurantInfoReviewService.getAvgEatAlone(restaurantSeq);
     }
 

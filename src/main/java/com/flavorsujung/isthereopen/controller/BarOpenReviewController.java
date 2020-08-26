@@ -23,22 +23,16 @@ public class BarOpenReviewController {
 
     @PostConstruct
     public void init(){
-//        barOpenReviewMap = new HashMap<>();
-//        barOpenReviewMap.put(0, new BarOpenReview(1, 1, 2, CLOSE));
-//        barOpenReviewMap.put(1, new BarOpenReview(2, 2, 1, UNKNOWN));
+
     }
 
-    @GetMapping("/bar/{seq}/openReview")// 술집 오픈리뷰 리스트 조회(8/18 API 테스트 완료)
+    @GetMapping("/bar/{seq}/openReview")// 술집 오픈리뷰 리스트 조회
     public List<BarOpenReview> getBarOpenReviewList(@PathVariable("seq") Long seq) {
-        List<BarOpenReview> reviewList = barOpenReviewService.getBarOpenReviewList(seq);
-        if(reviewList != null) {
-            Collections.sort(reviewList, (r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt()));
-        }
-        return reviewList;
+        return barOpenReviewService.getBarOpenReviewList(seq);
     }
 
-    @PutMapping("/bar/openReview")// 술집 오픈리뷰 작성(8/18 API 테스트 완료)
-    public ResponseEntity<Void> putBarOpenReview(@RequestBody BarOpenReview barOpenReview) {
+    @PutMapping("/bar/openReview")// 술집 오픈리뷰 작성
+    public ResponseEntity<Void> createBarOpenReview(@RequestBody BarOpenReview barOpenReview) {
         barOpenReviewService.putBarOpenReview(barOpenReview);
         return new ResponseEntity<>(HttpStatus.OK);
     }

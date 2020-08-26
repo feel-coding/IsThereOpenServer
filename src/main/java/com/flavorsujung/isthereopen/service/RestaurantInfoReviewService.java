@@ -1,17 +1,12 @@
 package com.flavorsujung.isthereopen.service;
 
-import com.flavorsujung.isthereopen.domain.entity.CafeInfoReview;
 import com.flavorsujung.isthereopen.domain.entity.Restaurant;
-import com.flavorsujung.isthereopen.domain.entity.RestaurantInfo;
 import com.flavorsujung.isthereopen.domain.entity.RestaurantInfoReview;
 import com.flavorsujung.isthereopen.domain.mappedenum.*;
-import com.flavorsujung.isthereopen.domain.req.ReqRestaurantInfoReviewCreate;
 import com.flavorsujung.isthereopen.respository.RestaurantInfoReviewRepository;
 import com.flavorsujung.isthereopen.respository.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Collections;

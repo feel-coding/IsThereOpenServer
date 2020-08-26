@@ -28,20 +28,16 @@ public class RestaurantOpenReviewController {
     }
 
 
-    @PutMapping("/restaurant/openReview")//식당 오픈리뷰 작성 (8/18 API 테스트 완료)
-    public ResponseEntity<Void> putRestaurantOpenReview(@RequestBody RestaurantOpenReview restaurantOpenReview) {
+    @PutMapping("/restaurant/openReview")//식당 오픈리뷰 작성
+    public ResponseEntity<Void> createRestaurantOpenReview(@RequestBody RestaurantOpenReview restaurantOpenReview) {
         restaurantOpenReviewService.putRestaurantOpenReview(restaurantOpenReview);
         return new ResponseEntity<>(HttpStatus.OK);
 
     }
 
-    @GetMapping("/restaurant/{restaurantSeq}/openReview") //특정 식당의 오픈리뷰들 가져오기 (8/18 API 테스트 완료)
+    @GetMapping("/restaurant/{restaurantSeq}/openReview") //특정 식당의 오픈리뷰들 가져오기
     public List<RestaurantOpenReview> getRestaurantOpenReviewList(@PathVariable("restaurantSeq") Long restaurantSeq) {
-        List<RestaurantOpenReview> reviewList = restaurantOpenReviewService.getRestaurantOpenReviewList(restaurantSeq);
-        if(reviewList != null) {
-            Collections.sort(reviewList, (r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt()));
-        }
-        return reviewList;
+        return restaurantOpenReviewService.getRestaurantOpenReviewList(restaurantSeq);
     }
 
 }

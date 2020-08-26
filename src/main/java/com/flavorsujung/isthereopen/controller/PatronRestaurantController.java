@@ -11,12 +11,12 @@ import java.util.List;
 public class PatronRestaurantController {
     private final PatronRestaurantService patronRestaurantService;
 
-    @GetMapping("/user/{seq}/patronRestaurant/all") //단골식당 리스트 조회 (8/18 API 테스트 완료)
+    @GetMapping("/user/{seq}/patronRestaurant/all") //단골식당 리스트 조회
     public List<PatronRestaurant> getPatronRestaurantList(@PathVariable("seq") Long userSeq) {
         return patronRestaurantService.getPatronRestaurantList(userSeq);
     }
 
-    @PutMapping("/user/{seq}/patronRestaurant") //단골 식당 추가 (8/18 API 테스트 완료)
+    @PutMapping("/user/{seq}/patronRestaurant") //단골 식당 추가
     public void putPatronRestaurant(@PathVariable("seq") Long userSeq, @RequestParam("restaurantSeq") Long restaurantSeq) {
         patronRestaurantService.putPatronRestaurant(userSeq, restaurantSeq);
     }

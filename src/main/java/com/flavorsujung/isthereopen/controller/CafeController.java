@@ -18,7 +18,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class CafeController {
     private final CafeService cafeService;
-//    public static Map<Long, Cafe> cafeMap;
 
     @PostConstruct
     public void init() {
@@ -38,55 +37,55 @@ public class CafeController {
 //        putCafe("본크레페", "서울 성북구 동소문로20다길 30", "평일 14:00 - 19:00", "02-923-9633", "http://ldb.phinf.naver.net/20150813_69/1439473829903KC20W_JPEG/SUBMIT_1439434572823_33646766.jpg");
     }
 
-    @GetMapping("/cafe/{cafeSeq}/openState") // 카페 오픈 여부 조회 (8/17 API 테스트 완료)
+    @GetMapping("/cafe/{cafeSeq}/openState") // 카페 오픈 여부 조회
     public OpenState getCurrentState(@PathVariable("cafeSeq") Long cafeSeq) {
         return cafeService.getCafe(cafeSeq).getCurrentState();
     }
 
-    @GetMapping("/cafe/all") // 카페 리스트 조회 (8/17 API 테스트 완료)
+    @GetMapping("/cafe/all") // 카페 리스트 조회
     public List<Cafe> getCafeList() {
         return cafeService.getCafeList();
     }
 
-    @GetMapping("/cafe/{cafeSeq}") // 카페 조회 (8/17 API 테스트 완료)
+    @GetMapping("/cafe/{cafeSeq}") // 카페 조회
     public Cafe getCafe(@PathVariable("cafeSeq") Long cafeSeq) {
         return cafeService.getCafe(cafeSeq);
     }
 
-    @PutMapping("/cafe") //카페 추가 (8/17 API 테스트 완료)
+    @PutMapping("/cafe") //카페 추가
     public void putCafe(@RequestBody Cafe cafe) {
-        cafeService.putCafe(cafe.getName(), cafe.getAddress(), cafe.getRunningTime(), cafe.getPhoneNum(), cafe.getPhotoUrl());
+        cafeService.putCafe(cafe);
     }
 
-    @PostMapping("/cafe/{cafeSeq}/name") //카페 이름 변경 (8/18 API 테스트 완료)
+    @PostMapping("/cafe/{cafeSeq}/name") //카페 이름 변경
     public void updateCafeName(@PathVariable("cafeSeq") Long cafeSeq, @RequestParam("name") String name) {
         Cafe cafe = cafeService.getCafe(cafeSeq);
         cafe.setName(name);
         cafeService.postCafe(cafe);
     }
 
-    @PostMapping("/cafe/{cafeSeq}/runningTime") //카페 운영시간 변경 (8/18 API 테스트 완료)
+    @PostMapping("/cafe/{cafeSeq}/runningTime") //카페 운영시간 변경
     public void updateCafeRunningTime(@PathVariable("cafeSeq") Long cafeSeq, @RequestParam("runningTime") String runningTime) {
         Cafe cafe = cafeService.getCafe(cafeSeq);
         cafe.setRunningTime(runningTime);
         cafeService.postCafe(cafe);
     }
 
-    @PostMapping("/cafe/{cafeSeq}/photoUrl") //카페 사진 URL 변경 (8/18 API 테스트 완료)
+    @PostMapping("/cafe/{cafeSeq}/photoUrl") //카페 사진 URL 변경
     public void updateCafePhoto(@PathVariable("cafeSeq") Long cafeSeq, @RequestParam("photoURL") String photoURL) {
         Cafe cafe = cafeService.getCafe(cafeSeq);
         cafe.setPhotoUrl(photoURL);
         cafeService.postCafe(cafe);
     }
 
-    @PostMapping("/cafe/{cafeSeq}/address") //카페 주소 변경 (8/18 API 테스트 완료)
+    @PostMapping("/cafe/{cafeSeq}/address") //카페 주소 변경
     public void updateCafeAddress(@PathVariable("cafeSeq") Long cafeSeq, @RequestParam("address") String address) {
         Cafe cafe = cafeService.getCafe(cafeSeq);
         cafe.setAddress(address);
         cafeService.postCafe(cafe);
     }
 
-    @DeleteMapping("/cafe") // 카페 삭제 (8/18 API 테스트 완료)
+    @DeleteMapping("/cafe") // 카페 삭제
     public void deleteCafe(@RequestParam("cafeSeq") Long cafeSeq) {
         cafeService.deleteCafe(cafeSeq);
     }

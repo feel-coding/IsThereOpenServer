@@ -9,6 +9,7 @@ import com.flavorsujung.isthereopen.respository.BarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,10 @@ public class BarOpenReviewService {
     }
 
     public List<BarOpenReview> getBarOpenReviewList(Long barSeq) {
-        return barOpenReviewRepository.findBarOpenReviewByBarSeq(barSeq);
+        List<BarOpenReview> reviewList = barOpenReviewRepository.findBarOpenReviewByBarSeq(barSeq);
+        if(reviewList != null) {
+            Collections.sort(reviewList, (r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt()));
+        }
+        return reviewList;
     }
 }

@@ -9,6 +9,7 @@ import com.flavorsujung.isthereopen.respository.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +28,10 @@ public class RestaurantOpenReviewService {
     }
 
     public List<RestaurantOpenReview> getRestaurantOpenReviewList(Long restaurantSeq) {
-        return restaurantOpenReviewRepository.findRestaurantOpenReviewsByRestaurantSeq(restaurantSeq);
+        List<RestaurantOpenReview> reviewList = restaurantOpenReviewRepository.findRestaurantOpenReviewsByRestaurantSeq(restaurantSeq);
+        if(reviewList != null) {
+            Collections.sort(reviewList, (r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt()));
+        }
+        return reviewList;
     }
 }

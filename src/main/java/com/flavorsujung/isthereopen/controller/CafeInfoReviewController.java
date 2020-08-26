@@ -1,7 +1,6 @@
 package com.flavorsujung.isthereopen.controller;
 
 import com.flavorsujung.isthereopen.domain.entity.CafeInfoReview;
-import com.flavorsujung.isthereopen.domain.mappedenum.*;
 import com.flavorsujung.isthereopen.service.CafeInfoReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -9,8 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -24,12 +21,12 @@ public class CafeInfoReviewController {
     }
 
     @PutMapping("/cafe/infoReview") // 카페 정보 리뷰 작성 (8/18 API 테스트 완료)
-    public ResponseEntity<Void> putCafeInfoReview(@RequestBody CafeInfoReview cafeInfoReview) {
+    public ResponseEntity<Void> createCafeInfoReview(@RequestBody CafeInfoReview cafeInfoReview) {
         cafeInfoReviewService.putCafeInfoReview(cafeInfoReview);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/cafe/{cafeSeq}/infoReview") //카페 정보 리뷰 리스트 조회 (8/18 API 테스트 완료)
+    @GetMapping("/cafe/{cafeSeq}/infoReview") //카페 정보 리뷰 리스트 조회
     public List<CafeInfoReview> getCafeInfoReviewList(@PathVariable("cafeSeq") Long cafeSeq) {
         return cafeInfoReviewService.getCafeInfoReviewList(cafeSeq);
     }
@@ -40,7 +37,7 @@ public class CafeInfoReviewController {
     }
 
     @GetMapping("/cafe/{cafeSeq}/waitingTime")
-    public List<String> countByWaitingTime(@PathVariable("cafeSeq") Long cafeSeq) {
+    public List<String> getAvgWaitingTime(@PathVariable("cafeSeq") Long cafeSeq) {
         return cafeInfoReviewService.getAvgWaitingTime(cafeSeq);
     }
 

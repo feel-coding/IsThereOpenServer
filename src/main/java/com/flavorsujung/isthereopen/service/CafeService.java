@@ -22,13 +22,7 @@ public class CafeService {
         return cafeRepository.findAll();
     }
 
-    public void putCafe(String name, String address, String runningTime, String phoneNum, String photoUrl) {
-        Cafe cafe = new Cafe();
-        cafe.setName(name);
-        cafe.setAddress(address);
-        cafe.setRunningTime(runningTime);
-        cafe.setPhoneNum(phoneNum);
-        cafe.setPhotoUrl(photoUrl);
+    public void putCafe(Cafe cafe) {
         cafe.setCurrentState(OpenState.UNKNOWN);
         cafeRepository.save(cafe);
     }

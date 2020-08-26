@@ -26,14 +26,14 @@ public class RestaurantService {
         return restaurant.getCurrentState();
     }
 
-    public void putRestaurant(String name, String address, String runningTime, String phoneNum, String photoUrl) {
-        Restaurant restaurant = new Restaurant();
+    public void putRestaurant(Restaurant restaurant/*String name, String address, String runningTime, String phoneNum, String photoUrl*/) {
+//        Restaurant restaurant = new Restaurant();
         restaurant.setCurrentState(OpenState.UNKNOWN);
-        restaurant.setAddress(address);
-        restaurant.setName(name);
-        restaurant.setPhotoUrl(photoUrl);
-        restaurant.setRunningTime(runningTime);
-        restaurant.setPhoneNum(phoneNum);
+//        restaurant.setAddress(address);
+//        restaurant.setName(name);
+//        restaurant.setPhotoUrl(photoUrl);
+//        restaurant.setRunningTime(runningTime);
+//        restaurant.setPhoneNum(phoneNum);
         restaurantRepository.save(restaurant);
     }
 
