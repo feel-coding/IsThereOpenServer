@@ -20,8 +20,7 @@ import static com.flavorsujung.isthereopen.controller.BarController.*;
 @RequiredArgsConstructor
 public class BarOpenReviewController {
     private final BarOpenReviewService barOpenReviewService;
-    private final BarService barService;
-//    public static Map<Integer, BarOpenReview> barOpenReviewMap;
+
     @PostConstruct
     public void init(){
 //        barOpenReviewMap = new HashMap<>();
@@ -38,16 +37,9 @@ public class BarOpenReviewController {
         return reviewList;
     }
 
-    @PutMapping("/bar/{barSeq}/openReview")// 술집 오픈리뷰 작성(8/18 API 테스트 완료)
-    public ResponseEntity<Void> putBarOpenReview(
-            @PathVariable("barSeq") Long barSeq,
-            @RequestParam("userSeq") Long userSeq,
-            @RequestParam("openState") OpenState openState) {
-        barOpenReviewService.putBarOpenReview(barSeq, userSeq, openState);
-        Bar bar = barService.getBar(barSeq);
-        bar.setCurrentState(openState);
-        bar.setLastUpdate(new Date());
-        barService.postBar(bar);
+    @PutMapping("/bar/openReview")// 술집 오픈리뷰 작성(8/18 API 테스트 완료)
+    public ResponseEntity<Void> putBarOpenReview(@RequestBody BarOpenReview barOpenReview) {
+        barOpenReviewService.putBarOpenReview(barOpenReview);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

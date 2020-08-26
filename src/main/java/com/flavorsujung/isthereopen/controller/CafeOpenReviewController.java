@@ -21,7 +21,6 @@ import static com.flavorsujung.isthereopen.controller.CafeController.*;
 @RequiredArgsConstructor
 public class CafeOpenReviewController {
     private final CafeOpenReviewService cafeOpenReviewService;
-    private final CafeService cafeService;
 //    public static Map<Integer, CafeOpenReview> cafeOpenReviewMap;
 
     @PostConstruct
@@ -40,16 +39,9 @@ public class CafeOpenReviewController {
         return reviewList;
     }
 
-    @PutMapping("/cafe/{cafeSeq}/openReview") //카페 오픈 리뷰 작성
-    public ResponseEntity<Void> putCafeOpenReview(
-            @PathVariable("cafeSeq") Long cafeSeq,
-            @RequestParam("userSeq") Long userSeq,
-            @RequestParam("openState") OpenState openState) {
-        cafeOpenReviewService.putCafeOpenReview(cafeSeq, userSeq, openState);
-        Cafe cafe = cafeService.getCafe(cafeSeq);
-        cafe.setCurrentState(openState);
-        cafe.setLastUpdate(new Date());
-        cafeService.postCafe(cafe);
+    @PutMapping("/cafe/openReview") //카페 오픈 리뷰 작성
+    public ResponseEntity<Void> putCafeOpenReview(@RequestBody CafeOpenReview cafeOpenReview) {
+        cafeOpenReviewService.putCafeOpenReview(cafeOpenReview);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

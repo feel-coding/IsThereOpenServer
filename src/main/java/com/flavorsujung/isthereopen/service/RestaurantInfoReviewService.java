@@ -23,20 +23,7 @@ public class RestaurantInfoReviewService {
     private final RestaurantInfoReviewRepository restaurantInfoReviewRepository;
     private final RestaurantRepository restaurantRepository;
 
-    public void putRestaurantInfoReview(RestaurantInfoReview restaurantInfoReview
-            /*Long restaurantSeq, Long userSeq, Rate rate,
-            WaitingTime waitingTime, Cleanness cleanness,
-            Price price, TakeOut takeOut, EatAlone eatAlone, OpenStyle openStyle*/) {
-        /*RestaurantInfoReview restaurantInfoReview = new RestaurantInfoReview();
-        restaurantInfoReview.setRestaurantSeq(restaurantSeq);
-        restaurantInfoReview.setOpenStyle(openStyle);
-        restaurantInfoReview.setCleanness(cleanness);
-        restaurantInfoReview.setEatAlone(eatAlone);
-        restaurantInfoReview.setPrice(price);
-        restaurantInfoReview.setTakeOut(takeOut);
-        restaurantInfoReview.setWaitingTime(waitingTime);
-        restaurantInfoReview.setUserSeq(userSeq);
-        restaurantInfoReview.setRate(rate);*/
+    public void putRestaurantInfoReview(RestaurantInfoReview restaurantInfoReview) {
         restaurantInfoReviewRepository.save(restaurantInfoReview);
         Restaurant restaurant = restaurantRepository.findRestaurantBySeq(restaurantInfoReview.getRestaurantSeq());
         restaurant.setAvgRate(getAvgRate(restaurantInfoReview.getRestaurantSeq()));
