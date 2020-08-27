@@ -22,6 +22,110 @@ public class RestaurantInfoReviewService {
         restaurantInfoReviewRepository.save(restaurantInfoReview);
         Restaurant restaurant = restaurantRepository.findRestaurantBySeq(restaurantInfoReview.getRestaurantSeq());
         restaurant.setAvgRate(getAvgRate(restaurantInfoReview.getRestaurantSeq()));
+        Long restaurantSeq = restaurantInfoReview.getRestaurantSeq();
+        List<String> list = getAvgCleanness(restaurantSeq);
+        if (list.contains("깨끗한 편"))
+            restaurant.setClean(1);
+        else
+            restaurant.setClean(0);
+        if (list.size() == 0) {
+            restaurant.setAvgCleanness("정보 없음");
+        }
+        else if(list.size() == 1) {
+            restaurant.setAvgCleanness(list.get(0));
+        }
+        else if(list.size() == 2 && list.contains("보통")) {
+            restaurant.setAvgCleanness(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            restaurant.setAvgCleanness("의견이 많이 갈려요");
+            restaurant.setClean(0);
+        }
+        list = getAvgEatAlone(restaurantSeq);
+        if (list.contains("완전 가능"))
+            restaurant.setEatAlone(1);
+        else
+            restaurant.setEatAlone(0);
+        if (list.size() == 0) {
+            restaurant.setAvgEatAlone("정보 없음");
+        }
+        else if(list.size() == 1) {
+            restaurant.setAvgEatAlone(list.get(0));
+        }
+        else if(list.size() == 2 && list.contains("혼잡 시간 피하면 가능")) {
+            restaurant.setAvgEatAlone(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            restaurant.setAvgCleanness("의견이 많이 갈려요");
+            restaurant.setEatAlone(0);
+        }
+        list = getAvgOpenStyle(restaurantSeq);
+        if (list.contains("잘 지키는 편"))
+            restaurant.setStable(1);
+        else
+            restaurant.setStable(0);
+        if (list.size() == 0) {
+            restaurant.setAvgOpenStyle("정보 없음");
+        }
+        else if(list.size() == 1) {
+            restaurant.setAvgOpenStyle(list.get(0));
+        }
+        else if(list.size() == 2 && list.contains("보통")) {
+            restaurant.setAvgOpenStyle(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            restaurant.setAvgOpenStyle("의견이 많이 갈려요");
+            restaurant.setStable(0);
+        }
+        list = getAvgPrice(restaurantSeq);
+        if (list.contains("싼 편"))
+            restaurant.setCheap(1);
+        else
+            restaurant.setCheap(0);
+        if (list.size() == 0) {
+            restaurant.setAvgPrice("정보 없음");
+        }
+        else if(list.size() == 1) {
+            restaurant.setAvgPrice(list.get(0));
+        }
+        else if(list.size() == 2 && list.contains("보통")) {
+            restaurant.setAvgPrice(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            restaurant.setAvgPrice("의견이 많이 갈려요");
+            restaurant.setCheap(0);
+        }
+        list = getAvgTakeout(restaurantSeq);
+        if (list.contains("포장 가능"))
+            restaurant.setTakeout(1);
+        else
+            restaurant.setTakeout(0);
+        if (list.size() == 0) {
+            restaurant.setAvgTakeOut("정보 없음");
+        }
+        else if(list.size() == 1) {
+            restaurant.setAvgTakeOut(list.get(0));
+        }
+        else {
+            restaurant.setAvgTakeOut("의견이 많이 갈려요");
+            restaurant.setTakeout(0);
+        }
+        list = getAvgWaitingTime(restaurantSeq);
+        if (list.contains("금방 나오는 편"))
+            restaurant.setShortWaiting(1);
+        else
+            restaurant.setShortWaiting(0);
+        if (list.size() == 0) {
+            restaurant.setAvgWaitingTime("정보 없음");
+        }
+        else if(list.size() == 1) {
+            restaurant.setAvgWaitingTime(list.get(0));
+        }
+        else {
+            restaurant.setAvgWaitingTime("의견이 많이 갈려요");
+            restaurant.setShortWaiting(0);
+        }
+
         restaurantRepository.save(restaurant);
     }
 

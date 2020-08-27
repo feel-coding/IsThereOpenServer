@@ -32,6 +32,18 @@ public class Restaurant {
     private OpenState currentState;
     private String photoUrl;
     private Date lastUpdate;
+    private String avgWaitingTime;
+    private String avgCleanness;
+    private String avgPrice;
+    private String avgTakeOut;
+    private String avgEatAlone;
+    private String avgOpenStyle;
+    private Integer shortWaiting;
+    private Integer clean;
+    private Integer cheap;
+    private Integer takeout;
+    private Integer stable;
+    private Integer eatAlone;
 
     public Restaurant(Long seq, String name, String address,String runningTime) {
         this.seq = seq;
