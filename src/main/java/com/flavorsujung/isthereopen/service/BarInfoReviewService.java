@@ -25,6 +25,132 @@ public class BarInfoReviewService {
         barInfoReviewRepository.save(barInfoReview);
         Bar bar = barRepository.findBarBySeq(barInfoReview.getBarSeq());
         bar.setAvgRate(getAvgRate(barInfoReview.getBarSeq()));
+        Long barSeq = barInfoReview.getBarSeq();
+        List<String> list = getAvgCleanness(barSeq);
+        if (list.contains("깨끗한 편"))
+            bar.setClean(1);
+        else
+            bar.setClean(0);
+        if (list.size() == 0) {
+            bar.setAvgCleanness("정보 없음");
+        }
+        else if(list.size() == 1) {
+            bar.setAvgCleanness(list.get(0));
+        }
+        else if(list.size() == 2 && list.contains("보통")) {
+            bar.setAvgCleanness(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            bar.setAvgCleanness("의견이 많이 갈려요");
+            bar.setClean(0);
+        }
+        list = getAvgOpenStyle(barSeq);
+        if (list.contains("잘 지키는 편"))
+            bar.setStable(1);
+        else
+            bar.setStable(0);
+        if (list.size() == 0) {
+            bar.setAvgOpenStyle("정보 없음");
+        }
+        else if(list.size() == 1) {
+            bar.setAvgOpenStyle(list.get(0));
+        }
+        else if(list.size() == 2 && list.contains("보통")) {
+            bar.setAvgOpenStyle(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            bar.setAvgOpenStyle("의견이 많이 갈려요");
+            bar.setStable(0);
+        }
+        list = getAvgPrice(barSeq);
+        if (list.contains("싼 편"))
+            bar.setCheap(1);
+        else
+            bar.setCheap(0);
+        if (list.size() == 0) {
+            bar.setAvgPrice("정보 없음");
+        }
+        else if(list.size() == 1) {
+            bar.setAvgPrice(list.get(0));
+        }
+        else if(list.size() == 2 && list.contains("보통")) {
+            bar.setAvgPrice(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            bar.setAvgPrice("의견이 많이 갈려요");
+            bar.setCheap(0);
+        }
+        list = getAvgAlcohol(barSeq);
+        if (list.contains("소주"))
+            bar.setSoju(1);
+        else
+            bar.setSoju(0);
+        if (list.contains("맥주"))
+            bar.setBeer(1);
+        else
+            bar.setBeer(0);
+        if (list.contains("막걸리"))
+            bar.setMakgeolli(1);
+        else
+            bar.setMakgeolli(0);
+        if (list.contains("와인"))
+            bar.setWine(1);
+        else
+            bar.setWine(0);
+        if (list.contains("보드카"))
+            bar.setVodka(1);
+        else
+            bar.setVodka(0);
+        if (list.size() == 0) {
+            bar.setAvgMainAlcohol("정보 없음");
+        }
+        else if(list.size() == 1) {
+            bar.setAvgMainAlcohol(list.get(0));
+        }
+        else if(list.size() == 2) {
+            bar.setAvgMainAlcohol(list.get(0) + ", " + list.get(1));
+        }
+        else if(list.size() == 3) {
+            bar.setAvgMainAlcohol(list.get(0) + ", " + list.get(1)+ ", " + list.get(2));
+        }
+        else if(list.size() == 4) {
+            bar.setAvgMainAlcohol(list.get(0) + ", " + list.get(1)+ ", " + list.get(2)+ ", " + list.get(3));
+        }
+        else if(list.size() == 5) {
+            bar.setAvgMainAlcohol(list.get(0) + ", " + list.get(1)+ ", " + list.get(2)+ ", " + list.get(3)+ ", " + list.get(4));
+        }
+        list = getAvgMood(barSeq);
+        if (list.contains("조용한 편") || list.contains("보통"))
+            bar.setNotLoud(1);
+        else
+            bar.setNotLoud(0);
+        if (list.size() == 0) {
+            bar.setAvgMood("정보 없음");
+        }
+        else if(list.size() == 1) {
+            bar.setAvgMood(list.get(0));
+        }
+        else if(list.size() == 2 && list.contains("보통")) {
+            bar.setAvgMood(list.get(0) + "~" + list.get(1));
+        }
+        else {
+            bar.setAvgMood("의견이 많이 갈려요");
+            bar.setNotLoud(0);
+        }
+        list = getAvgToilet(barSeq);
+        if (list.contains("남녀 분리"))
+            bar.setSeparate(1);
+        else
+            bar.setSeparate(0);
+        if (list.size() == 0) {
+            bar.setAvgToilet("정보 없음");
+        }
+        else if(list.size() == 1) {
+            bar.setAvgToilet(list.get(0));
+        }
+        else if(list.size() == 2) {
+            bar.setAvgToilet(list.get(0) + "," + list.get(1) + " 모두 있어요");
+        }
         barRepository.save(bar);
     }
 
@@ -115,7 +241,7 @@ public class BarInfoReviewService {
                 moodList.add("보통");
             }
             if (loudCount.equals(maxCount)) {
-                moodList.add("시끄러운 편");
+                moodList.add("회식 분위기");
             }
         }
         return moodList;

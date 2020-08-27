@@ -31,5 +31,21 @@ public class Bar {
     private OpenState currentState;
     private String photoUrl;
     private Date lastUpdate;
+    private String avgToilet;
+    private String avgMood;
+    private String avgMainAlcohol;
+    private String avgPrice;
+    private String avgCleanness;
+    private String avgOpenStyle;
+    private Integer separate;
+    private Integer notLoud;
+    private Integer cheap;
+    private Integer soju;
+    private Integer beer;
+    private Integer wine;
+    private Integer makgeolli;
+    private Integer vodka;
+    private Integer clean;
+    private Integer stable;
 
 }
