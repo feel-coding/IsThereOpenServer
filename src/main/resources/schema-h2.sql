@@ -90,7 +90,7 @@ CREATE TABLE `cafe` (
   `avg_rate` DOUBLE NULL DEFAULT NULL,
   `current_state` TINYINT(3) NULL DEFAULT NULL,
   `photo_url` VARCHAR(255) DEFAULT NULL,
-  `last_update` DATETIME DEFAULT NULL, --여기까지가 원래 있었던 것들
+  `last_update` DATETIME DEFAULT NULL,
   `avg_waiting_time` VARCHAR(255) NULL DEFAULT NULL,
   `avg_price` VARCHAR(255) NULL DEFAULT NULL,
   `avg_customer_num` VARCHAR(255) NULL DEFAULT NULL,
